@@ -1,0 +1,14 @@
+# Always ignore
+.ssh
+
+# Ignore generated/derived/downloaded stuff
+/dist
+/node_modules
+
+# Ignore IDE/tools stuff
+/.idea
+/coverage
+
+# Ignore other development stuff
+/.vercel
+LOG.md

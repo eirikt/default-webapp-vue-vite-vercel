@@ -81,7 +81,7 @@ pnpm self-update
 
 
 ### Node.js
-Check Node.js availability:
+Check [Node.js](https://nodejs.org) availability:
 ```shell
 pnpm env list
 node --version
@@ -119,15 +119,16 @@ Let's start.
 
 
 ## Set up hosting service
-We will use Vercel (https://vercel.com) as a deployment service and hosting partner.
+We will use [Vercel](https://vercel.com) as a deployment service and hosting partner.
 Other options are:
-- GitHub Pages (https://pages.github.com)
-- Netlify (https://www.netlify.com)
-- Cloudflare (https://www.cloudflare.com)
-- Fly (https://fly.io)
-- Railway (https://railway.app)
-- Render (https://render.com)
-  ...and many more
+- [GitHub Pages](https://pages.github.com)
+- [Netlify](https://www.netlify.com)
+- [Cloudflare](https://www.cloudflare.com)
+- [Fly](https://fly.io)
+- [Railway](https://railway.app)
+- [Render](https://render.com)
+
+...and many more
 
 Install Vercel client as a project-local dependency:
 ```shell
@@ -187,7 +188,7 @@ We're on the right path, but we still need content.
 Let's start with a "Hello World!".
 
 
-### Hello World!
+### Hello World! 
 Every web app, no, wait; every information system should start with a "Hello World!" version!
 Update the `index.html`:
 ```shell
@@ -203,6 +204,45 @@ Yes, we are live 👍
 - (Web page response time: ~50-100 ms)
 - (**NB!** The project workspace folder is now (already) on 117 MB – due to the Vercel dependency)
 
+[ [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/54d6f1506b7dc88dcea6d2f7ccbeda6573f6f9de) | [deployment](https://vercel.com/eirik-torskes-projects/defaultwebapp/6aCypC6Z3hLXE9Jt1UfEMbUyQ4fF) ]
+
 
 
 ## Set up development environment
+
+
+### Version control, Git
+Paramount for all software development is _version control_.
+We will use [version control system](https://en.wikipedia.org/wiki/Version_control) [Git](https://en.wikipedia.org/wiki/Git), still the idiomatic choice after 15-20 years.
+Git is a open [distributed version control system](https://en.wikipedia.org/wiki/Distributed_version_control), and has many [SaaS](https://en.wikipedia.org/wiki/Software_as_a_service) providers,
+e.g. the prominent [GitHub](https://github.com).
+
+[Install](https://git-scm.com) Git.
+
+Create a repository in e.g., GitHub, and clone the repository.
+
+Alternatively, create a local Git repository:
+```shell
+git init
+```
+
+We don't want to put all folders and files in under version control.
+A `.gitignore` file was created during the initial Vercel usage above.
+Add some more paths and files to it.
+Looking a bit ahead of ourselves, we may e.g., ignore:
+```
+# Always ignore
+.ssh
+
+# Ignore generated/derived/downloaded stuff
+/dist
+/node_modules
+
+# Ignore IDE/tools stuff
+/.idea
+/coverage
+
+# Ignore other development stuff
+/.vercel
+LOG.md
+```
