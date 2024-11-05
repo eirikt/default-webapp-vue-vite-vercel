@@ -1,5 +1,20 @@
 {
-	"devDependencies": {
-		"vercel": "^37.14.0"
-	}
+    "name": "default-webapp-2024",
+    "version": "0.0.1",
+    "title": "Default Webapp 2024",
+    "scripts": {
+        "setup": "pnpm install",
+        "clean": "pnpm rimraf --verbose dist",
+        "build": "pnpm build:prod",
+        "build:prod": "pnpm build:production",
+        "build:production": "pnpm clean && pnpm copyfiles index.html dist",
+        "deploy:staging": "pnpm build && pnpm vercel",
+        "deploy:prod": "pnpm deploy:production",
+        "deploy:production": "pnpm build:production && pnpm vercel --prod"
+    },
+    "devDependencies": {
+        "copyfiles": "^2.4.1",
+        "rimraf": "^6.0.1",
+        "vercel": "^37.14.0"
+    }
 }
