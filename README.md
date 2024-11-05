@@ -188,7 +188,7 @@ We're on the right path, but we still need content.
 Let's start with a "Hello World!".
 
 
-### Hello World! 
+### Hello World!
 Every web app, no, wait; every information system should start with a "Hello World!" version!
 Update the `index.html`:
 ```shell
@@ -245,4 +245,37 @@ Looking a bit ahead of ourselves, we may e.g., ignore:
 # Ignore other development stuff
 /.vercel
 LOG.md
+```
+
+
+### EditorConfig, for common IDE behaviour
+A nice (beloved) text editor (or a full-blown, hopefully not bloated, integrated development environment (IDE)),
+is an integral part of a software developer's life.
+Even we are somewhat restricting individual preferences in this setup, the IDE should be free of choice.
+For "organizational scaling" concerns,
+we are creating a common ground for IDEs with EditorConfig, IDE-agnostic editor configurations.
+That consolidates e.g. issues like whitespace handling—important for avoiding unnecessary version differences.
+So, the text editors/IDEs used by project developers should support EditorConfig internally or via a plugin.
+Most commonplace text editors/IDEs have support for EditorConfig, either integrated, or via a plugin.
+
+Create the `.editorconfig` file
+```shell
+New-Item .editorconfig
+```
+
+Add e.g. the following editor config:
+```
+# This file is for unifying the coding style for different editors and IDEs
+# EditorConfig.org
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = crlf
+trim_trailing_whitespace = true
+insert_final_newline = true
 ```
