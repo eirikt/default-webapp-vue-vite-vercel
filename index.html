@@ -1,16 +1,17 @@
 <div id="app"></div>
-<script src="https://unpkg.com/vue@3/dist/vue.runtime.global.prod.js"></script>
-<script>Vue
-    .createApp({
+<script type="module">
+    import {createApp, h} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    createApp({
         name: 'Default Webapp 2024',
         data() {
             return {
                 title: 'Default Webapp 2024',
-                version: '0.1.6',
+                version: '0.1.7',
             }
         },
         render() {
-            return Vue.h(
+            return h(
                 'h1',
                 [
                     `${this.title} | Vue-Vite-Vercel (v${this.version})`,
@@ -18,6 +19,5 @@
                 ]
             )
         }
-    })
-    .mount('#app')
+    }).mount('#app')
 </script>
