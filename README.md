@@ -215,7 +215,7 @@ Yes, we are live 👍
 Paramount for all software development is _version control_.
 We will use [version control system](https://en.wikipedia.org/wiki/Version_control) [Git](https://en.wikipedia.org/wiki/Git), still the idiomatic choice after 15-20 years.
 Git is a open [distributed version control system](https://en.wikipedia.org/wiki/Distributed_version_control), and has many [SaaS](https://en.wikipedia.org/wiki/Software_as_a_service) providers,
-e.g. the prominent [GitHub](https://github.com).
+e.g., the prominent [GitHub](https://github.com).
 
 [Install](https://git-scm.com) Git.
 
@@ -246,6 +246,8 @@ Looking a bit ahead of ourselves, we may e.g., ignore:
 /.vercel
 LOG.md
 ```
+
+[ [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/18fdb6f77c00aeb97acb47489e955efde82d0b72) ]
 
 
 ### EditorConfig, for common IDE behaviour
@@ -279,3 +281,149 @@ end_of_line = crlf
 trim_trailing_whitespace = true
 insert_final_newline = true
 ```
+
+[ [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/ef39a3a2de1e6829dadc7aab8923d548966cfc37) ]
+
+
+---
+
+
+For the next version, let's update the silly "Hello World!" with something a bit better;
+a little project mission statement.
+Update the `index.html` with:
+```shell
+Set-Content -Path .\index.html -Value "Default Webapp 2024 (v0.0.1)"
+```
+
+Also, before committing our first (real) version, let's update `package.json` with project name and version:
+```json
+{
+  "name": "default-webapp-2024",
+  "version": "0.0.1",
+  "title": "Default Webapp 2024",
+  ...
+}
+```
+
+
+### Build scripts
+With our little proof-of-concept web page (soon to be a _web app_) in place and released,
+let us define some basic scripts and commands underpinning our development process and release process.
+First fetch file handling tools:
+```shell
+pnpm install rimraf --save-dev
+pnpm install copyfiles --save-dev
+```
+
+Update `package.json` with a `"scripts"` block containing e.g. something like:
+```json
+{
+    ...
+    "scripts": {
+        "setup": "pnpm install",
+        "clean": "pnpm rimraf --verbose dist",
+        "build": "pnpm build:prod",
+        "build:prod": "pnpm build:production",
+        "build:production": "pnpm clean && pnpm copyfiles index.html dist",
+        "deploy:staging": "pnpm build && pnpm vercel",
+        "deploy:prod": "pnpm deploy:production",
+        "deploy:production": "pnpm build:production && pnpm vercel --prod"
+    },
+    ...
+}
+```
+
+The declared scripts are listed with the command:
+```shell
+pnpm run
+```
+
+Then deploy it to "staging" (a production-like environment):
+```shell
+pnpm deploy:staging
+```
+
+When everything seems good to go, deploy to production:
+```shell
+pnpm deploy:production
+```
+- (Web page size (at rest): 30 B)
+- (Web page size (network): 140 B)
+- (Web page response time: <50 ms)
+- (The project workspace folder is now on 121 MB – due to Vercel and file handling tools)
+
+[ [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a0acd101b4a5132dedcb94a5c8088839e1d6b48d) | [deployment](https://defaultwebapp-itd9mwdfu-eirik-torskes-projects.vercel.app) ]
+
+
+### Vue
+Let us make this (static) _web page_ **dynamic**, turning it into a _web app_.
+Then we will manipulate the browser DOM, and the only way to do that is via the browser's ECMAScript-based DOM API.
+[Vue](https://vuejs.org) enables that, using a virtual DOM-based reactive template rendering.
+
+Vue is a component-oriented web framework, revolving around _Vue components_, which is a quite flexible web component standard.
+A _Vue component_ is simply said, an ECMAScript function returning a render function.
+Render functions return virtual DOM (VDOM) nodes, possibly nested – which then become VDOM _trees_.
+The virtual DOM is a programming concept where an ideal, or "virtual" representation of a UI is kept in memory and synced with the "real" DOM. The concept was pioneered by React, and has been adopted in many other frameworks with different implementations, including Vue.
+Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation.
+We can illustrate the idea using a simple example:
+```javascript
+const vnode = {
+  type: 'div',
+  props: {
+    id: 'hello'
+  },
+  children: [
+    /* more vnodes */
+  ]
+}
+```
+Here, `vnode` is a plain JavaScript object (a "virtual node") representing a `<div>` HTML element.
+It contains all the information that we need to create the actual HTML/DOM element.
+It also contains more children vnodes, which makes it the root of a VDOM tree.
+A runtime renderer can walk a virtual DOM tree and construct a real DOM tree from it.
+This process is called mount.
+
+So, at the high level, this is what happens when a Vue component is mounted:
+1. **Compile:** Vue templates are compiled into render functions: functions that return VDOM trees.
+   This step can be done either ahead-of-time via a build step, or on-the-fly by using the runtime compiler.
+
+2. **Mount:** The runtime renderer invokes the render functions, walks the returned virtual DOM tree, and creates actual DOM nodes based on it.
+   This step is performed as a reactive effect, so it keeps track of all reactive dependencies that were used.
+
+3. **Patch:** When a dependency used during mount changes, the effect re-runs.
+   This time, a new, updated Virtual DOM tree is created. The runtime renderer walks the new tree, compares it with the old one, and applies necessary updates to the actual DOM.
+
+Vue's `createApp` function takes in, almost whatever, and returns a VDOM node (ala `vnode` above), possibly a VDOM tree.
+It is quite flexible in regard to the input parameter.
+
+It may be a function.
+Then it is handled as the `render` function directly.
+
+It may be an object.
+If the object has just one function, it is handled as the `render` function.
+If the object has more then one function, one of them must be named `render`.
+The input object may also contain a _Vue template_, an HTML-like declarative view of the web page.
+(Well, at least I think it's like this...)
+
+
+---
+
+
+We are moving from plain text to [**H**yper**t**ext **M**arkup **L**anguage (HTML)](https://no.wikipedia.org/wiki/HTML/), ensuring a proper browser DOM element for "hosting" our Vue-based web app:
+```shell
+Set-Content -Path .\index.html -Value @"
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const render = function () {
+        return 'Default Webapp 2024 | Vue-Vite-Vercel (v0.1.0)'
+    };
+    Vue.createApp(render).mount('html');
+</script>
+"@
+```
+Execute the deployment routine, described above.
+
+- (Web page size (at rest): 222 B)
+- (Web page size (network): 171 KB (`vue.global.js`) + 384 B)
+- (Web page response time: <50 ms)
+- (The project workspace folder is still on 121 MB)
