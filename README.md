@@ -358,7 +358,6 @@ When everything seems good to go, deploy to production:
 ```shell
 pnpm deploy:production
 ```
-<sub>
 <sup>
 <ul style="list-style-type: '— ';">
     <li>Web page size (at rest): 30 B</li>
@@ -367,13 +366,10 @@ pnpm deploy:production
     <li>The project workspace folder is now on 121 MB – due to Vercel and file handling tools</li>
 </ul>
 </sup>
-</sub>
 
-<sub>
 <sup>
 [ <code>v0.0.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a0acd101b4a5132dedcb94a5c8088839e1d6b48d) | [deployment](https://defaultwebapp-rly4wlysd-eirik-torskes-projects.vercel.app) ]
 </sup>
-</sub>
 
 
 ### Vue
@@ -456,7 +452,9 @@ Albeit, the startup time of our web app is not particularly affected...
 </sup>
 </sub>
 
+<sup>
 [ <code>v0.1.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/93b1a3b7a2aea4009783403c33d9822d6196af19) | [deployment](https://defaultwebapp-itd9mwdfu-eirik-torskes-projects.vercel.app) ]
+</sup>
 
 ...
 
@@ -482,16 +480,16 @@ Use it to quickly and easily load any file from any package using a URL like:
 unpkg.com/:package@:version/:file
 ```
 Execute the deployment routine, described above.
-<sup>
+<sub>
 <ul style="list-style-type: '- ';">
     <li>Web page size (at rest): 222 B</li>
     <li>Web page size (network): 171 KB (<code>vue.global.js</code>) + 352 B</li>
     <li>Web page response time: <50 ms</li>
     <li>The project workspace folder is still on 121 MB</li>
 </ul>
-</sup>
+</sub>
 
-<sup>[ <code>v0.1.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6c89fce2f8c5943537e57a4727619b777ead25db) | [deployment](https://defaultwebapp-gd8mwo6dj-eirik-torskes-projects.vercel.app) ]</sup>
+<sub>[ <code>v0.1.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6c89fce2f8c5943537e57a4727619b777ead25db) | [deployment](https://defaultwebapp-gd8mwo6dj-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -510,7 +508,7 @@ Set-Content -Path .\index.html -Value @"
 "@
 ```
 Execute the deployment routine, described above.
-<small>
+<sub>
 <ul style="list-style-type: '- ';">
     <li>Web page size (at rest): 236 B</li>
     <li>Web page size (network): 171 KB (<code>vue.global.js</code>) + 311 B</li>
@@ -519,7 +517,7 @@ Execute the deployment routine, described above.
 </ul>
 </sub>
 
-<small>[ <code>v0.1.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/df7b80b403ca8cdbc2b00b734d15989569bd9de6) | [deployment](https://defaultwebapp-q66434uln-eirik-torskes-projects.vercel.app) ]</small>
+<sub>[ <code>v0.1.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/df7b80b403ca8cdbc2b00b734d15989569bd9de6) | [deployment](https://defaultwebapp-q66434uln-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
