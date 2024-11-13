@@ -1,53 +1,32 @@
 <div id="app"></div>
 <script type="module">
-    import {createApp, h} from 'https://unpkg.com/vue@3/dist/vue.runtime.esm-browser.prod.js'
+    import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
 
     createApp({
         name: 'Default Webapp 2024',
         data() {
             return {
                 title: 'Default Webapp 2024',
-                version: '0.1.10',
+                version: '0.1.11',
             }
         },
-        render() {
-            return [
-                h(
-                    'h1',
-                    [
-                        `${this.title}`,
-                        []
-                    ]
-                ),
-                h(
-                    'h2', ['Technology stack status:',
-                        []
-                    ]
-                ),
-                h(
-                    'ul',
-                    ['',
-                        [
-                            h('li', ['Git: ok']),
-                            h('li', ['GitHub: ok']),
-                            h('li', ['Vercel: ok']),
-                            h('li', ['Vue: (ok)']),
-                            h('li', ['Vite: -']),
-                            h('li', ['Tailwind: -']),
-                            h('li', ['Vitest: -']),
-                            h('li', ['Pinia: -']),
-                            h('li', ['HTTP APIs: -']),
-                            h('li', ['TSC/ESLint: -'])
-                        ]
-                    ]
-                ),
-                h(
-                    'p', [
-                        `v${this.version}`,
-                        []
-                    ]
-                )
-            ]
-        }
+        template: `
+            <h1>{{this.title}}</h1>
+            <h2>Technology stack status:</h2>
+            <ul>
+                <li>Git: ok</li>
+                <li>GitHub: ok</li>
+                <li>Vercel: ok</li>
+                <li>Vue: (ok)</li>
+                <li>Vite: -</li>
+                <li>TypeScript: -</li>
+                <li>Tailwind: -</li>
+                <li>Vitest: -</li>
+                <li>Pinia: -</li>
+                <li>HTTP APIs: -</li>
+                <li>TSC/ESLint: -</li>
+            </ul>
+            <p>v{{this.version}}</p>
+        `
     }).mount('#app')
 </script>
