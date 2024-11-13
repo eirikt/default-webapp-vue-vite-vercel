@@ -7,17 +7,47 @@
         data() {
             return {
                 title: 'Default Webapp 2024',
-                version: '0.1.9',
+                version: '0.1.10',
             }
         },
         render() {
-            return h(
-                'h1',
-                [
-                    `${this.title} | Vue-Vite-Vercel (v${this.version})`,
-                    []
-                ]
-            )
+            return [
+                h(
+                    'h1',
+                    [
+                        `${this.title}`,
+                        []
+                    ]
+                ),
+                h(
+                    'h2', ['Technology stack status:',
+                        []
+                    ]
+                ),
+                h(
+                    'ul',
+                    ['',
+                        [
+                            h('li', ['Git: ok']),
+                            h('li', ['GitHub: ok']),
+                            h('li', ['Vercel: ok']),
+                            h('li', ['Vue: (ok)']),
+                            h('li', ['Vite: -']),
+                            h('li', ['Tailwind: -']),
+                            h('li', ['Vitest: -']),
+                            h('li', ['Pinia: -']),
+                            h('li', ['HTTP APIs: -']),
+                            h('li', ['TSC/ESLint: -'])
+                        ]
+                    ]
+                ),
+                h(
+                    'p', [
+                        `v${this.version}`,
+                        []
+                    ]
+                )
+            ]
         }
     }).mount('#app')
 </script>
