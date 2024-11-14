@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             title: 'Default Webapp 2024',
-            version: '0.1.13',
+            version: '0.1.14',
         }
     },
     template: `
@@ -11,7 +11,7 @@ export default {
         <h3>Technology stack status:</h3>
         <ul style="list-style-type: none;">
             <li>Git: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
-            <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel">GitHub</a>: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a>: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
             <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
             <li>Vue: <span style="font-size: larger;font-weight: bolder;color: darkseagreen;">(✓)</span></li>
             <li>Vite: <span style="font-size: larger;color: red;">✗</span></li>
@@ -22,6 +22,6 @@ export default {
             <li>HTTP APIs: <span style="font-size: larger;color: red;">✗</span></li>
             <li>TSC/ESLint: <span style="font-size: larger;color: red;">✗</span></li>
         </ul>
-        <p style="padding-top: 8px;font-family: monospace;color: grey;">[ v{{this.version}} | <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel">GitHub</a> ]</p>
+        <p style="padding-top: 8px;font-family: monospace;color: grey;">[ v{{this.version}} | <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a> ]</p>
     `
 };
