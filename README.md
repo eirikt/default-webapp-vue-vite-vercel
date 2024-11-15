@@ -75,7 +75,7 @@ Invoke-WebRequest https://get.pnpm.io/install.ps1 -UseBasicParsing | Invoke-Expr
 ```
 Then open up a new terminal window.
 
-Check version, and while at it, update `pnpm`:
+ Check version, and while at it, update `pnpm`:
 ```shell
 pnpm --version
 pnpm self-update
@@ -354,7 +354,14 @@ When everything seems good to go, deploy to production:
 ```shell
 pnpm deploy:production
 ```
-<sub><ul style="list-style-type: '— ';"><li>Web page size (at rest): 30 B</li><li>Web page size (network): 140 B</li><li>Web page response time: <50 ms</li><li>The project workspace folder is now on 121 MB – due to Vercel and file handling tools</li></ul></sub>
+<p>
+<sub>
+- Web page size (at rest): 30 B<br/>
+- Web page size (network): 140 B<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is now on 121 MB – due to Vercel and file handling tools<br>
+</sub>
+</p>
 <sub>[ <code>v0.0.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a0acd101b4a5132dedcb94a5c8088839e1d6b48d) | [deployment](https://defaultwebapp-rly4wlysd-eirik-torskes-projects.vercel.app) ]</sub>
 
 
@@ -425,20 +432,21 @@ Set-Content -Path .\index.html -Value @"
 "@
 ```
 Execute the deployment routine, described above.
-<sup>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 222 B</li>
-    <li>Web page size (network): 171 KB (<code>vue.global.js</code>) + 384 B</li>
-    <li>Web page response time: <50 ms</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
+<p>
+<sub>
+- Web page size (at rest): 222 B<br/>
+- Web page size (network): 171 KB (<code>vue.global.js</code>) + 384 B<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<p>
+<sub>
 We see that the size of our web app increases significantly with the integration of Vue.
 Albeit, the startup time of our web app is not particularly affected...
-</sup>
-
-<sup>
-[ <code>v0.1.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/93b1a3b7a2aea4009783403c33d9822d6196af19) | [deployment](https://defaultwebapp-itd9mwdfu-eirik-torskes-projects.vercel.app) ]
-</sup>
+</sub>
+</p>
+<sub>[ <code>v0.1.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/93b1a3b7a2aea4009783403c33d9822d6196af19) | [deployment](https://defaultwebapp-itd9mwdfu-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -464,7 +472,6 @@ Use it to quickly and easily load any file from any package using a URL like:
 unpkg.com/:package@:version/:file
 ```
 Execute the deployment routine, described above.
-
 <p>
 <sub>
 - Web page size (at rest): 222 B<br/>
@@ -473,7 +480,6 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
-
 <sub>[ <code>v0.1.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6c89fce2f8c5943537e57a4727619b777ead25db) | [deployment](https://defaultwebapp-gd8mwo6dj-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -493,15 +499,14 @@ Set-Content -Path .\index.html -Value @"
 "@
 ```
 Execute the deployment routine, described above.
+<p>
 <sub>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 236 B</li>
-    <li>Web page size (network): 171 KB (<code>vue.global.js</code>) + 311 B</li>
-    <li>Web page response time: <50 ms</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
+- Web page size (at rest): 236 B<br/>
+- Web page size (network): 171 KB (<code>vue.global.js</code>) + 311 B<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
 </sub>
-
+</p>
 <sub>[ <code>v0.1.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/df7b80b403ca8cdbc2b00b734d15989569bd9de6) | [deployment](https://defaultwebapp-q66434uln-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -529,13 +534,15 @@ Set-Content -Path .\index.html -Value @"
 "@
 ```
 Execute the deployment routine, described above.
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 222 B</li>
-    <li>Web page size (network): 171 KB (<code>vue.global.js</code>) + 343 B</li>
-    <li>Web page response time: <50 ms</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-[ <code>v0.1.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/59e7cdbfabd168aad440dae66fde53462cf0ab02) | [deployment](https://defaultwebapp-5qgv8rh1v-eirik-torskes-projects.vercel.app) ]
+<p>
+<sub>
+- Web page size (at rest): 222 B<br/>
+- Web page size (network): 171 KB (<code>vue.global.js</code>) + 343 B<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/59e7cdbfabd168aad440dae66fde53462cf0ab02) | [deployment](https://defaultwebapp-5qgv8rh1v-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -570,16 +577,15 @@ Replace `index.html` with:
 </script>
 ```
 Execute the deployment routine, described above.
-<small>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 568 B</li>
-    <li>Web page size (network): 171 KB (<code>vue.global.js</code>) + 667 B</li>
-    <li>Web page response time: <50 ms</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-</small>
-
-<small>[ <code>v0.1.4</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/af90e6c368b12bcf13ba422cf648ef778cad3bf3) | [deployment](https://defaultwebapp-7w9rkmmee-eirik-torskes-projects.vercel.app) ]</small>
+<p>
+<sub>
+- Web page size (at rest): 568 B<br/>
+- Web page size (network): 171 KB (<code>vue.global.js</code>) + 667 B<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.4</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/af90e6c368b12bcf13ba422cf648ef778cad3bf3) | [deployment](https://defaultwebapp-7w9rkmmee-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -597,16 +603,15 @@ Set-Content .\index.html
 Set-Content .\package.json
 ```
 Execute the deployment routine, described above.
-<small>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 572 B</li>
-    <li>Web page size (network): 121 KB (<code>vue.runtime.global.js</code>) + 697 B</li>
-    <li>Web page response time: <50 ms</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-</small>
-
-<small>[ <code>v0.1.5</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/c608fe2ad2297c5515a539aa128785cbef0d99e6) | [deployment](https://defaultwebapp-5loe7jdxg-eirik-torskes-projects.vercel.app) ]</small>
+<p>
+<sub>
+- Web page size (at rest): 572 B<br/>
+- Web page size (network): 121 KB (<code>vue.runtime.global.js</code>) + 697 B<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.5</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/c608fe2ad2297c5515a539aa128785cbef0d99e6) | [deployment](https://defaultwebapp-5loe7jdxg-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -622,27 +627,26 @@ Set-Content .\index.html
 Set-Content .\package.json
 ```
 Execute the deployment routine, described above.
-<small>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 572 B</li>
-    <li>Web page size (network): 48 KB (<code>vue.runtime.global.prod.js</code>) + 700 B</li>
-    <li>Web page response time: <40 ms, a bit snappier</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-</small>
-
-<small>[ <code>v0.1.6</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6a2d9f8229177f3d8e2be78aea04178e3622b61b) | [deployment](https://defaultwebapp-gi9ztx2jk-eirik-torskes-projects.vercel.app) ]</small>
-
-...
+<p>
+<sub>
+- Web page size (at rest): 572 B<br/>
+- Web page size (network): 48 KB (<code>vue.runtime.global.prod.js</code>) + 700 B<br/>
+- Web page response time: <40 ms, a bit snappier<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.6</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6a2d9f8229177f3d8e2be78aea04178e3622b61b) | [deployment](https://defaultwebapp-gi9ztx2jk-eirik-torskes-projects.vercel.app) ]</sub>
 
 
+#### ECMAScript Modules
 ECMAScript Modules (ESM) is now available and supported directly by the browser.
-Then you must organize your web app as ESM modules, and typically host them alongside the `index.html` file.
+The web app must be organized as a set of ESM modules, and typically hosted alongside the `index.html` file.
 In addition, the web app will also fetch common third-party ESM components, like Vue, via the browser.
 This capability has been supported by most modern browsers since approximately 2020.
 
 Nevertheless, bundled web app artifacts are still the idiomatic way of deploying/hosting web apps –
 and we will also organize our wep app that way, later on.
+A (pre)bundled web app requires a build step.
 However, let us first try ESM in the browser, without a build step:
 
 Replace `index.html` with:
@@ -672,16 +676,15 @@ Replace `index.html` with:
 </script>
 ```
 Execute the deployment routine, described above.
-<small>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 592 B</li>
-    <li>Web page size (network): 162 KB (<code>vue.esm-browser.js</code>) + 705 B</li>
-    <li>Web page response time: <40 ms, still feels a bit snappier)</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-</small>
-
-<small>[ <code>v0.1.7</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a57e38c2f580a157d43fc1c6dc6616b3bd322ce7) | [deployment](https://defaultwebapp-31c0nx56r-eirik-torskes-projects.vercel.app) ]</small>
+<p>
+<sub>
+- Web page size (at rest): 592 B<br/>
+- Web page size (network): 162 KB (<code>vue.esm-browser.js</code>) + 705 B<br/>
+- Web page response time: <40 ms, feels a bit snappier)<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.7</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a57e38c2f580a157d43fc1c6dc6616b3bd322ce7) | [deployment](https://defaultwebapp-31c0nx56r-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -696,16 +699,15 @@ Set-Content .\index.html
 Set-Content .\package.json
 ```
 Execute the deployment routine, described above.
-<small>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 604 B</li>
-    <li>Web page size (network): 117 KB (<code>vue.runtime.esm-browser.js</code>) + 713 B</li>
-    <li>Web page response time: <40 ms, still feels a bit snappier)
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-</small>
-
-<small>[ <code>v0.1.8</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/c6748eb32ffe3912bc20b0c60e99f1a1ba12cfb4) | [deployment](https://defaultwebapp-o1w4ev1q8-eirik-torskes-projects.vercel.app) ]</small>
+<p>
+<sub>
+- Web page size (at rest): 604 B<br/>
+- Web page size (network): 117 KB (<code>vue.runtime.esm-browser.js</code>) + 713 B<br/>
+- Web page response time: <40 ms, feels a bit snappier)<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.8</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/c6748eb32ffe3912bc20b0c60e99f1a1ba12cfb4) | [deployment](https://defaultwebapp-o1w4ev1q8-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
 
@@ -718,13 +720,349 @@ Set-Content .\index.html
 Set-Content .\package.json
 ```
 Execute the deployment routine, described above.
-<small>
-<ul style="list-style-type: '- ';">
-    <li>Web page size (at rest): 609 B</li>
-    <li>Web page size (network): 48.3 KB (<code>vue.runtime.esm-browser.prod.js</code>) + 717 B</li>
-    <li>Web page response time: <40 ms, still feels a bit snappier</li>
-    <li>The project workspace folder is still on 121 MB</li>
-</ul>
-</small>
+<p>
+<sub>
+- Web page size (at rest): 609 B<br/>
+- Web page size (network): 48.3 KB (<code>vue.runtime.esm-browser.prod.js</code>) + 717 B<br/>
+- Web page response time: <40 ms, feels a bit snappier<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.9</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a8cd136087c076d0a9e7783e151dc12a81320720) | [deployment](https://defaultwebapp-5cdn9ictn-eirik-torskes-projects.vercel.app) ]</sub>
 
-<small>[ <code>v0.1.9</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a8cd136087c076d0a9e7783e151dc12a81320720) | [deployment](https://defaultwebapp-5cdn9ictn-eirik-torskes-projects.vercel.app) ]</small>
+...
+
+
+Extending our simple placeholder page with some content;
+a simple survey and status of the technology components we are planning to integrate into our web app.
+
+Replace the render function with:
+```javascript
+render() {
+    return [
+        h(
+            'h1',
+            [
+                `${this.title}`,
+                []
+            ]
+        ),
+        h(
+            'h2', ['Technology stack status:',
+                []
+            ]
+        ),
+        h(
+            'ul',
+            ['',
+                [
+                    h('li', ['Git: ok']),
+                    h('li', ['GitHub: ok']),
+                    h('li', ['Vercel: ok']),
+                    h('li', ['Vue: (ok)']),
+                    h('li', ['Vite: -']),
+                    h('li', ['TypeScript: -']),
+                    h('li', ['Tailwind: -']),
+                    h('li', ['Vitest: -']),
+                    h('li', ['Pinia: -']),
+                    h('li', ['HTTP APIs: -']),
+                    h('li', ['TSC/ESLint: -'])
+                ]
+            ]
+        ),
+        h(
+            'p', [
+                `v${this.version}`,
+                []
+            ]
+        )
+    ]
+}
+```
+And execute:
+```shell
+(Get-Content .\index.html).Replace('0.1.9', '0.1.10') |
+Set-Content .\index.html
+(Get-Content .\package.json).Replace('0.1.9', '0.1.10') |
+Set-Content .\package.json
+```
+Execute the deployment routine, described above.
+<p>
+<sub>
+- Web page size (at rest): 1,6 KB<br/>
+- Web page size (network): 47,4 KB (<code>vue.runtime.esm-browser.prod.js</code>) + 564 B<br/>
+- Web page response time: <40 ms, feels a bit snappier<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.10</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/40d664de2e4deea1573da88ec39ce450fd627d84) | [deployment](https://defaultwebapp-m5ewqy68y-eirik-torskes-projects.vercel.app) ]</sub>
+
+...
+
+
+Vue recommends using templates to build applications in the vast majority of cases.
+However, there are situations where we need the full programmatic power of JavaScript.
+That's where we can use the render function.
+But, building out entire HTML/CSS content programmatically with the rather low-level `h` function is way too tedious and cumbersome.
+Also, it is considerably less readable compared to a declarative markup language.
+
+So, replace the render function block with:
+```vue
+template: `
+    <h1>{{this.title}}</h1>
+    <h2>Technology stack status:</h2>
+    <ul>
+        <li>Git: ok</li>
+        <li>GitHub: ok</li>
+        <li>Vercel: ok</li>
+        <li>Vue: (ok)</li>
+        <li>Vite: -</li>
+        <li>TypeScript: -</li>
+        <li>Tailwind: -</li>
+        <li>Vitest: -</li>
+        <li>Pinia: -</li>
+        <li>HTTP APIs: -</li>
+        <li>TSC/ESLint: -</li>
+    </ul>
+    <p>v{{this.version}}</p>
+  `
+```
+No, that won't work.
+The "runtime" version we still are using does not support compiling Vue templates.
+Remove the "runtime" in 'https://unpkg.com/vue@3/dist/vue.runtime.esm-browser.prod.js', and bump the version to 0.1.11:
+```shell
+(Get-Content .\index.html).Replace('vue.runtime.esm-browser.prod.js', 'vue.esm-browser.prod.js').Replace('0.1.10', '0.1.11') |
+Set-Content .\index.html
+(Get-Content .\package.json).Replace('0.1.10', '0.1.11') |
+Set-Content .\package.json
+```
+Execute the deployment routine, described above.
+<p>
+<sub>
+- Web page size (at rest): 1,0 KB<br/>
+- Web page size (network): 75,1 KB (<code>vue.esm-browser.prod.js</code>) + 1,1 KB<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.11</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/83a297900ff0443224fdaabc9b3786c3c3d9dab0) | [deployment](https://defaultwebapp-gz52pos5a-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+#### Complete `index.html` file with styling
+Let us establish a complete HTML file, and play around with some styling.
+It is much easier to do that with the HTML-like template syntax we now are using.
+We are also using the web-idiomatic UTF-8 character encoding;
+unlocking a vast array of multilingual letters, special characters, and "emojis".
+
+Replace `index.html` with:
+```html
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Default Webapp 2024</title>
+<style>
+    html {
+        font-family: "Comic Sans MS", sans-serif;
+    }
+</style>
+<div id="app"></div>
+<script type="module">
+    import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
+
+    createApp({
+        name: 'Default Webapp 2024',
+        data() {
+            return {
+                title: 'Default Webapp 2024',
+                version: '0.1.12',
+            }
+        },
+        template: `
+        <h1>{{this.title}}</h1>
+        <h3>Technology stack status:</h3>
+        <ul>
+            <li>Git: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li>GitHub: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li>Vue: <span style="font-size: larger;font-weight: bolder;color: darkseagreen;">(✓)</span></li>
+            <li>Vite: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>TypeScript: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>Tailwind: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>Vitest: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>Pinia: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>HTTP APIs: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>TSC/ESLint: <span style="font-size: larger;color: red;">✗</span></li>
+        </ul>
+        <p style="padding-top: 8px;font-family: monospace;color: grey;">v{{this.version}}</p>
+        `
+    }).mount('#app')
+</script>
+```
+We are using the Comic Sans font, just for the fun of it.
+(Sadly, is is probably not available in mobile browsers...)
+
+Bump the version:
+```shell
+(Get-Content .\package.json).Replace('0.1.11', '0.1.12') |
+Set-Content .\package.json
+```
+Execute the deployment routine, described above.
+<p>
+<sub>
+- Web page size (at rest): 1,8 KB<br/>
+- Web page size (network): 75,1 KB (<code>vue.esm-browser.prod.js</code>) + 730 B<br/>
+- Web page response time: <60 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.12</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/e1433fda6c70553016361626ece4102d22fc7b62) | [deployment](https://defaultwebapp-knk2p8yrr-eirik-torskes-projects.vercel.app) ]</sub>
+
+...
+
+
+Before we move over to a "bundled build", let us investigate ESM in the browser some more.
+
+Here, the `index.html` file loads `main.js` as an ESM (`type="module"`).
+`main.js` then loads Vue as an ESM, and also `App.js`, which contains our content.
+`App.js` is a _Vue component_, a `createApp`-compliant object with a _Vue template_.
+Internally, Vue's `createApp` function will return a VDOM node, possibly a VDOM tree, which Vue uses when updating the DOM.
+
+`index.html`:
+```html
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Default Webapp 2024</title>
+<style>
+    html {
+        font-family: sans-serif;
+    }
+</style>
+<div id="app"></div>
+<script src="./main.js" type="module"></script>
+```
+...
+
+`main.js`:
+```shell
+New-Item main.js
+```
+```javascript
+import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
+import App from './App.js';
+
+createApp(App).mount('#app');
+```
+...
+
+`App.js`:
+```shell
+New-Item App.js
+```
+```javascript
+export default {
+    name: 'Default Webapp 2024',
+    data() {
+        return {
+            title: 'Default Webapp 2024',
+            version: '0.1.13',
+        }
+    },
+    template: `
+        <h1>{{this.title}}</h1>
+        <h3>Technology stack status:</h3>
+        <ul style="list-style-type: none;">
+            <li>Git: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel">GitHub</a>: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+            <li>Vue: <span style="font-size: larger;font-weight: bolder;color: darkseagreen;">(✓)</span></li>
+            <li>Vite: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>TypeScript: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>Tailwind: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>Vitest: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>Pinia: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>HTTP APIs: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>TSC/ESLint: <span style="font-size: larger;color: red;">✗</span></li>
+        </ul>
+        <p style="padding-top: 8px;font-family: monospace;color: grey;">[ v{{this.version}} | <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" style="font-family: monospace;color: grey;" target="_blank">Documentation</a> ]</p>
+    `
+};
+```
+...
+
+We need to deploy all three file that comprise our wep app, so we must update our deployment script:
+```shell
+(Get-Content .\package.json).Replace('index.html ', 'index.html main.js App.js ').Replace('0.1.12', '0.1.13') |
+Set-Content .\package.json
+```
+Execute the deployment routine, described above.
+<p>
+<sub>
+- Web page size (at rest): 2,0 KB<br/>
+- Web page size (network): 75,1 KB (<code>vue.esm-browser.prod.js</code>) + 537 B (<code>index.html</code>) + 314 B (<code>main.js</code>) + 613 B (<code>App.js</code>)<br/>
+- Web page response time: <50 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.13</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/d21882f6b8b852d70940ac169cc37ba82dc4091d) | [deployment](https://defaultwebapp-rih2176g4-eirik-torskes-projects.vercel.app) ]</sub>
+
+...
+
+
+With ESM, it is possible to preload modules.
+This for preventing startup delay, caused by unnecessary deferred downloading of modules.
+
+Replace `index.html` with:
+```html
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<title>Default Webapp 2024</title>
+<style>
+    html {
+        font-family: sans-serif;
+    }
+</style>
+<div id="app"></div>
+<script src="./main.js" type="module"></script>
+<!--
+  To prevent waterfall-loading, we preload all the ESM files of our application.
+-->
+<link rel="modulepreload" href="https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js">
+<link rel="modulepreload" href="./App.js">
+```
+(Closing tags for `<meta>` and `<link>` are not required.)
+
+Bump the version:
+```shell
+(Get-Content .\package.json).Replace('0.1.13', '0.1.14') |
+Set-Content .\package.json
+(Get-Content .\App.js).Replace('0.1.13', '0.1.14') |
+Set-Content .\App.js
+```
+Execute the deployment routine, described above.
+<p>
+<sub>
+- Web page size (at rest): 2,0 KB<br/>
+- Web page size (network): 75,1 KB (<code>vue.esm-browser.prod.js</code>) + 537 B (<code>index.html</code>) + 314 B (<code>main.js</code>) + 613 B (<code>App.js</code>)<br/>
+- Web page response time: <40 ms<br/>
+- The project workspace folder is still on 121 MB<br/>
+</sub>
+</p>
+<sub>[ <code>v0.1.14</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/f7a8aac85f849d4bde0e1b43653343d919928137) | [deployment](https://defaultwebapp-656rxkdbe-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+#### Viewport <meta> tag
+One final thing before we move over to the "bundled build".
+The "viewport" `<meta>` tag is used to control the viewport's size and shape.
+The browser's viewport is the area of the window in which web content can be seen.
+This is often not the same size as the rendered page.
+Some mobile devices and other narrow screens render pages in a virtual window or viewport,
+which is usually wider than the screen, and then shrink the rendered result down so it can all be seen at once.
+Users can then zoom and pan to look more closely at different areas of the page.
+This virtual viewport is a way to make non-mobile-optimized sites in general look better on narrow screen devices.
+However, this mechanism is not so good for pages that are optimized for narrow screens using media queries.
+The viewport <meta> element mitigates this problem of virtual viewport on narrow screen devices.
+
+A typical mobile-optimized site contains something like the following:
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+<sub>[ <code>v0.1.15</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/b02bec76c64ed9b300553638316a299ba0baf658) | [deployment](https://defaultwebapp-cy9x4wa7g-eirik-torskes-projects.vercel.app) ]</sub>
