@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             title: 'Default Webapp 2024',
-            version: '0.1.14',
+            version: '0.1.15',
         }
     },
     template: `
@@ -22,6 +22,11 @@ export default {
             <li>HTTP APIs: <span style="font-size: larger;color: red;">✗</span></li>
             <li>TSC/ESLint: <span style="font-size: larger;color: red;">✗</span></li>
         </ul>
-        <p style="padding-top: 8px;font-family: monospace;color: grey;">[ v{{this.version}} | <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a> ]</p>
+        <p style="padding-top: 8px;font-family: monospace;color: grey;">
+          [
+          v{{this.version}} |
+          <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" style="font-family: monospace;color: grey;" target="_blank">Documentation</a>
+          ]
+        </p>
     `
 };
