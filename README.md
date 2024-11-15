@@ -362,6 +362,7 @@ pnpm deploy:production
 - The project workspace folder is now on 121 MB – due to Vercel and file handling tools<br>
 </sub>
 </p>
+
 <sub>[ <code>v0.0.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a0acd101b4a5132dedcb94a5c8088839e1d6b48d) | [deployment](https://defaultwebapp-rly4wlysd-eirik-torskes-projects.vercel.app) ]</sub>
 
 
@@ -446,6 +447,7 @@ We see that the size of our web app increases significantly with the integration
 Albeit, the startup time of our web app is not particularly affected...
 </sub>
 </p>
+
 <sub>[ <code>v0.1.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/93b1a3b7a2aea4009783403c33d9822d6196af19) | [deployment](https://defaultwebapp-itd9mwdfu-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -480,6 +482,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6c89fce2f8c5943537e57a4727619b777ead25db) | [deployment](https://defaultwebapp-gd8mwo6dj-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -507,6 +510,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/df7b80b403ca8cdbc2b00b734d15989569bd9de6) | [deployment](https://defaultwebapp-q66434uln-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -542,6 +546,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/59e7cdbfabd168aad440dae66fde53462cf0ab02) | [deployment](https://defaultwebapp-5qgv8rh1v-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -585,6 +590,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.4</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/af90e6c368b12bcf13ba422cf648ef778cad3bf3) | [deployment](https://defaultwebapp-7w9rkmmee-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -611,6 +617,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.5</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/c608fe2ad2297c5515a539aa128785cbef0d99e6) | [deployment](https://defaultwebapp-5loe7jdxg-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -635,6 +642,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.6</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6a2d9f8229177f3d8e2be78aea04178e3622b61b) | [deployment](https://defaultwebapp-gi9ztx2jk-eirik-torskes-projects.vercel.app) ]</sub>
 
 
@@ -684,6 +692,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.7</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a57e38c2f580a157d43fc1c6dc6616b3bd322ce7) | [deployment](https://defaultwebapp-31c0nx56r-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -707,6 +716,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.8</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/c6748eb32ffe3912bc20b0c60e99f1a1ba12cfb4) | [deployment](https://defaultwebapp-o1w4ev1q8-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -728,6 +738,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.9</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a8cd136087c076d0a9e7783e151dc12a81320720) | [deployment](https://defaultwebapp-5cdn9ictn-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -795,6 +806,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.10</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/40d664de2e4deea1573da88ec39ce450fd627d84) | [deployment](https://defaultwebapp-m5ewqy68y-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -845,6 +857,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.11</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/83a297900ff0443224fdaabc9b3786c3c3d9dab0) | [deployment](https://defaultwebapp-gz52pos5a-eirik-torskes-projects.vercel.app) ]</sub>
 
 
@@ -914,6 +927,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.12</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/e1433fda6c70553016361626ece4102d22fc7b62) | [deployment](https://defaultwebapp-knk2p8yrr-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -1002,6 +1016,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.13</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/d21882f6b8b852d70940ac169cc37ba82dc4091d) | [deployment](https://defaultwebapp-rih2176g4-eirik-torskes-projects.vercel.app) ]</sub>
 
 ...
@@ -1046,6 +1061,7 @@ Execute the deployment routine, described above.
 - The project workspace folder is still on 121 MB<br/>
 </sub>
 </p>
+
 <sub>[ <code>v0.1.14</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/f7a8aac85f849d4bde0e1b43653343d919928137) | [deployment](https://defaultwebapp-656rxkdbe-eirik-torskes-projects.vercel.app) ]</sub>
 
 
