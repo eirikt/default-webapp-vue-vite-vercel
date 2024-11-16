@@ -1,20 +1,23 @@
 {
     "name": "default-webapp-2024",
-    "version": "0.1.15",
+    "version": "0.2.0",
     "title": "Default Webapp 2024",
     "scripts": {
         "setup": "pnpm install",
         "clean": "pnpm rimraf --verbose dist",
-        "build": "pnpm build:prod",
+        "dev": "pnpm vite dev",
+        "build": "pnpm build:staging",
+        "build:staging": "pnpm clean && pnpm vite build --mode staging",
+        "staging": "pnpm build:staging && pnpm vite preview --open",
         "build:prod": "pnpm build:production",
-        "build:production": "pnpm clean && pnpm copyfiles index.html main.js App.js dist",
-        "deploy:staging": "pnpm build && pnpm vercel",
+        "build:production": "pnpm clean && pnpm vite build",
+        "deploy:staging": "pnpm build:staging && pnpm vercel",
         "deploy:prod": "pnpm deploy:production",
         "deploy:production": "pnpm build:production && pnpm vercel --prod"
     },
     "devDependencies": {
-        "copyfiles": "^2.4.1",
         "rimraf": "^6.0.1",
-        "vercel": "^37.14.0"
+        "vercel": "^37.14.0",
+        "vite": "^5.4.11"
     }
 }
