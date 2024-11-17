@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             title: 'Default Webapp 2024',
-            version: '0.2.1',
+            version: '0.2.2',
         }
     },
     template: `
@@ -15,7 +15,7 @@ export default {
             <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
             <li>Vue: <span style="font-size: larger;font-weight: bolder;color: darkseagreen;">(✓)</span></li>
             <li>Vite: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
-            <li>TypeScript: <span style="font-size: larger;color: red;">✗</span></li>
+            <li>TypeScript: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
             <li>Tailwind: <span style="font-size: larger;color: red;">✗</span></li>
             <li>Vitest: <span style="font-size: larger;color: red;">✗</span></li>
             <li>Pinia: <span style="font-size: larger;color: red;">✗</span></li>

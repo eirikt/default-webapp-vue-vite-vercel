@@ -1,6 +1,6 @@
 {
     "name": "default-webapp-2024",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "title": "Default Webapp 2024",
     "scripts": {
         "setup": "pnpm install",
