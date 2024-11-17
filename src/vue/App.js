@@ -3,7 +3,7 @@ export default {
     data() {
         return {
             title: 'Default Webapp 2024',
-            version: '0.2.0',
+            version: '0.2.1',
         }
     },
     template: `
