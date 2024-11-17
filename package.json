@@ -16,8 +16,10 @@
         "deploy:production": "pnpm build:production && pnpm vercel --prod"
     },
     "devDependencies": {
+        "@vitejs/plugin-vue": "^5.2.0",
         "rimraf": "^6.0.1",
         "vercel": "^37.14.0",
-        "vite": "^5.4.11"
+        "vite": "^5.4.11",
+        "vue": "^3.5.13"
     }
 }
