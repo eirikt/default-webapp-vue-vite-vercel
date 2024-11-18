@@ -1,6 +1,8 @@
 <script setup lang='ts'>
-const title = 'Default Webapp 2024'
-const version = '0.3.0'
+import packageJson from '../../package.json'
+
+const title = packageJson.title
+const version = packageJson.version
 
 const notIntegrated = '✗'
 const integrated = '✓'
