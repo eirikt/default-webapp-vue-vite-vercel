@@ -1,5 +1,5 @@
-import {createApp} from 'vue/dist/vue.esm-bundler'
-import App from './../vue/App.ts'
+import {createApp} from 'vue'
+import App from './../vue/App.vue'
 
 createApp(App)
     .mount('#app')
