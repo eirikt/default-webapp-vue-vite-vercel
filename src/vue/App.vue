@@ -19,7 +19,7 @@ const integrated = '✓'
         <li>Vite: {{ integrated }}</li>
         <li>Vue: {{ integrated }}</li>
         <li>TypeScript: {{ integrated }}</li>
-        <li>Tailwind: {{ notIntegrated }}</li>
+        <li>Tailwind: {{ integrated }}</li>
         <li>Vitest: {{ notIntegrated }}</li>
         <li>Pinia: {{ notIntegrated }}</li>
         <li>HTTP APIs: {{ notIntegrated }}</li>
