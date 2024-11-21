@@ -3,29 +3,43 @@ import packageJson from '../../package.json'
 
 const title = packageJson.title
 const version = packageJson.version
-
-const notIntegrated = '✗'
-const integrated = '✓'
+const buildTimestamp = new Date()
 </script>
 
 <template>
-    <h1>{{ title }}</h1>
-    <p>Technology stack status:</p>
-    <ul>
-        <li>Git: {{ integrated }}</li>
-        <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a>: {{ integrated }}</li>
-        <li>GitHub: {{ integrated }}</li>
-        <li>Vercel: {{ integrated }}</li>
-        <li>Vite: {{ integrated }}</li>
-        <li>Vue: {{ integrated }}</li>
-        <li>TypeScript: {{ integrated }}</li>
-        <li>Tailwind: {{ integrated }}</li>
-        <li>Vitest: {{ notIntegrated }}</li>
-        <li>Pinia: {{ notIntegrated }}</li>
-        <li>HTTP APIs: {{ notIntegrated }}</li>
-        <li>TSC/ESLint: {{ notIntegrated }}</li>
-    </ul>
-    <p>
-        [ v{{ version }} | <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a> ]
-    </p>
+    <article class="flex flex-col justify-between h-dvh">
+        <header>
+            <h1>{{ title }}</h1>
+        </header>
+        <hr/>
+        <section class="basis-full">
+            <div>
+                <h2>Technology stack status</h2>
+                <ul>
+                    <li class="checked">Git</li>
+                    <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a><span class="{{ checked }}"></span></li>
+                    <li class="checked">Vercel</li>
+                    <li class="checked">Vite</li>
+                    <li class="checked">Vue</li>
+                    <li class="checked">TypeScript</li>
+                    <li class="checked">Tailwind</li>
+                    <li class="unchecked">Vitest</li>
+                    <li class="unchecked">Pinia</li>
+                    <li class="unchecked">Http APIs</li>
+                    <li class="unchecked">TSC/ESLint</li>
+                </ul>
+            </div>
+        </section>
+        <hr/>
+        <footer class="flex flex-row justify-between">
+            <span>
+                <span class="code">v{{ version }}</span>
+                <span class="text-gray-400"> | </span>
+                <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
+            </span>
+            <span>
+                <span class="code">Built: {{ buildTimestamp }}</span>
+            </span>
+        </footer>
+    </article>
 </template>

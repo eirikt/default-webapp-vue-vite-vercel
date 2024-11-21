@@ -1,6 +1,9 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
+
 @layer base {
     html {
         @apply text-gray-700
@@ -13,6 +16,49 @@
     h2 {
         @apply font-semibold
     }
+
+    a {
+        @apply underline
+    }
 }
+
 @layer components {}
-@layer utilities {}
+
+@layer utilities {
+    .capitalized::first-letter {
+        text-transform: capitalize;
+    }
+
+    .unchecked {
+        @apply after:content-['✗'] after:ml-1.5 after:font-bold after:text-xl after:text-red-600
+    }
+
+    .checked {
+        @apply after:content-['✓'] after:ml-1.5 after:font-bold after:text-xl after:text-green-600
+    }
+
+    .code {
+        @apply font-mono text-sm text-gray-400
+    }
+
+    .warning {
+        @apply text-sm text-amber-500
+    }
+
+    .todo {
+        @apply font-mono text-sm text-red-500
+    }
+
+    /* DEBUG */
+    article > * {
+        /* Activate when needed
+        border: 1px dotted red
+        */
+    }
+
+    section > * {
+        /* Activate when needed
+        border: 1px dotted blue'
+        */
+    }
+}
