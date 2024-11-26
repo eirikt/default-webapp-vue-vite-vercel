@@ -1561,4 +1561,407 @@ Execute the deployment routine, described above.
 </sub>
 </p>
 
-<sub>[ <code>v0.3.2</code>: [commit]() | [deployment]() ]</sub>
+<sub>[ <code>v0.3.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/4b71b70bac641baa89f247713fb2833325538a27) | [deployment](https://defaultwebapp-2jxsoftru-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+---
+
+
+### Tailwind
+Traditionally, whenever you need to style something on the web, you write Cascading Style Sheets (CSS) code.
+CSS is a (mostly) declarative domain-specific programming language.
+CSS tend to end up in separate files with the `.css` suffix.
+
+Tailwind is yet another attempt to standardize CSS utility class names in such a way that it actually works for all.
+With Tailwind, you style elements by applying pre-existing classes *directly in your HTML*.
+
+The main motivation is thoroughly argued for here:
+https://adamwathan.me/css-utility-classes-and-separation-of-concerns/
+
+...
+
+
+But before we start styling using Tailwind, let us see how our web app looks like without any styling;
+or more correctly, with the browser's default styling.
+
+Remove `<style>` tag from `index.html`, and remove all styling in `App.vue`.
+
+Update version in `package.json` to 0.4.0.
+
+Execute the deployment routine, described above.
+
+Have a look at the web app, in different browsers.
+
+<sub>[ <code>v0.4.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/89544a487e696937872a1e49aaa421a6f12b7c1a) | [deployment](https://defaultwebapp-nps8qb62j-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+---
+
+
+Install Tailwind (`tailwindcss`) and its peer dependencies:
+```shell
+pnpm install tailwindcss --save-dev
+pnpm install postcss --save-dev
+pnpm install autoprefixer --save-dev
+```
+
+To load an ECMAScript Modules (ESM) as the default, (directly via npm),
+set `"type": "module"` in the `package.json`.
+(Another alternative is to use the `.mjs` file extension.)
+
+Tailwind is integrated into the Vite build process via [PostCSS](https://postcss.org);
+a tool for transforming CSS using ECMAScript.
+
+Create initial PostCSS and Tailwind config files:
+```shell
+pnpm tailwindcss init --ts --postcss
+```
+It seems that `postcss.config.js` is available as `.js` only.
+
+Add content file path in the generated `tailwind.config.ts` file:
+```typescript
+import type {Config} from 'tailwindcss'
+
+export default {
+    content: ['./src/vue/App.vue'],
+    //plugins: [],
+    //theme: {extend: {}}
+} satisfies Config
+```
+...which tell Tailwind to scan our `App.vue` when creating our web app's styling.
+(Config we don't yet need are commented out.)
+
+Create initial application stylesheet `main.css` file:
+```shell
+New-Item ./src/styles/main.css
+```
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+Tailwind consists of three "layers":
+1. "base"
+
+    Base styles for specific HTML elements
+
+2. "components"
+
+    More complicated classes you want to add to your project that you’d still like to be able to override with utility classes.
+    Traditionally these would be classes like card, btn, badge — that kind of thing.
+    The components layer is also a good place to put custom styles for any third-party components you’re using.
+
+3. "utilities"
+
+    Your own custom utility classes
+
+Finally, import the styling in `main.ts`:
+```typescript
+import '../styles/main.css'
+```
+
+I guess we can now mark Tailwind as "integrated", in `App.vue`:
+```typescript
+const tailwind = integrated
+```
+
+...
+
+
+Now, the web app is styled with Tailwind's default theme, [Preflight](https://tailwindcss.com/docs/preflight).
+It is an opinionated set of base styles for Tailwind projects, built on top of [modern-normalize](https://github.com/sindresorhus/modern-normalize),
+
+The default Tailwind theme should be suitable as a starting point, even we have lost our heading style.
+The header looks quite ...modest, to say the least.
+The reason is that in the default Tailwind styling, headings are unstyled, and have the same font-size and font-weight as normal text.
+The reason for this is two-fold the Tailwind project argues:
+- It helps you avoid accidentally deviating from your type scale.
+  By default, browsers assign sizes to headings that don’t exist in Tailwind’s default type scale,
+  and aren’t guaranteed to exist in your own type scale.
+- In UI development, headings should often be visually de-emphasized. Making headings unstyled by default means any styling you apply to headings happens consciously and deliberately.
+  (See: https://tailwindcss.com/docs/preflight#headings-are-unstyled)
+
+The same things are true for other important elements, like anchors.
+So, it is correct to say that we are ready to employ Tailwind styling.
+Our web app's styling is rebooted and reset!
+
+...
+
+
+Update version in `package.json` to 0.4.1.
+
+Execute the deployment routine, described above.
+
+Have a look at the generated `.js` and `.css` files in the `/dist/assets/` folder.
+Open it in an IDE, and format it to make it human-readable.
+The CSS file is Tailwind's default "reset" theming as mentioned above;
+smoothing over cross-browser inconsistencies and making it easier for you to work within the constraints of your design system.
+
+Have a look at the web app, in different browsers.
+Now, they should look rather uniform, compared to the default browser styling.
+
+<sub>[ <code>v0.4.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/dcb68f4f37bcc9865a2dbdd1032b43b3fd5b707c) | [deployment](https://defaultwebapp-osm9ydahc-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+---
+
+
+Ok, let us add some (default) styles, in `main.css`:
+```css
+...
+@layer base {
+    html {
+        @apply text-gray-700
+    }
+
+    h1 {
+        @apply text-3xl font-semibold
+    }
+
+    h2 {
+        @apply font-semibold
+    }
+
+    a {
+        @apply underline
+    }
+}
+@layer components {}
+@layer utilities {}
+```
+Here we are modifying Tailwind's "base" layer:
+1. Setting the font color to a dark gray
+2. Modifying `h1` and `h2` elements
+3. Modifying `a` element (underline marker only)
+
+These will apply for all HTML elements in this Vue instance; our entire web app.
+
+Update version in `package.json` to 0.4.2.
+
+<sub>[ <code>v0.4.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/594575964df5404d054ac44c02cf2c10f5cc6464) | [deployment](https://defaultwebapp-7bt5oi1e4-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+---
+
+
+As an example, let us use Tailwind's recommended font.
+Using a custom font is nice because it allows us to make the components look the same on all browsers and operating systems.
+
+The easiest way is to first add it via the CDN, in `index.html`:
+```html
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+```
+Then add "Inter var" to your "sans" font family in your Tailwind config.
+Update `tailwind.config.ts` with:
+```typescript
+import defaultTheme from 'tailwindcss/defaultTheme'
+```
+and:
+```typescript
+theme: {
+  extend: {
+    fontFamily: {
+      sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+    }
+  }
+}
+```
+
+Update version in `package.json` to 0.4.3.
+
+<sub>[ <code>v0.4.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/4e79f1765cc603d733ea1c3109ced8845da1f6d8) | [deployment](https://defaultwebapp-hrd86lqz1-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+---
+
+
+Add simple page layout to `App.vue`, using "semantic" HTML elements:
+```vue
+<template>
+    <article>
+        <header>
+            <h1>{{ title }}</h1>
+        </header>
+        <hr/>
+        <section>
+            <div>
+                <h2>Technology stack status</h2>
+                <ul>
+                    <li class="checked">Git</li>
+                    <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a><span class="{{ checked }}"></span></li>
+                    <li class="checked">Vercel</li>
+                    <li class="checked">Vite</li>
+                    <li class="checked">Vue</li>
+                    <li class="checked">TypeScript</li>
+                    <li class="checked">Tailwind</li>
+                    <li class="unchecked">Vitest</li>
+                    <li class="unchecked">Pinia</li>
+                    <li class="unchecked">Http APIs</li>
+                    <li class="unchecked">TSC/ESLint</li>
+                </ul>
+            </div>
+        </section>
+        <hr/>
+        <footer>
+            <span>
+                <span class="code">v{{ version }}</span>
+                <span class="text-gray-400"> | </span>
+                <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
+            </span>
+            <span>
+                <span class="code">Built: {{ buildTimestamp }}</span>
+            </span>
+        </footer>
+    </article>
+</template>
+```
+
+Update script block as well, in `App.vue`:
+```vue
+<script setup lang='ts'>
+    import packageJson from '../../package.json'
+
+    const title = packageJson.title
+    const version = packageJson.version
+    const buildTimestamp = new Date()
+</script>
+```
+
+This does not look particularly good.
+It's all cramped together... we want to use the entire screen.
+We need som styling.
+
+To fix the page layout, we could use Tailwind's Flexbox classes.
+Tailwind's Flexbox classes is more or less a one-to-one mapping of standard CSS Flexbox directives.
+
+The `article` element represents an entire page in this application.
+```html
+<article class="flex flex-col justify-between h-dvh">
+```
+The `h-*` Tailwind classes are utilities for setting the height of an element.
+The `h-screen` class is equivalent to `height: 100vh;`.
+The `h-svh` class is equivalent to `height: 100svh;`.
+See: https://tennant.io/css-viewport-units-what-they-mean-vh-dvh-svh-etc/
+
+The `section` HTML element represents a vertical full-width box of content.
+```html
+<section class="basis-full">
+```
+The `basis-*` Tailwind classes are utilities for controlling the initial size of flex items.
+The `basis-full` class is equivalent to `flex-basis: 100%;`.
+
+Also, add Flexbox to footer.
+Flexbox declarations may be arbitrarily nested:
+```html
+<footer class="flex flex-row justify-between">
+```
+
+...
+
+
+We were using some extra CSS classes above.
+Add them to `main.css`, as Tailwind "utilities" layer class extensions:
+```css
+...
+@layer utilities {
+    .capitalized::first-letter {
+        text-transform: capitalize;
+    }
+
+    .unchecked {
+        @apply after:content-['✗'] after:ml-1.5 after:font-bold after:text-xl after:text-red-600
+    }
+
+    .checked {
+        @apply after:content-['✓'] after:ml-1.5 after:font-bold after:text-xl after:text-green-600
+    }
+
+    .code {
+        @apply font-mono text-sm text-gray-400
+    }
+
+    .warning {
+        @apply text-sm text-amber-500
+    }
+
+    .todo {
+        @apply font-mono text-sm text-red-500
+    }
+
+    /* DEBUG */
+    article > * {
+        /* Activate when needed */
+        border: 1px dotted red
+    }
+
+    section > * {
+        /* Activate when needed */
+        border: 1px dotted blue
+    }
+}
+```
+Some of the state is also moved from `App.vue` to the `checked`/`unchecked` classes.
+
+Also, some handy "debug" style classes are added.
+They are activated.
+Deactivate/comment them out at will.
+
+Update version in `package.json` to 0.4.4.
+
+<sub>[ <code>v0.4.4</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/027c5ae3989fcb174c10fa2ae92516d71f192ba0) | (missing deployment) ]</sub>
+
+...
+
+
+Finally, add margins and padding to the web page.
+In general, don't be afraid to add some decent margins.
+Here we can play around with Tailwind's excellent support for responsive design, see https://tailwindcss.com/docs/responsive-design/.
+
+**NB!**
+Use padding instead of margins for elements that are adjacent to the viewport's edges.
+According to the [box model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/) margins operates outside the HTML element.
+Because of this it may push the element outside the visible screen and cause scrolling bars to appear.
+
+```vue
+<template>
+    <article class="flex flex-col justify-between h-dvh p-6">
+        <header class="mt-4">
+            <h1>{{ title }}</h1>
+        </header>
+        <hr class="my-2"/>
+        <section class="basis-full my-4">
+            <div>
+                <h2>Technology stack status</h2>
+                <ul class="ms-4">
+                    <li class="checked">Git</li>
+                    <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a><span class="{{ checked }}"></span></li>
+                    <li class="checked">Vercel</li>
+                    <li class="checked">Vite</li>
+                    <li class="checked">Vue</li>
+                    <li class="checked">TypeScript</li>
+                    <li class="checked">Tailwind</li>
+                    <li class="unchecked">Vitest</li>
+                    <li class="unchecked">Pinia</li>
+                    <li class="unchecked">Http APIs</li>
+                    <li class="unchecked">TSC/ESLint</li>
+                </ul>
+            </div>
+        </section>
+        <hr class="my-2"/>
+        <footer class="flex flex-row justify-between">
+            <span>
+                <span class="code">v{{ version }}</span>
+                <span class="text-gray-400 mx-2"> | </span>
+                <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
+            </span>
+            <span>
+                <span class="code">Built: {{ buildTimestamp }}</span>
+            </span>
+        </footer>
+    </article>
+</template>
+```
+
+Update version in `package.json` to 0.4.5.
+
+<sub>[ <code>v0.4.5</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/46aa7d3dba11970a1dd29ef800cc5fbb2c7caf87) | [deployment](https://defaultwebapp-3hi5g5q53-eirik-torskes-projects.vercel.app) ]</sub>
