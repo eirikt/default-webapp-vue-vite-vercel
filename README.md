@@ -18,7 +18,7 @@ This repository/project is yet another iteration of previous "default webapp" pr
 - https://github.com/eirikt/default-webapp-elm-now (2018)
 - https://github.com/eirikt/default-webapp-heroku (2014-2015)
 
-It is a kind of personal code kata.
+It's a kind of personal code kata.
 
 
 
@@ -27,21 +27,24 @@ To be very basic and specific, the only prerequisites are:
 - Some knowledge of English 😉
 - A computer, a steady supply of electric power, and network connectivity 😉
 - For the hosting service; an email account and an email client, signed in.
+- Some programming experience, just some
 
 
 ### Project name
-Your project first and foremost you need:
+First and foremost your project needs:
 1. an official (natural language) name
 
-Then, also create:
-2. `package.json` "name" -> _The "name" field contains your package's name and must be lowercase without any spaces.
-   May contain hyphens, dots, and underscores._
+Then, also create a:
+2. `package.json` "name"
 
-3. Source-code-friendly name variant with no whitespace characters
+   *The "name" field contains your package's name and must be lowercase without any spaces.
+   It may contain hyphens, dots, and underscores.*
 
-4. URL-friendly name variant with no whitespace characters, and lowercase characters only (hyphens allowed)
+3. Source-code-friendly name variant with no whitespace characters.
 
-For this little web application:
+4. URL-friendly name variant with no whitespace characters. Lowercase characters only (hyphens allowed).
+
+For this little web application it is:
 1. Default Webapp 2024
 2. `default-webapp-2024`
 3. `defaultWebapp2024`
@@ -51,7 +54,7 @@ For this little web application:
 ### Code editor
 Get a code editor, e.g. [Visual Studio Code](https://code.visualstudio.com).
 
-Let's start developing software.
+Let's publish a web app.
 
 
 
@@ -64,10 +67,9 @@ On a Windows PC, open PowerShell terminal by typing:
 
 
 ### pnpm
-[pnpm](https://pnpm.io) is a new take on the default Node package manager, npm.
+[pnpm](https://pnpm.io) is a new take on the default Node package manager, **npm**.
 It is especially the dependency management that is the motivation for using pnpm instead of npm.
-Also, it is a one-stop-shop when it comes to sourcing in all required tools into our project development setup,
-and all dependencies into our project.
+Also, it is a one-stop-shop when it comes to sourcing in all required tools and dependencies into our project.
 
 Check pnpm availability:
 ```shell
@@ -97,7 +99,7 @@ If needed, install Node.js, under pnpm management:
 ```shell
 pnpm env use --global lts
 ```
-Here we are installing Node.js LTS (Long-term support) version.
+Here we are installing Node.js LTS (long-term support) version.
 
 
 ---
@@ -107,10 +109,6 @@ Now, let's get started.
 Using your newly established project name (from above), create your project folder.
 Go to project folder.
 
-
----
-
-
 The default "build" folder for Vite is `dist`, so we will establish that routine from the get-go.
 Our first "build step script" will be quite simple:
 ```shell
@@ -118,7 +116,7 @@ New-Item dist -Type Directory
 ```
 ...with, as of now, no content to deploy.
 
-OK, the very first thing to do, is getting our new webapp online;
+Nevertheless, the very first thing to do, is getting our new webapp online;
 deploying the most basic version imaginable of our webapp to our hosting service of choice.
 Let's start.
 
@@ -134,9 +132,9 @@ Other options are:
 - [Railway](https://railway.app)
 - [Render](https://render.com)
 
-...and many more
+...and many more.
 
-Install Vercel client as a project-local dependency:
+Install Vercel client as a project-local, development-only dependency:
 ```shell
 pnpm install vercel --save-dev
 ```
@@ -165,14 +163,14 @@ Then go straight to deploying the very first "version" of your web page:
 pnpm vercel
 ```
 State your project name; in our case: "defaultwebapp".
-Set the directory where the code is located, to: "./dist".
+Set the directory where the code is located, to: "`./dist`".
 Otherwise, stick to default options.
 
 If you click on the "Production" link, it will respond with a `404 Not Found` as it is nothing there.
 We need content...
 
 
-### `index.html`
+#### `index.html`
 An `index.html` file is the default bootstrapping mechanism for both presenting a web page,
 and for loading a web application.
 
@@ -196,8 +194,8 @@ Let's start with a "Hello World!".
 <sub>[ <code>v0.0.1-SNAPSHOT</code>: [deployment](https://defaultwebapp-rlqbb0j1v-eirik-torskes-projects.vercel.app) ]</sub>
 
 
-### Hello World!
-Every web app, no, wait; every information system should start with a "Hello World!" version!
+#### Hello World!
+Every web app, no, wait–every information system should start with a "Hello World!" version!
 
 Update the `index.html`:
 ```shell
@@ -209,7 +207,7 @@ Redeploy, and have a look.
 Yes, we are live 👍
 <p>
 <sub>
-- The project workspace folder is now (already) on 117 MB – due to the Vercel dependency<br/>
+- The project workspace folder is now (already) on 117 MB–due to the Vercel dependency<br/>
 - Web page size (at rest): 14 B<br/>
 - Web page size (network): ~125 B<br/>
 - Web page response time: ~50-100 ms<br/>
@@ -217,8 +215,6 @@ Yes, we are live 👍
 </p>
 
 <sub>[ <code>v0.0.1-SNAPSHOT</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/54d6f1506b7dc88dcea6d2f7ccbeda6573f6f9de) | [deployment](https://defaultwebapp-44h74et6j-eirik-torskes-projects.vercel.app) ]</sub>
-
----
 
 
 
@@ -233,7 +229,7 @@ e.g., the prominent [GitHub](https://github.com).
 
 [Install](https://git-scm.com) Git.
 
-Create a repository in e.g., GitHub, and clone the repository.
+Create a repository in GitHub, and clone the repository.
 
 Alternatively, create a local Git repository:
 ```shell
@@ -261,25 +257,23 @@ Looking a bit ahead of ourselves, we may e.g., ignore:
 LOG.md
 ```
 
-<sub>[ <code>v0.0.1-SNAPSHOT</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/18fdb6f77c00aeb97acb47489e955efde82d0b72) ]</sub>
-
 
 ### EditorConfig, for common IDE behaviour
 A nice (beloved) text editor (or a full-blown, hopefully not bloated, integrated development environment (IDE)),
 is an integral part of a software developer's life.
-Even we are somewhat restricting individual preferences in this setup, the IDE should be free of choice.
-For "organizational scaling" concerns,
-we are creating a common ground for IDEs with EditorConfig, IDE-agnostic editor configurations.
+We are restricting individual preferences to a certain degree in this setup,
+but the IDE is personal, and should be free of choice.
+For "organizational scaling" concerns, we are creating a common ground for IDEs with EditorConfig, IDE-agnostic editor configurations.
 That consolidates, e.g., issues like whitespace handling—important for avoiding unnecessary version differences.
 So, the text editors/IDEs used by project developers should support EditorConfig internally or via a plugin.
-Most commonplace text editors/IDEs have support for EditorConfig, either integrated, or via a plugin.
+Most commonplace text editors/IDEs have support for EditorConfig.
 
 Create the `.editorconfig` file:
 ```shell
 New-Item .editorconfig
 ```
 
-Add, e.g., the following editor config:
+Add, e.g., the following editor configurations:
 ```
 # This file is for unifying the coding style for different editors and IDEs
 # EditorConfig.org
@@ -295,8 +289,6 @@ end_of_line = crlf
 trim_trailing_whitespace = true
 insert_final_newline = true
 ```
-
-<sub>[ <code>v0.0.1-SNAPSHOT</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/ef39a3a2de1e6829dadc7aab8923d548966cfc37) ]</sub>
 
 ...
 
@@ -323,7 +315,7 @@ Also, before committing our first (real) version, let's update `package.json` wi
 ### Build scripts
 With our little proof-of-concept web page (soon to be a *web app*) in place and released,
 let us define some basic scripts and commands underpinning our development process and release process.
-First fetch file some handling tools:
+First fetch some file handling tools:
 ```shell
 pnpm install rimraf --save-dev
 pnpm install copyfiles --save-dev
@@ -362,12 +354,12 @@ When everything seems good to go, deploy to production:
 pnpm deploy:production
 ```
 
-***Notify your client that their web page (soon to be a *web app*) is up and running 🎉😄***
+**Notify your client that their web page (soon to be a *web app*) is up and running 🎉😄**
 ...the very, very first version of it, that is.
 
 For a real web app, a personal domain name is (close to) mandatory.
-We will not do that as part of our setup, at least not yet.
-The routines are described here:
+We won't do that as part of our setup, at least not yet.
+Anyway, the routines are described here:
 https://vercel.com/docs/projects/domains/
 
 <p>
@@ -382,18 +374,19 @@ https://vercel.com/docs/projects/domains/
 <sub>[ <code>v0.0.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/a0acd101b4a5132dedcb94a5c8088839e1d6b48d) | [deployment](https://defaultwebapp-rly4wlysd-eirik-torskes-projects.vercel.app) ]</sub>
 
 
+
 ## Set up technology stack
 
 ### Vue
-Let us make this (static) _web page_ **dynamic**, turning it into a _web app_.
+Let us make this (static) web page **dynamic**, turning it into a "*web app*".
 Then we will manipulate the browser DOM, and the only way to do that is via the browser's ECMAScript-based DOM API.
 [Vue](https://vuejs.org) enables that, using a virtual DOM-based reactive template rendering.
 
-Vue is a component-oriented web framework, revolving around _Vue components_, which is a quite flexible web component standard.
-A _Vue component_ is simply said, an ECMAScript function returning a render function.
-Render functions return virtual DOM (VDOM) nodes, possibly nested – which then become VDOM _trees_.
-The virtual DOM is a programming concept where an ideal, or "virtual" representation of a UI is kept in memory and synced with the "real" DOM. The concept was pioneered by React, and has been adopted in many other frameworks with different implementations, including Vue.
-Virtual DOM is more of a pattern than a specific technology, so there is no one canonical implementation.
+Vue is a component-oriented web framework, revolving around *Vue components*, which is a quite flexible web component standard.
+A *Vue component* is, simply said, an ECMAScript function returning a render function.
+Render functions return virtual DOM (VDOM) nodes, possibly nested–which then become VDOM *trees*.
+The virtual DOM is a programming concept where an ideal, or "virtual" representation of the UI, is kept in memory and synced with the "real" DOM. The concept was pioneered by React, and has been adopted in many other frameworks with different implementations, including Vue.
+Virtual DOM is more of a pattern than a specific technology, so there is no canonical implementation.
 We can illustrate the idea using a simple example:
 ```javascript
 const vnode = {
@@ -406,17 +399,17 @@ const vnode = {
     ]
 }
 ```
-Here, `vnode` is a plain JavaScript object (a "virtual node") representing a `<div>` HTML element.
+Here, `vnode` is a plain ECMAScript object (a "virtual node") representing a `<div>` HTML element.
 It contains all the information that we need to create the actual HTML/DOM element.
 It also contains more children vnodes, which makes it the root of a VDOM tree.
 A runtime renderer can walk a virtual DOM tree and construct a real DOM tree from it.
-This process is called mount.
+This process is called *mounting*.
 
 So, at the high level, this is what happens when a Vue component is mounted:
 1. **Compile:** Vue templates are compiled into render functions: functions that return VDOM trees.
    This step can be done either ahead-of-time via a build step, or on-the-fly by using the runtime compiler.
 
-2. **Mount:** The runtime renderer invokes the render functions, walks the returned virtual DOM tree, and creates actual DOM nodes based on it.
+2. **Mount:** The *runtime renderer* invokes the render functions, walks the returned virtual DOM tree, and creates actual DOM nodes based on it.
    This step is performed as a reactive effect, so it keeps track of all reactive dependencies that were used.
 
 3. **Patch:** When a dependency used during mount changes, the effect re-runs.
@@ -427,11 +420,11 @@ It is quite flexible in regard to the input parameter.
 
 It may be a function.
 Then it is handled as the `render` function directly.
-
 It may be an object.
 If the object has just one function, it is handled as the `render` function.
 If the object has more then one function, one of them must be named `render`.
 The input object may also contain a _Vue template_, a declarative HTML-like representation of the web page.
+
 
 ---
 
@@ -451,7 +444,7 @@ Set-Content -Path .\index.html -Value @"
 "@
 ```
 
-**unpkg** is a fast, global [content delivery network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network/) for everything on npm.
+**unpkg** is a fast, global [content delivery network (CDN)](https://en.wikipedia.org/wiki/Content_delivery_network/) for everything managed by npm/pnpm.
 It can be used for quick and easy file loading from any package using a URL like:
 ```
 unpkg.com/:package@:version/:file
@@ -493,11 +486,7 @@ Set-Content -Path .\index.html -Value @"
 </script>
 "@
 ```
-**unpkg** is a fast, global content delivery network for sourcing in published third-party components.
-Use it to quickly and easily load any file from any package using a URL like:
-```
-unpkg.com/:package@:version/:file
-```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -526,6 +515,7 @@ Set-Content -Path .\index.html -Value @"
 </script>
 "@
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -543,7 +533,7 @@ Execute the deployment routine, described above.
 
 Instead of just returning plain text, let us return a VNODE.
 Vue has a `h` function, which takes in application state, and return a VNODE.
-("h" for **h**yperscript, meaning "JavaScript that produces HTML").
+("h" for **h**yperscript, meaning "ECMAScript that produces HTML").
 This name is inherited from conventions shared by many virtual DOM implementations.
 A more descriptive name could be `createVNode()`,
 but a shorter name helps when you have to call this function many times in a render function.
@@ -578,7 +568,7 @@ Execute the deployment routine, described above.
 
 
 Or, by providing an object (a data structure/shape),
-including state and a render function – for the Vue `createApp` function.
+including state and a render function–for the Vue `createApp` function.
 
 Replace `index.html` with:
 ```html
@@ -606,6 +596,7 @@ Replace `index.html` with:
     .mount('#app')
 </script>
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -633,6 +624,7 @@ Set-Content .\index.html
 (Get-Content .\package.json).Replace('0.1.4', '0.1.5') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -649,7 +641,7 @@ Execute the deployment routine, described above.
 
 
 A "production" version is also available.
-Here the JavaScript is minified and compacted, decreasing the download size even more.
+Here the ECMAScript is minified and compacted, decreasing the download size even more.
 
 Execute:
 ```shell
@@ -658,6 +650,7 @@ Set-Content .\index.html
 (Get-Content .\package.json).Replace('0.1.5', '0.1.6') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -672,15 +665,15 @@ Execute the deployment routine, described above.
 
 
 #### ECMAScript Modules
-ECMAScript Modules (ESM) is now available and supported directly by the browser.
+ECMAScript Modules (ESM) is (now) available and supported directly by the browser.
 The web app must be organized as a set of ESM modules, and typically hosted alongside the `index.html` file.
 In addition, the web app will also fetch common third-party ESM components, like Vue, via the browser.
 This capability has been supported by most modern browsers since approximately 2020.
 
-Nevertheless, bundled web app artifacts are still the idiomatic way of deploying/hosting web apps –
-and we will also organize our wep app that way, later on.
+Nevertheless, bundled web app artifacts are still the idiomatic way of deploying/hosting web apps–and we will also organize our wep app that way, later on.
 A (pre)bundled web app requires a build step.
-However, let us first try ESM in the browser, without a build step:
+
+But, let us first try out ESMthe browser, without a build step:
 
 Replace `index.html` with:
 ```html
@@ -708,6 +701,7 @@ Replace `index.html` with:
     }).mount('#app')
 </script>
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -732,6 +726,7 @@ Set-Content .\index.html
 (Get-Content .\package.json).Replace('0.1.7', '0.1.8') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -754,6 +749,7 @@ Set-Content .\index.html
 (Get-Content .\package.json).Replace('0.1.8', '0.1.9') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -822,6 +818,7 @@ Set-Content .\index.html
 (Get-Content .\package.json).Replace('0.1.9', '0.1.10') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -838,8 +835,7 @@ Execute the deployment routine, described above.
 
 
 Vue recommends using templates to build applications in the vast majority of cases.
-However, there are situations where we need the full programmatic power of JavaScript.
-That's where we can use the render function.
+There are situations where we need the full programmatic power of ECMAScript–that's where we can use the render function.
 But, building out entire HTML/CSS content programmatically with the rather low-level `h` function is way too tedious and cumbersome.
 Also, it is considerably less readable compared to a declarative markup language.
 
@@ -947,6 +943,7 @@ Bump the version:
 (Get-Content .\package.json).Replace('0.1.11', '0.1.12') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -969,8 +966,9 @@ Here, the `index.html` file loads `main.js` as an ESM (`type="module"`).
 `App.js` is a _Vue component_, a `createApp`-compliant object with a _Vue template_.
 Internally, Vue's `createApp` function will return a VDOM node, possibly a VDOM tree, which Vue uses when updating the DOM.
 
-All initial application state can now be moved from `index.html` to `App.js`:
-`index.html`:
+All initial application state can now be moved from `index.html` to `App.js`.
+
+`index.html` will now look like this:
 ```html
 <!DOCTYPE html>
 <meta charset="UTF-8">
@@ -1030,13 +1028,16 @@ export default {
     `
 };
 ```
+
 ...
+
 
 We need to deploy all three file that comprise our wep app, so we must update our deployment script:
 ```shell
 (Get-Content .\package.json).Replace('index.html ', 'index.html main.js App.js ').Replace('0.1.12', '0.1.13') |
 Set-Content .\package.json
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1082,6 +1083,7 @@ Set-Content .\package.json
 (Get-Content .\App.js).Replace('0.1.13', '0.1.14') |
 Set-Content .\App.js
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1100,6 +1102,7 @@ One final thing before we move over to the "bundled build".
 The "viewport" `<meta>` tag is used to control the viewport's size and shape.
 The browser's viewport is the area of the window in which web content can be seen.
 This is often not the same size as the rendered page.
+
 Some mobile devices and other narrow screens render pages in a virtual window or viewport,
 which is usually wider than the screen, and then shrink the rendered result down so it can all be seen at once.
 Users can then zoom and pan to look more closely at different areas of the page.
@@ -1111,25 +1114,16 @@ A typical mobile-optimized site contains something like the following:
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
+
 <sub>[ <code>v0.1.15</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/b02bec76c64ed9b300553638316a299ba0baf658) | [deployment](https://defaultwebapp-cy9x4wa7g-eirik-torskes-projects.vercel.app) ]</sub>
 
 
 ### Vite
 [Vite](https://vitejs.dev) is a new take on the building of ECMAScript-based project.
-(For my part, I am happy to leave webpack behind...)
+(For my part, I am happy to leave **webpack** behind...)
 Vite is a great alternative; it almost feels like there is no build step at all.
-Furthermore, you get incredible fast Hot Module Reloading, which you can only get with sophisticated tooling.
+Furthermore, you get incredible fast automatic ("hot") module reloading (HMR), which you can only get with sophisticated tooling.
 Vite uses [esbuild](https://esbuild.github.io) (bundler) and [Rollup](https://rollupjs.org) (plugins) under the hood.
-
-**An alternative to a build tool producing a bundled artifact, is using
-ECMAScript Modules (ESM) directly in the browser.
-Then you must organize your web app as ESM modules, and typically host then beside index.html file.
-In addition, common third-party ESM components, like Vue, will also be fetched by the web app via the browser.
-This capability has been supported by most modern browsers since approximately 2020.**
-
-Nevertheless, bundled web app artifacts is still the idiomatic way of deploying/hosting web apps –
-and we will also organize our wep app that way, later on.
-First, however, let us try without a build step...
 
 Install Vite:
 ```shell
@@ -1175,7 +1169,7 @@ https://vite.dev/config/
 
 
 #### Internal development web server
-Vite has an internal development web server, supporting hot-deploy of local changes.
+Vite has an internal development web server, supporting HMR for an incredicle fast developer feedback cycle.
 Update `package.json` with a new script for the Vite "dev" web server:
 ```
 "dev": "pnpm vite dev",
@@ -1254,6 +1248,10 @@ Finally, deploy to production:
 pnpm deploy:production
 ```
 
+
+---
+
+
 Bump the version:
 ```shell
 (Get-Content .\package.json).Replace('0.1.15', '0.2.0') |
@@ -1261,6 +1259,7 @@ Set-Content .\package.json
 (Get-Content .\App.js).Replace('0.1.15', '0.2.0') |
 Set-Content .\App.js
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1317,7 +1316,7 @@ Move `App.js`:
 git mv .\App.js .\src\vue
 ```
 
-*NB!* Leave the `index.html` in the project root folder._
+*NB!* Leave the `index.html` in the project root folder.
 It seems most happy living on the same level as `vite.config.ts`.
 
 Update file paths.
@@ -1366,7 +1365,6 @@ Set-Content .\package.json
 (Get-Content .\src\vue\App.ts).Replace('0.2.1', '0.2.2') |
 Set-Content .\src\vue\App.ts
 ```
-Kinda cumbersome and error-prone, having the version id several places...
 
 Execute the deployment routine, described above.
 <p>
@@ -1386,9 +1384,9 @@ Let us source Vue via Vite, so it will as a regular project dependency
 (together with all the others in `package.json`).
 
 This will be as using Vue as an ESM module.
-It will be bundled together with our application- and presentation logic by Vite.
+It will be bundled together with our application and presentation logic by Vite.
 
-Install Vue and Vite's Vue plugin:
+Install Vue and then Vite's Vue plugin:
 ```shell
 pnpm install vue --save-dev
 pnpm install @vitejs/plugin-vue --save-dev
@@ -1411,12 +1409,13 @@ Now, source Vue internally instead of from CDN; in `main.ts`:
 ```typescript
 import {createApp} from 'vue/dist/vue.esm-bundler'
 ```
-Yet another Vue distribution.
+Yet another Vue distribution variant.
 This one is custom made for bundlers, like Vite.
 It is ESM-based, and only fetching Vue features needed for this particular build.
 
 Also, remove all `<link rel="modulepreload" ...>` from `index.html`
-Update version in `package.json` and `App.ts` to 0.2.3 (still kinda cumbersome and error-prone routine...).
+Update version in `package.json` and `App.ts` to 0.2.3 (still kind of a cumbersome and error-prone routine...).
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1430,8 +1429,9 @@ Execute the deployment routine, described above.
 <sub>[ <code>v0.2.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/290356e5cda5433f0c7046635bacd1203bbe7aae) | [deployment](https://defaultwebapp-o7n6r9kxl-eirik-torskes-projects.vercel.app) ]</sub>
 
 Have another look at the generated `.js` file in the `/dist/assets/` folder.
-It has grown significantly, and is now rather enormous...
-It now has Vue embedded inside, also, all kinds of minification routines are still deactivated in Vite.
+It has grown significantly, as Vue is embedded inside.
+
+All kinds of minification routines are still deactivated in Vite.
 
 
 ---
@@ -1442,15 +1442,11 @@ Vue is a component-oriented web application framework.
 This Vue component will contain the initial state,
 and the initial visual components, which will be added/bound to the DOM by Vue.
 
-Let us rewrite our `App.ts` Vue component to a Vue Single-File Component (SFC).
-SFCs have a `.vue*` suffix.
+Let us rewrite our `App.ts` Vue component to a [Vue Single-File Component (SFC)](https://vuejs.org/guide/scaling-up/sfc/).
+SFC is a special file format that allows us to encapsulate the template, logic, and styling of a Vue component in a single file.
+SFCs have a `.vue` suffix.
 
-
-https://vuejs.org/guide/scaling-up/sfc
-
-
-
-is a special file format that allows us to encapsulate the template, logic, and styling of a Vue component in a single file. Here's an example SFC:promote our ial application state from `main.ts` to our first (and main) Vue component, named "App".
+Let us promote our Vue component `App.ts` to our first (and main) Vue SFC.
 
 Rename `App.ts`:
 ```shell
@@ -1475,8 +1471,8 @@ Replace our ESM typescripted content with:
         <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a>: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
         <li>GitHub: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
         <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
-        <li>Vite: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
         <li>Vue: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
+        <li>Vite: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
         <li>TypeScript: <span style="font-size: larger;font-weight: bolder;color: green;">{{ integrated }}</span></li>
         <li>Tailwind: <span style="font-size: larger;color: red;">{{ notIntegrated }}</span></li>
         <li>Vitest: <span style="font-size: larger;color: red;">{{ notIntegrated }}</span></li>
@@ -1496,7 +1492,6 @@ Replace our ESM typescripted content with:
 Open a diff representation of the new content end the previous one.
 Compare them.
 
-
 Alter the imports in the top of the `main.ts` file:
 ```typescript
 import {createApp} from 'vue'
@@ -1504,9 +1499,10 @@ import App from '../vue/App.vue'
 ...
 ```
 As the web app startup now goes through a Vue component,
-we can now reference Vue via the alias "vue", declared in the Vue source.
+we can now reference Vue via the alias "vue", declared in the embedded Vue source.
 
-Update version in `package.json` and `App.vue` to 0.3.0 (still kinda cumbersome and error-prone routine...).
+Update version in `package.json` and `App.vue` to 0.3.0 (still a cumbersome and error-prone routine...).
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1533,6 +1529,7 @@ Update `App.vue` "script" part with:
 ```
 
 Update version in `package.json` (only) to 0.3.1.
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1556,7 +1553,7 @@ Execute the deployment routine, described above.
 <sub>
 - The project workspace folder is 157 MB<br/>
 - Web page size (at rest): 315 B (<code>index.html</code>) + 61 KB (bundle)<br/>
-- Web page size (network): 25 KB (bundle) + 474 B (<code>index.html</code>)<br/>
+- Web page size (network): 25 KB (bundle) + 428 B (<code>index.html</code>)<br/>
 - Web page response time: <40 ms, snappy again<br/>
 </sub>
 </p>
@@ -1616,7 +1613,7 @@ Create initial PostCSS and Tailwind config files:
 ```shell
 pnpm tailwindcss init --ts --postcss
 ```
-It seems that `postcss.config.js` is available as `.js` only.
+(It seems that `postcss.config.js` is available as `.js` only.)
 
 Add content file path in the generated `tailwind.config.ts` file:
 ```typescript
@@ -1641,17 +1638,17 @@ New-Item ./src/styles/main.css
 @tailwind utilities;
 ```
 Tailwind consists of three "layers":
-1. "base"
+1. "**base**"
 
     Base styles for specific HTML elements
 
-2. "components"
+2. "**components**"
 
     More complicated classes you want to add to your project that you’d still like to be able to override with utility classes.
     Traditionally these would be classes like card, btn, badge — that kind of thing.
     The components layer is also a good place to put custom styles for any third-party components you’re using.
 
-3. "utilities"
+3. "**utilities**"
 
     Your own custom utility classes
 
@@ -1660,7 +1657,7 @@ Finally, import the styling in `main.ts`:
 import '../styles/main.css'
 ```
 
-I guess we can now mark Tailwind as "integrated", in `App.vue`:
+I guess we now can mark Tailwind as "integrated", in `App.vue`:
 ```typescript
 const tailwind = integrated
 ```
@@ -1719,7 +1716,7 @@ Ok, let us add some (default) styles, in `main.css`:
     }
 
     h2 {
-        @apply font-semibold
+        @apply text-lg font-semibold
     }
 
     a {
@@ -1766,6 +1763,10 @@ theme: {
   }
 }
 ```
+Here we are extending the `fontFamily.sans` configuration in the Tailwind theme (which is the default theme).
+We are simply putting "Inter var" as the prioritized font,
+with the rest of Tailwind's default theme's `fontFamily.sans` configuration as secondary alternatives.
+It is added as a [destructured assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 
 Update version in `package.json` to 0.4.3.
 
@@ -1790,13 +1791,13 @@ Add simple page layout to `App.vue`, using "semantic" HTML elements:
                     <li class="checked">Git</li>
                     <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a><span class="{{ checked }}"></span></li>
                     <li class="checked">Vercel</li>
-                    <li class="checked">Vite</li>
                     <li class="checked">Vue</li>
+                    <li class="checked">Vite</li>
                     <li class="checked">TypeScript</li>
                     <li class="checked">Tailwind</li>
                     <li class="unchecked">Vitest</li>
                     <li class="unchecked">Pinia</li>
-                    <li class="unchecked">Http APIs</li>
+                    <li class="unchecked">HTTP APIs</li>
                     <li class="unchecked">TSC/ESLint</li>
                 </ul>
             </div>
@@ -1831,30 +1832,36 @@ This does not look particularly good.
 It's all cramped together... we want to use the entire screen.
 We need som styling.
 
-To fix the page layout, we could use Tailwind's Flexbox classes.
-Tailwind's Flexbox classes is more or less a one-to-one mapping of standard CSS Flexbox directives.
+To fix the page layout, we can use Tailwind's Flexbox classes.
+Tailwind's Flexbox classes are more or less a one-to-one mapping of standard CSS Flexbox directives.
 
 The `article` element represents an entire page in this application.
 ```html
 <article class="flex flex-col justify-between h-dvh">
 ```
+The Flexbox direction class `flex-col` aligns the flexbox items vertically.
+
 The `h-*` Tailwind classes are utilities for setting the height of an element.
 The `h-screen` class is equivalent to `height: 100vh;`.
 The `h-svh` class is equivalent to `height: 100svh;`.
+
+The `h-dvh` class is equivalent to `height: 100dvh;`
+It will use the current viewport height, excluding user agent’s interface.
 See: https://tennant.io/css-viewport-units-what-they-mean-vh-dvh-svh-etc/
 
-The `section` HTML element represents a vertical full-width box of content.
+The `section` HTML element represents a horizontal full-width box in this application.
 ```html
 <section class="basis-full">
 ```
 The `basis-*` Tailwind classes are utilities for controlling the initial size of flex items.
 The `basis-full` class is equivalent to `flex-basis: 100%;`.
 
-Also, add Flexbox to footer.
+Also, add Flexbox to the footer.
 Flexbox declarations may be arbitrarily nested:
 ```html
 <footer class="flex flex-row justify-between">
 ```
+(The Flexbox direction class `flex-row` is the default and may be omitted.)
 
 ...
 
@@ -1863,17 +1870,18 @@ We were using some extra CSS classes above.
 Add them to `main.css`, as Tailwind "utilities" layer class extensions:
 ```css
 ...
+
 @layer utilities {
     .capitalized::first-letter {
         text-transform: capitalize;
     }
 
     .unchecked {
-        @apply after:content-['✗'] after:ml-1.5 after:font-bold after:text-xl after:text-red-600
+        @apply after:content-['✗'] after:content-center after:font-bold after:text-xl after:text-red-600 after:ml-2.5
     }
 
     .checked {
-        @apply after:content-['✓'] after:ml-1.5 after:font-bold after:text-xl after:text-green-600
+        @apply after:content-['✓'] after:content-center after:font-bold after:text-xl after:text-green-600 after:ml-2.5
     }
 
     .code {
@@ -1889,14 +1897,9 @@ Add them to `main.css`, as Tailwind "utilities" layer class extensions:
     }
 
     /* DEBUG */
-    article > * {
-        /* Activate when needed */
+    article, section, div, span, ul, li > * {
+        /* Activate when needed*/
         border: 1px dotted red
-    }
-
-    section > * {
-        /* Activate when needed */
-        border: 1px dotted blue
     }
 }
 ```
@@ -1918,7 +1921,7 @@ In general, don't be afraid to add some decent margins.
 Here we can play around with Tailwind's excellent support for responsive design, see https://tailwindcss.com/docs/responsive-design/.
 
 **NB!**
-Use padding instead of margins for elements that are adjacent to the viewport's edges.
+Use **padding instead of margins for elements that are adjacent to the viewport's edges**.
 According to the [box model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/) margins operates outside the HTML element.
 Because of this it may push the element outside the visible screen and cause scrolling bars to appear.
 
@@ -1928,28 +1931,32 @@ Because of this it may push the element outside the visible screen and cause scr
         <header class="mt-4">
             <h1>{{ title }}</h1>
         </header>
+
         <hr class="my-2"/>
+
         <section class="basis-full my-4">
             <div>
                 <h2>Technology stack status</h2>
-                <ul class="ms-4">
+                <ul class="mt-2 ms-4">
                     <li class="checked">Git</li>
                     <li><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">GitHub</a><span class="{{ checked }}"></span></li>
                     <li class="checked">Vercel</li>
-                    <li class="checked">Vite</li>
                     <li class="checked">Vue</li>
+                    <li class="checked">Vite</li>
                     <li class="checked">TypeScript</li>
                     <li class="checked">Tailwind</li>
                     <li class="unchecked">Vitest</li>
                     <li class="unchecked">Pinia</li>
-                    <li class="unchecked">Http APIs</li>
+                    <li class="unchecked">HTTP APIs</li>
                     <li class="unchecked">TSC/ESLint</li>
                 </ul>
             </div>
         </section>
+
         <hr class="my-2"/>
+
         <footer class="flex flex-row justify-between">
-            <span>
+            <span class="flex items-center">
                 <span class="code">v{{ version }}</span>
                 <span class="text-gray-400 mx-2"> | </span>
                 <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
