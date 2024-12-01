@@ -14,7 +14,7 @@
     }
 
     h2 {
-        @apply font-semibold
+        @apply text-lg font-semibold
     }
 
     a {
@@ -30,11 +30,11 @@
     }
 
     .unchecked {
-        @apply after:content-['✗'] after:ml-1.5 after:font-bold after:text-xl after:text-red-600
+        @apply after:content-['✗'] after:content-center after:font-bold after:text-xl after:text-red-600 after:ml-2.5
     }
 
     .checked {
-        @apply after:content-['✓'] after:ml-1.5 after:font-bold after:text-xl after:text-green-600
+        @apply after:content-['✓'] after:content-center after:font-bold after:text-xl after:text-green-600 after:ml-2.5
     }
 
     .code {
@@ -50,15 +50,9 @@
     }
 
     /* DEBUG */
-    article > * {
+    article, section, div, span, ul, li > * {
         /* Activate when needed
         border: 1px dotted red
-        */
-    }
-
-    section > * {
-        /* Activate when needed
-        border: 1px dotted blue
         */
     }
 }
