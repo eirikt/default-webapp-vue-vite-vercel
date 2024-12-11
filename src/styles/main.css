@@ -20,6 +20,10 @@
     a {
         @apply underline
     }
+
+    li > a {
+        @apply no-underline
+    }
 }
 
 @layer components {}
@@ -30,11 +34,11 @@
     }
 
     .unchecked {
-        @apply after:content-['✗'] after:content-center after:font-bold after:text-xl after:text-red-600 after:ml-2.5
+        @apply after:content-['✗'] after:content-center after:font-bold after:text-xl after:text-red-600 after:ml-2
     }
 
     .checked {
-        @apply after:content-['✓'] after:content-center after:font-bold after:text-xl after:text-green-600 after:ml-2.5
+        @apply after:content-['✓'] after:content-center after:font-bold after:text-xl after:text-green-600 after:ml-2
     }
 
     .code {
