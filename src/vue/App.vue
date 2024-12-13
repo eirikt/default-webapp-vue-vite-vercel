@@ -24,29 +24,27 @@ const buildTimestamp = new Date()
 
                 <ul class="mt-2 ms-4">
                     <li class="checked flex items-center h-8">
-                        <span class="code">[v0.0]</span>
+                        <span class="code text-gray-400">[v0.0]</span>
                         <a href="//git-scm.com" target="_blank">
-                            <GitLogo
-                                height="2rem"
-                                width="2.5rem"
-                                class="ms-2"
+                            <GitLogo height="2rem"
+                                     width="2.5rem"
+                                     class="ms-2"
                             />
                         </a>
                     </li>
 
                     <li class="checked flex items-center h-8">
-                        <span class="code">[v0.0]</span>
+                        <span class="code text-gray-400">[v0.0]</span>
                         <a href="//github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">
-                            <FontAwesomeIcon
-                                v-bind:icon="faGithub"
-                                class="text-xl translate-y-0.5 ms-2"
+                            <FontAwesomeIcon v-bind:icon="faGithub"
+                                             class="text-xl translate-y-0.5 ms-2"
                             />
                             <span class="ms-1.5">GitHub</span>
                         </a>
                     </li>
 
                     <li class="checked flex items-center h-8">
-                        <span class="code">[v0.0]</span>
+                        <span class="code text-gray-400">[v0.0]</span>
                         <a href="//vercel.com" class="flex items-center" target="_blank">
                             <svg class="ms-2"
                                  data-testid="geist-icon"
@@ -60,8 +58,7 @@ const buildTimestamp = new Date()
                                       clip-rule="evenodd"
                                       d="M8 1L16 15H0L8 1Z"
                                       fill="currentColor"
-                                >
-                                </path>
+                                />
                             </svg>
                             <span class="ms-1">Vercel</span>
                         </a>
@@ -69,7 +66,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <div class="flex items-center">
-                            <span class="code me-2">[v0.1]</span>
+                            <span class="code text-gray-400 me-2">[v0.1]</span>
                             <a href="//vuejs.org" target="_blank">
                                 <VueLogo/>
                             </a>
@@ -79,7 +76,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <div class="flex items-center">
-                            <span class="code me-2">[v0.2]</span>
+                            <span class="code text-gray-400 me-2">[v0.2]</span>
                             <a href="//vite.dev" target="_blank">
                                 <ViteLogo/>
                             </a>
@@ -89,7 +86,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <div class="flex items-center">
-                            <span class="code me-2">[v0.2]</span>
+                            <span class="code text-gray-400 me-2">[v0.2]</span>
                             <a href="//www.typescriptlang.org" target="_blank">
                                 <img src="/ts-logo-128.png" alt="TypeScript" width="22px"/>
                             </a>
@@ -99,20 +96,50 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <div class="flex items-center">
-                            <span class="code me-2">[v0.4]</span>
+                            <span class="code text-gray-400 me-2">[v0.4]</span>
                             <a href="//tailwindcss.com" target="_blank">
-                                <img src="/tailwindcss-logotype.svg" alt="Tailwind CSS" height="120px" width="120px"/>
+                                <img src="/tailwindcss-logotype.svg" alt="Tailwind CSS" width="120px"/>
                             </a>
                         </div>
                     </li>
 
-                    <li class="unchecked flex items-center h-8">Vitest</li>
+                    <li class="unchecked flex items-center h-8">
+                        <div class="flex items-center">
+                            <span class="code text-gray-300 me-2">[v0.?]</span>
+                            <a href="//vitest.dev" target="_blank">
+                                <img src="../assets/vitest-logo.svg" alt="Vitest" width="20px"/>
+                            </a>
+                            <span class="ms-1">Vitest</span>
+                        </div>
+                    </li>
 
-                    <li class="unchecked flex items-center h-8">Pinia</li>
+                    <li class="unchecked flex items-center h-8">
+                        <div class="flex items-center">
+                            <span class="code text-gray-300 me-2">[v0.?]</span>
+                            <a href="//pinia.vuejs.org" target="_blank">
+                                <img src="../assets/pinia-logo.svg" alt="Pinia" width="16px"/>
+                            </a>
+                            <span class="ms-1">Pinia</span>
+                        </div>
+                    </li>
 
-                    <li class="unchecked flex items-center h-8">HTTP APIs</li>
+                    <li class="unchecked flex items-center h-8">
+                        <div class="flex items-center">
+                            <span class="code text-gray-300 me-2">[v0.?]</span>
+                            <img src="/http.png" alt="HTTP APIs" width="50"/>
+                            <span>APIs</span>
+                        </div>
+                    </li>
 
-                    <li class="unchecked flex items-center h-8">TSC/ESLint</li>
+                    <li class="unchecked flex items-center h-8">
+                        <div class="flex items-center">
+                            <span class="code text-gray-300 me-2">[v0.?]</span>
+                            <a href="//eslint.org" target="_blank">
+                                <img src="../assets/eslint-logo.svg" alt="TSC/ESLint" width="24px"/>
+                            </a>
+                            <span class="ms-1">TSC/ESLint</span>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
@@ -121,19 +148,18 @@ const buildTimestamp = new Date()
 
         <footer class="flex justify-between">
             <span class="flex items-center">
-                <span class="code">v{{ version }}</span>
+                <span class="code text-gray-400">v{{ version }}</span>
                 <span>
                     <a href="//github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
-                        <FontAwesomeIcon
-                            v-bind:icon="faGithub"
-                            class="mx-4 text-xl text-gray-400"
+                        <FontAwesomeIcon v-bind:icon="faGithub"
+                                         class="mx-4 text-xl text-gray-400"
                         />
                     </a>
                 </span>
             </span>
 
             <span>
-                <span class="code">Built: {{ buildTimestamp }}</span>
+                <span class="code text-gray-400">Built: {{ buildTimestamp }}</span>
             </span>
         </footer>
     </article>

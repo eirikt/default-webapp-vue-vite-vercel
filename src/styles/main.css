@@ -42,7 +42,7 @@
     }
 
     .code {
-        @apply font-mono text-sm text-gray-400
+        @apply font-mono text-sm
     }
 
     .warning {
