@@ -1,10 +1,10 @@
 {
     "name": "default-webapp-2024",
-    "version": "0.4.8",
+    "version": "0.4.9",
     "title": "Default Webapp 2024",
     "type": "module",
     "scripts": {
-        "setup": "pnpm install",
+        "setup": "pnpm install --force",
         "clean": "pnpm rimraf --verbose dist",
         "dev": "pnpm vite dev",
         "build": "pnpm build:staging",
