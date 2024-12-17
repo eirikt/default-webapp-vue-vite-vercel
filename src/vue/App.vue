@@ -12,8 +12,15 @@ const buildTimestamp = new Date()
 
 <template>
     <article class="flex flex-col justify-between h-dvh p-6">
-        <header class="mt-4">
-            <h1>{{ title }}</h1>
+        <header>
+            <h1 class="
+                    bg-clip-text text-transparent
+                    bg-gradient-to-r from-red-600 to-green-600
+                    w-12/12 sm:w-7/12 md:w-6/12 lg:w-4/12 xl:w-3/12 2xl:w-4/12
+                    mt-6
+            ">
+                {{ title }}
+            </h1>
         </header>
 
         <hr class="my-2"/>

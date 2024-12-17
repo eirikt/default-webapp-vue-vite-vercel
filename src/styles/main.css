@@ -6,7 +6,7 @@
 
 @layer base {
     html {
-        @apply text-gray-700
+        @apply text-gray-600
     }
 
     h1 {
@@ -53,10 +53,35 @@
         @apply font-mono text-sm text-red-500
     }
 
-    /* DEBUG */
+    /* DEBUG: Element placing: Activate when needed
     article, section, div, span, ul, li > * {
-        /* Activate when needed
         border: 1px dotted red
-        */
     }
+    */
+
+    /* DEBUG: Media query: Activate when needed
+    header::after {
+        @media (max-width: 640px) {
+            content: 'Media breakpoint: < sm';
+        }
+        @media screen(sm) {
+            content: 'Media breakpoint: sm';
+        }
+        @media screen(md) {
+            content: 'Media breakpoint: md';
+        }
+        @media screen(lg) {
+            content: 'Media breakpoint: lg';
+        }
+        @media screen(xl) {
+            content: 'Media breakpoint: xl';
+        }
+        @media (min-width: 1536px) {
+            content: 'Media breakpoint: 2xl';
+        }
+        @media (min-width: 1920px) {
+            content: 'Media breakpoint: > 2xl';
+        }
+    }
+    */
 }
