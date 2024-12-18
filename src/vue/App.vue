@@ -72,80 +72,64 @@ const buildTimestamp = new Date()
                     </li>
 
                     <li class="checked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-400 me-2">[v0.1]</span>
-                            <a href="//vuejs.org" target="_blank">
-                                <VueLogo/>
-                            </a>
+                        <span class="code text-gray-400 me-2">[v0.1]</span>
+                        <a href="//vuejs.org" class="flex items-center" target="_blank">
+                            <VueLogo/>
                             <span class="ms-1">Vue</span>
-                        </div>
+                        </a>
                     </li>
 
                     <li class="checked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-400 me-2">[v0.2]</span>
-                            <a href="//vite.dev" target="_blank">
-                                <ViteLogo/>
-                            </a>
+                        <span class="code text-gray-400 me-2">[v0.2]</span>
+                        <a href="//vite.dev" class="flex items-center" target="_blank">
+                            <ViteLogo/>
                             <span class="ms-1">Vite</span>
-                        </div>
+                        </a>
                     </li>
 
                     <li class="checked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-400 me-2">[v0.2]</span>
-                            <a href="//www.typescriptlang.org" target="_blank">
-                                <img src="/ts-logo-128.png" alt="TypeScript" width="22px"/>
-                            </a>
-                            <span class="ms-1">TypeScript</span>
-                        </div>
+                        <span class="code text-gray-400 me-2">[v0.2]</span>
+                        <a href="//www.typescriptlang.org" class="flex items-center" target="_blank">
+                            <img src="/ts-logo-128.png" alt="TypeScript" width="22px"/>
+                            <span class="ms-1.5">TypeScript</span>
+                        </a>
                     </li>
 
                     <li class="checked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-400 me-2">[v0.4]</span>
-                            <a href="//tailwindcss.com" target="_blank">
-                                <img src="/tailwindcss-logotype.svg" alt="Tailwind CSS" width="120px"/>
-                            </a>
-                        </div>
+                        <span class="code text-gray-400 me-2">[v0.4]</span>
+                        <a href="//tailwindcss.com" class="flex items-center" target="_blank">
+                            <img src="/tailwindcss-logotype.svg" alt="Tailwind CSS" width="120px"/>
+                        </a>
                     </li>
 
                     <li class="unchecked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-300 me-2">[v0.?]</span>
-                            <a href="//vitest.dev" target="_blank">
-                                <img src="../assets/vitest-logo.svg" alt="Vitest" width="20px"/>
-                            </a>
+                        <span class="code text-gray-300 me-2">[v0.?]</span>
+                        <a href="//vitest.dev" class="flex items-center" target="_blank">
+                            <img src="../assets/vitest-logo.svg" alt="Vitest" width="20px"/>
                             <span class="ms-1">Vitest</span>
-                        </div>
+                        </a>
                     </li>
 
                     <li class="unchecked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-300 me-2">[v0.?]</span>
-                            <a href="//pinia.vuejs.org" target="_blank">
-                                <img src="../assets/pinia-logo.svg" alt="Pinia" width="16px"/>
-                            </a>
-                            <span class="ms-1">Pinia</span>
-                        </div>
+                        <span class="code text-gray-300 me-2">[v0.?]</span>
+                        <a href="//pinia.vuejs.org" class="flex items-center" target="_blank">
+                            <img src="../assets/pinia-logo.svg" alt="Pinia" width="14px"/>
+                            <span class="ms-1.5">Pinia</span>
+                        </a>
                     </li>
 
                     <li class="unchecked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-300 me-2">[v0.?]</span>
-                            <img src="/http.png" alt="HTTP APIs" width="50"/>
-                            <span>APIs</span>
-                        </div>
+                        <span class="code text-gray-300 me-2">[v0.?]</span>
+                        <img src="/http.png" alt="HTTP APIs" width="50"/>
+                        <span>APIs</span>
                     </li>
 
                     <li class="unchecked flex items-center h-8">
-                        <div class="flex items-center">
-                            <span class="code text-gray-300 me-2">[v0.?]</span>
-                            <a href="//eslint.org" target="_blank">
-                                <img src="../assets/eslint-logo.svg" alt="TSC/ESLint" width="24px"/>
-                            </a>
+                        <span class="code text-gray-300 me-2">[v0.?]</span>
+                        <a href="//eslint.org" class="flex items-center" target="_blank">
+                            <img src="../assets/eslint-logo.svg" alt="TSC/ESLint" width="24px"/>
                             <span class="ms-1">TSC/ESLint</span>
-                        </div>
+                        </a>
                     </li>
                 </ul>
             </div>
