@@ -1,0 +1,3 @@
+# Authorize all robots access to all folders and files
+User-agent: *
+Allow: /
