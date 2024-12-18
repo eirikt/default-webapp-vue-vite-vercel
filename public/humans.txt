@@ -1,0 +1,11 @@
+/* TEAM */
+Chief: Eirik Torske
+Contact: eirik.torske [at] gmail.com
+
+/* THANKS */
+Teams behind Vercel, Vite, Vitest, Vue, TypeScript, Tailwind, ESLint, and all those awesome tools
+
+/* SITE */
+Last update: 2024
+Language: English
+IDE: Jetbrains IntelliJ IDEA
