@@ -4,7 +4,6 @@
     "title": "Default Webapp 2024",
     "type": "module",
     "scripts": {
-        "setup": "pnpm install --force",
         "clean": "pnpm rimraf --verbose dist",
         "dev": "pnpm vite dev",
         "build": "pnpm build:staging",

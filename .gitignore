@@ -11,4 +11,5 @@
 
 # Ignore other development stuff
 /.vercel
+Hyper-V*
 LOG.md

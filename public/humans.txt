@@ -8,4 +8,4 @@ Teams behind Vercel, Vite, Vitest, Vue, TypeScript, Tailwind, ESLint, and all th
 /* SITE */
 Last update: 2024
 Language: English
-IDE: Jetbrains IntelliJ IDEA
+IDE: JetBrains IntelliJ IDEA

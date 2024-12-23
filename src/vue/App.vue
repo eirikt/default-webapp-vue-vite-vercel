@@ -32,7 +32,7 @@ const buildTimestamp = new Date()
                 <ul class="mt-2 ms-4">
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400">[v0.0]</span>
-                        <a href="//git-scm.com" target="_blank">
+                        <a href="https://git-scm.com" target="_blank">
                             <GitLogo height="2rem"
                                      width="2.5rem"
                                      class="ms-2"
@@ -42,7 +42,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400">[v0.0]</span>
-                        <a href="//github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">
+                        <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">
                             <FontAwesomeIcon v-bind:icon="faGithub"
                                              class="text-xl translate-y-0.5 ms-2"
                             />
@@ -52,7 +52,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400">[v0.0]</span>
-                        <a href="//vercel.com" class="flex items-center" target="_blank">
+                        <a href="https://vercel.com" class="flex items-center" target="_blank">
                             <svg class="ms-2"
                                  data-testid="geist-icon"
                                  stroke-linejoin="round"
@@ -73,7 +73,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400 me-2">[v0.1]</span>
-                        <a href="//vuejs.org" class="flex items-center" target="_blank">
+                        <a href="https://vuejs.org" class="flex items-center" target="_blank">
                             <VueLogo/>
                             <span class="ms-1">Vue</span>
                         </a>
@@ -81,7 +81,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400 me-2">[v0.2]</span>
-                        <a href="//vite.dev" class="flex items-center" target="_blank">
+                        <a href="https://vite.dev" class="flex items-center" target="_blank">
                             <ViteLogo/>
                             <span class="ms-1">Vite</span>
                         </a>
@@ -89,7 +89,7 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400 me-2">[v0.2]</span>
-                        <a href="//www.typescriptlang.org" class="flex items-center" target="_blank">
+                        <a href="https://www.typescriptlang.org" class="flex items-center" target="_blank">
                             <img src="/ts-logo-128.png" alt="TypeScript" width="22px"/>
                             <span class="ms-1.5">TypeScript</span>
                         </a>
@@ -97,14 +97,14 @@ const buildTimestamp = new Date()
 
                     <li class="checked flex items-center h-8">
                         <span class="code text-gray-400 me-2">[v0.4]</span>
-                        <a href="//tailwindcss.com" class="flex items-center" target="_blank">
+                        <a href="https://tailwindcss.com" class="flex items-center" target="_blank">
                             <img src="/tailwindcss-logotype.svg" alt="Tailwind CSS" width="120px"/>
                         </a>
                     </li>
 
                     <li class="unchecked flex items-center h-8">
                         <span class="code text-gray-300 me-2">[v0.?]</span>
-                        <a href="//vitest.dev" class="flex items-center" target="_blank">
+                        <a href="https://vitest.dev" class="flex items-center" target="_blank">
                             <img src="../assets/vitest-logo.svg" alt="Vitest" width="20px"/>
                             <span class="ms-1">Vitest</span>
                         </a>
@@ -112,7 +112,7 @@ const buildTimestamp = new Date()
 
                     <li class="unchecked flex items-center h-8">
                         <span class="code text-gray-300 me-2">[v0.?]</span>
-                        <a href="//pinia.vuejs.org" class="flex items-center" target="_blank">
+                        <a href="https://pinia.vuejs.org" class="flex items-center" target="_blank">
                             <img src="../assets/pinia-logo.svg" alt="Pinia" width="14px"/>
                             <span class="ms-1.5">Pinia</span>
                         </a>
@@ -126,7 +126,7 @@ const buildTimestamp = new Date()
 
                     <li class="unchecked flex items-center h-8">
                         <span class="code text-gray-300 me-2">[v0.?]</span>
-                        <a href="//eslint.org" class="flex items-center" target="_blank">
+                        <a href="https://eslint.org" class="flex items-center" target="_blank">
                             <img src="../assets/eslint-logo.svg" alt="TSC/ESLint" width="24px"/>
                             <span class="ms-1">TSC/ESLint</span>
                         </a>
@@ -141,7 +141,7 @@ const buildTimestamp = new Date()
             <span class="flex items-center">
                 <span class="code text-gray-400">v{{ version }}</span>
                 <span>
-                    <a href="//github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
+                    <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
                         <FontAwesomeIcon v-bind:icon="faGithub"
                                          class="mx-4 text-xl text-gray-400"
                         />
@@ -150,7 +150,8 @@ const buildTimestamp = new Date()
             </span>
 
             <span>
-                <span class="code text-gray-400">Built: {{ buildTimestamp }}</span>
+                <span class="text-xs">Built: </span>
+                <span class="code text-gray-400">{{ buildTimestamp }}</span>
             </span>
         </footer>
     </article>

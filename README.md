@@ -2,7 +2,7 @@
 *Vercel/Vite/Vue/TypeScript/Tailwind*
 
 My default (opinionated/favourite) setup for web application development in 2024—a single-page application (SPA) with client-side rendering, to be more precise.
-(I guess that statement (the opinionated/favourite part) will remain true one year or so after the date of the last commit...)
+Also, I believe this setup is rather ordinary/idiomatic.
 
 This is first and foremost a personal write-up.
 Yet, it will (maybe) end up like a "web project starter",
@@ -52,9 +52,9 @@ For this little web application it is:
 
 
 ### Code editor
-Get a code editor, e.g. [Visual Studio Code](https://code.visualstudio.com).
+Get a code editor, e.g. [Visual Studio Code](https://code.visualstudio.com), or one of JetBrains' editors.
 
-Let's publish a web app.
+Ok, let's publish a web app.
 
 
 
@@ -262,7 +262,7 @@ LOG.md
 A nice (beloved) text editor (or a full-blown, hopefully not bloated, integrated development environment (IDE)),
 is an integral part of a software developer's life.
 We are restricting individual preferences to a certain degree in this setup,
-but the IDE is personal, and should be free of choice.
+but the IDE is personal and should be free of choice.
 For "organizational scaling" concerns, we are creating a common ground for IDEs with EditorConfig, IDE-agnostic editor configurations.
 That consolidates, e.g., issues like whitespace handling—important for avoiding unnecessary version differences.
 So, the text editors/IDEs used by project developers should support EditorConfig internally or via a plugin.
@@ -314,7 +314,7 @@ Also, before committing our first (real) version, let's update `package.json` wi
 
 ### Build scripts
 With our little proof-of-concept web page (soon to be a *web app*) in place and released,
-let us define some basic scripts and commands underpinning our development process and release process.
+let us define some basic scripts and commands underpinning our development process and deployment routine.
 First fetch some file handling tools:
 ```shell
 pnpm install rimraf --save-dev
@@ -326,7 +326,6 @@ Update `package.json` with a `"scripts"` block containing e.g., something like:
 {
     ...
     "scripts": {
-        "setup": "pnpm install",
         "clean": "pnpm rimraf --verbose dist",
         "build": "pnpm build:prod",
         "build:prod": "pnpm build:production",
@@ -344,15 +343,19 @@ The declared scripts are listed with the command:
 pnpm run
 ```
 
-Then deploy it to "staging" (a production-like environment):
-```shell
-pnpm deploy:staging
-```
-
-When everything seems good to go, deploy to production:
-```shell
-pnpm deploy:production
-```
+### Deployment routine
+After the new version is completed in your local development environment:
+1. Deploy it to "staging" (a production-like environment):
+   ```shell
+   pnpm deploy:staging
+   ```
+When everything seems good to go:
+2. Update the "version" in `package.json`
+3. Commit to version control
+4. Deploy to production:
+   ```shell
+   pnpm deploy:production
+   ```
 
 **Notify your client that their web page (soon to be a *web app*) is up and running 🎉😄**
 ...the very, very first version of it, that is.
@@ -449,6 +452,13 @@ It can be used for quick and easy file loading from any package using a URL like
 ```
 unpkg.com/:package@:version/:file
 ```
+
+**NB!**
+We are deliberately declaring the network protocol in our external URLs,
+instead of using [protocol-relative URLs](https://en.wikipedia.org/wiki/URL#prurl).
+This is for security reasons.
+The use of protocol-relative URLs may accidentally utilize HTTP, and by that cause so-called *mixed content*
+which may make our web app vulnerable for [on-path attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
 Execute the deployment routine, described above.
 <p>
@@ -619,10 +629,7 @@ That means we can use the slightly slimmer Vue "runtime" distribution, where the
 
 Execute:
 ```shell
-(Get-Content .\index.html).Replace('vue.global.js', 'vue.runtime.global.js').Replace('0.1.4', '0.1.5') |
-Set-Content .\index.html
-(Get-Content .\package.json).Replace('0.1.4', '0.1.5') |
-Set-Content .\package.json
+(Get-Content .\index.html).Replace('vue.global.js', 'vue.runtime.global.js').Replace('0.1.4', '0.1.5') | Set-Content .\index.html
 ```
 
 Execute the deployment routine, described above.
@@ -645,10 +652,7 @@ Here the ECMAScript is minified and compacted, decreasing the download size even
 
 Execute:
 ```shell
-(Get-Content .\index.html).Replace('vue.runtime.global.js', 'vue.runtime.global.prod.js').Replace('0.1.5', '0.1.6') |
-Set-Content .\index.html
-(Get-Content .\package.json).Replace('0.1.5', '0.1.6') |
-Set-Content .\package.json
+(Get-Content .\index.html).Replace('vue.runtime.global.js', 'vue.runtime.global.prod.js').Replace('0.1.5', '0.1.6') | Set-Content .\index.html
 ```
 
 Execute the deployment routine, described above.
@@ -665,12 +669,13 @@ Execute the deployment routine, described above.
 
 
 #### ECMAScript Modules
-ECMAScript Modules (ESM) is (now) available and supported directly by the browser.
+ECMAScript Modules (ESM) is (after many years in the working) available and supported directly by the browser.
 The web app must be organized as a set of ESM modules, and typically hosted alongside the `index.html` file.
 In addition, the web app will also fetch common third-party ESM components, like Vue, via the browser.
 This capability has been supported by most modern browsers since approximately 2020.
 
-Nevertheless, bundled web app artifacts are still the idiomatic way of deploying/hosting web apps–and we will also organize our wep app that way, later on.
+Nevertheless, bundled web app artifacts are still the idiomatic way of deploying/hosting web apps –
+and we will also organize our wep app that way, in a bit.
 A (pre)bundled web app requires a build step.
 
 But, let us first try out ESMthe browser, without a build step:
@@ -721,10 +726,7 @@ The browser ESM "distro" also has a "runtime-only" variant.
 
 Execute:
 ```shell
-(Get-Content .\index.html).Replace('vue.esm-browser.js', 'vue.runtime.esm-browser.js').Replace('0.1.7', '0.1.8') |
-Set-Content .\index.html
-(Get-Content .\package.json).Replace('0.1.7', '0.1.8') |
-Set-Content .\package.json
+(Get-Content .\index.html).Replace('vue.esm-browser.js', 'vue.runtime.esm-browser.js').Replace('0.1.7', '0.1.8') | Set-Content .\index.html
 ```
 
 Execute the deployment routine, described above.
@@ -744,10 +746,7 @@ Execute the deployment routine, described above.
 
 ...and a "production" variant; execute:
 ```shell
-(Get-Content .\index.html).Replace('vue.runtime.esm-browser.js', 'vue.runtime.esm-browser.prod.js').Replace('0.1.8', '0.1.9') |
-Set-Content .\index.html
-(Get-Content .\package.json).Replace('0.1.8', '0.1.9') |
-Set-Content .\package.json
+(Get-Content .\index.html).Replace('vue.runtime.esm-browser.js', 'vue.runtime.esm-browser.prod.js').Replace('0.1.8', '0.1.9') | Set-Content .\index.html
 ```
 
 Execute the deployment routine, described above.
@@ -813,10 +812,7 @@ render() {
 ```
 And execute:
 ```shell
-(Get-Content .\index.html).Replace('0.1.9', '0.1.10') |
-Set-Content .\index.html
-(Get-Content .\package.json).Replace('0.1.9', '0.1.10') |
-Set-Content .\package.json
+(Get-Content .\index.html).Replace('0.1.9', '0.1.10') | Set-Content .\index.html
 ```
 
 Execute the deployment routine, described above.
@@ -835,15 +831,21 @@ Execute the deployment routine, described above.
 
 
 Vue recommends using templates to build applications in the vast majority of cases.
-There are situations where we need the full programmatic power of ECMAScript–that's where we can use the render function.
-But, building out entire HTML/CSS content programmatically with the rather low-level `h` function is way too tedious and cumbersome.
-Also, it is considerably less readable compared to a declarative markup language.
+There are situations where we need the full programmatic power of ECMAScript –
+that's where we can use the render function.
 
+It may seem tedious and cumbersome building the entire web app by functions,
+but by using a functional programming style, declaring pure functions, and composing them – it is doable.
+It will resemble [Elm](https://elm-lang.org)-style development.
+(One example is the [previous default webapp project](https://github.com/eirikt/default-webapp-elm-now), which used Elm.)
+One of the effects will be increased testability.
+It can be argued that the readability may be a bit lower than using declarative markup language templates.
+
+Anyway, we will choose the (seemingly) more idiomatic way of declarative markup language and Vue templates.
 Vue templates use the "mustache" syntax (double curly braces).
 This is Vue's basic form of data binding.
 
-`App.vue`
-So, replace the render function block with:
+Replace the render function block with:
 ```vue
 template: `
     <h1>{{this.title}}</h1>
@@ -868,11 +870,9 @@ No, that won't work.
 The "runtime" version we still are using does not support compiling Vue templates.
 Remove the "runtime" in 'https://unpkg.com/vue@3/dist/vue.runtime.esm-browser.prod.js', and bump the version to 0.1.11:
 ```shell
-(Get-Content .\index.html).Replace('vue.runtime.esm-browser.prod.js', 'vue.esm-browser.prod.js').Replace('0.1.10', '0.1.11') |
-Set-Content .\index.html
-(Get-Content .\package.json).Replace('0.1.10', '0.1.11') |
-Set-Content .\package.json
+(Get-Content .\index.html).Replace('vue.runtime.esm-browser.prod.js', 'vue.esm-browser.prod.js').Replace('0.1.10', '0.1.11') | Set-Content .\index.html
 ```
+
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -936,13 +936,7 @@ Replace `index.html` with:
 </script>
 ```
 We are using the Comic Sans font, just for the fun of it.
-(Sadly, is is probably not available in mobile browsers...)
-
-Bump the version:
-```shell
-(Get-Content .\package.json).Replace('0.1.11', '0.1.12') |
-Set-Content .\package.json
-```
+(Sadly, it is mostly not available in mobile browsers...)
 
 Execute the deployment routine, described above.
 <p>
@@ -988,7 +982,7 @@ All initial application state can now be moved from `index.html` to `App.js`.
 New-Item main.js
 ```
 ```javascript
-import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js'
+import {createApp} from 'https://unpkg.com/vue@3/dist/vue.esm-browser.prod.js';
 import App from './App.js';
 
 createApp(App).mount('#app');
@@ -1032,10 +1026,9 @@ export default {
 ...
 
 
-We need to deploy all three file that comprise our wep app, so we must update our deployment script:
+We need to deploy all three files that comprise our wep app, so we must update our deployment script:
 ```shell
-(Get-Content .\package.json).Replace('index.html ', 'index.html main.js App.js ').Replace('0.1.12', '0.1.13') |
-Set-Content .\package.json
+(Get-Content .\package.json).Replace('index.html ', 'index.html main.js App.js ').Replace('0.1.12', '0.1.13') | Set-Content .\package.json
 ```
 
 Execute the deployment routine, described above.
@@ -1050,11 +1043,25 @@ Execute the deployment routine, described above.
 
 <sub>[ <code>v0.1.13</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/d21882f6b8b852d70940ac169cc37ba82dc4091d) | [deployment](https://defaultwebapp-rih2176g4-eirik-torskes-projects.vercel.app) ]</sub>
 
+**NB!**
+Until noe we could have opened the webapp locally by just opening the `index.html` file in a browser locally.
+Not anymore.
+It will be effectively stopped by default [CORS}(https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) behavior.
+E.g.:
+```
+Access to script at 'file:///C:/Users/User/Projects/defaultwebapp/dist/main.js' from origin 'null' has been blocked by CORS policy:
+Cross origin requests are only supported for protocol schemes: chrome-extension, chrome-untrusted, data, edge, http, https, isolated-app.
+```
+It is possible to circumvent this by opening the browser with a flag,
+or maybe with [data URLs](https://developer.mozilla.org/en-US/docs/Web/URI/Schemes/data) and `modulepreload`,
+but it is not really recommended.
+Our workaround is a simple deployment routine.
+
 ...
 
 
 With ESM, it is possible to preload modules.
-This for preventing startup delay, caused by unnecessary deferred downloading of modules.
+This for preventing startup delay, caused by the browser-default deferred downloading of modules.
 
 Replace `index.html` with:
 ```html
@@ -1078,10 +1085,7 @@ Replace `index.html` with:
 
 Bump the version:
 ```shell
-(Get-Content .\package.json).Replace('0.1.13', '0.1.14') |
-Set-Content .\package.json
-(Get-Content .\App.js).Replace('0.1.13', '0.1.14') |
-Set-Content .\App.js
+(Get-Content .\App.js).Replace('0.1.13', '0.1.14') | Set-Content .\App.js
 ```
 
 Execute the deployment routine, described above.
@@ -1101,7 +1105,7 @@ Execute the deployment routine, described above.
 One final thing before we move over to the "bundled build".
 The "viewport" `<meta>` tag is used to control the viewport's size and shape.
 The browser's viewport is the area of the window in which web content can be seen.
-This is often not the same size as the rendered page.
+This may not be the same size as the rendered page.
 
 Some mobile devices and other narrow screens render pages in a virtual window or viewport,
 which is usually wider than the screen, and then shrink the rendered result down so it can all be seen at once.
@@ -1112,8 +1116,15 @@ The viewport <meta> element mitigates this problem of virtual viewport on narrow
 
 A typical mobile-optimized site contains something like the following:
 ```html
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 ```
+
+Bump the version:
+```shell
+(Get-Content .\App.js).Replace('0.1.14', '0.1.15') | Set-Content .\App.js
+```
+
+Execute the deployment routine, described above.
 
 <sub>[ <code>v0.1.15</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/b02bec76c64ed9b300553638316a299ba0baf658) | [deployment](https://defaultwebapp-cy9x4wa7g-eirik-torskes-projects.vercel.app) ]</sub>
 
@@ -1138,15 +1149,16 @@ pnpm vite --version
 #### Vite initial config
 Vite is all about convention over configuration.
 Even so, Vite is highly configurable.
-Vite supports TypeScript config files, create:
-```shell
-New-Item vite.config.ts
-```
-Add initial `vite.config.ts`:
-```typescript
-import type {UserConfig} from 'vite'
 
-export default {
+```shell
+New-Item vite.config.js
+```
+
+Add initial `vite.config.js`:
+```javascript
+import {defineConfig} from 'vite';
+
+export default defineConfig({
     build: {
         minify: false,
         terserOptions: {
@@ -1159,17 +1171,17 @@ export default {
         port: 9090,
         strictPort: true
     }
-} satisfies UserConfig
+});
 ```
 For now, we're changing the development environment port.
 Also, we are (temporarily) disabling Vite's minification process to have a look at the built artifacts.
 
-Have a look at the complete Vite configuration optiones here:
+Have a look at the complete Vite configuration options here:
 https://vite.dev/config/
 
 
 #### Internal development web server
-Vite has an internal development web server, supporting HMR for an incredicle fast developer feedback cycle.
+Vite has an internal development web server, supporting HMR for an incredible fast developer feedback cycle.
 Update `package.json` with a new script for the Vite "dev" web server:
 ```
 "dev": "pnpm vite dev",
@@ -1184,18 +1196,18 @@ Navigate to the given dev URL, http://localhost:9090,
 or just press `o + ENTER` which will open a browser window with your web app locally running.
 
 
-#### Completing the release routine
+#### Completing the deployment routine
 Vite has two kinds of builds.
 The default is *production*, but Vite also has the notion of a *staging* build.
 We will extend our release routine wita "staging" step.
 
-In `package.json`, update the "build" step, and a new "build:staging" and "staging" step:
+In `package.json`, update the "build" step, and add new "build:staging" and "staging" steps:
 ```
 "build": "pnpm build:staging",
 "build:staging": "pnpm clean && pnpm vite build --mode staging",
 "staging": "pnpm build:staging && pnpm vite preview --open",
 ```
-The "staging" step will be like "dev" step, but with a built, bundled web app.
+The "staging" step will be like "dev" step, but with a built and bundled web app.
 
 In `package.json`, update the "build:production" and "deploy:staging":
 ```
@@ -1209,7 +1221,7 @@ pnpm remove copyfiles
 ```
 
 Have a look at the `pnpm-lock.yaml` file.
-What has changed after the addition of Vite, and the removal of "copyfiles"?
+How is the addition of Vite and the removal of "copyfiles" reflected?
 
 ...
 
@@ -1222,42 +1234,45 @@ Have a look at the generated content in the `/dist/assets/` folder.
 
 The `index.html` file looks quite similar.
 The only difference is the reference to the generated `/dist/assets/*.js` file,
-and a base64 version of `App.js`.
+and a [Base64](https://en.wikipedia.org/wiki/Base64) version of `App.js`.
 Do notice the [crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) parameter added to the `<script>` tag.
 
 Have a look at the built bundled web app before it is too late.
-It will be rather unreadable in due course, when we embed Vue into the built artifacts.
+It will be rather unreadable in due course –
+when we embed Vue into the built artifacts.
 
-...
 
-
-When the new version looks ok; we can build the web app, and "preview" the built app:
-```shell
-pnpm staging
-```
-
-Then deploy it to "staging" (a production-like environment):
-```shell
-pnpm deploy:staging
-```
-
-When everything seems good to go; update all version declarations in the source code, and commit!
-
-Finally, deploy to production:
-```shell
-pnpm deploy:production
-```
+### Deployment routine (v2)
+So, our new deployment routine is now:
+1. Complete the new version using Vite's HMR functionality in your local development environment:
+   ```shell
+   pnpm dev
+   ```
+   Do test the build and built artifacts before deployment ("preview"):
+   ```shell
+   pnpm staging
+   ```
+2. When complete, deploy it to "staging" (a production-like environment):
+   ```shell
+   pnpm deploy:staging
+   ```
+When everything seems good to go:
+3. Update the "version" in `package.json`
+4. Commit to version control
+5. Deploy to production:
+   ```shell
+   pnpm deploy:production
+   ```
+6. Test the new version in various browsers
 
 
 ---
 
 
-Bump the version:
+Returning to our new version, mark Vite as "integrated" in our tech stack status.
+And then bump the version:
 ```shell
-(Get-Content .\package.json).Replace('0.1.15', '0.2.0') |
-Set-Content .\package.json
-(Get-Content .\App.js).Replace('0.1.15', '0.2.0') |
-Set-Content .\App.js
+(Get-Content .\App.js).Replace('0.1.15', '0.2.0') | Set-Content .\App.js
 ```
 
 Execute the deployment routine, described above.
@@ -1304,6 +1319,8 @@ New-Item vue -Type Directory
 cd .\vue\
 New-Item components -Type Directory
 New-Item directives -Type Directory
+cd ..
+cd ..
 ```
 
 Move `main.js`:
@@ -1317,18 +1334,16 @@ git mv .\App.js .\src\vue
 ```
 
 *NB!* Leave the `index.html` in the project root folder.
-It seems most happy living on the same level as `vite.config.ts`.
+It seems most happy living on the same level as `vite.config.js`.
 
-Update file paths.
+Update file paths!
 
 Bump the version:
 ```shell
-(Get-Content .\package.json).Replace('0.2.0', '0.2.1') |
-Set-Content .\package.json
-(Get-Content .\src\vue\App.js).Replace('0.2.0', '0.2.1') |
-Set-Content .\src\vue\App.js
+(Get-Content .\src\vue\App.js).Replace('0.2.0', '0.2.1') | Set-Content .\src\vue\App.js
 ```
-Kinda cumbersome and error-prone, having the version id several places...
+It is cumbersome and error-prone, having the version id several places...
+We must mitigate that, later on.
 
 Execute the deployment routine, described above.
 <p>
@@ -1345,8 +1360,34 @@ Execute the deployment routine, described above.
 
 ### TypeScript
 [TypeScript](https://www.typescriptlang.org) is a typed version of JavaScript/ECMAScript.
-TypeScript transpiles to ECMAScript, like a lot of other web programming languages.
-It has gained a lot of traction and is the most popular ...
+TypeScript transpiles to ECMAScript,
+like a [lot of other web programming languages](https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS).
+TypeScript has gained a lot of traction and is by many regarded as the default web programming language.
+
+Rename `vite.config.js`:
+```shell
+git mv .\vite.config.js .\vite.config.ts
+```
+
+Rewrite Vite configuration content:
+```typescript
+import type {UserConfig} from 'vite'
+
+export default {
+    build: {
+        minify: false,
+        terserOptions: {
+            compress: false,
+            mangle: false,
+        },
+        emptyOutDir: false
+    },
+    server: {
+        port: 9090,
+        strictPort: true
+    }
+} satisfies UserConfig
+```
 
 Rename `main.js`:
 ```shell
@@ -1358,12 +1399,15 @@ Rename `App.js`:
 git mv .\src\vue\App.js .\src\vue\App.ts
 ```
 
+Mark TypeScript as "integrated" in our tech stack status.
+
+Update file paths!
+
+Optionally, do minor re-writes of the two files.
+
 Bump the version:
 ```shell
-(Get-Content .\package.json).Replace('0.2.1', '0.2.2') |
-Set-Content .\package.json
-(Get-Content .\src\vue\App.ts).Replace('0.2.1', '0.2.2') |
-Set-Content .\src\vue\App.ts
+(Get-Content .\src\vue\App.ts).Replace('0.2.1', '0.2.2') | Set-Content .\src\vue\App.ts
 ```
 
 Execute the deployment routine, described above.
@@ -1409,12 +1453,12 @@ Now, source Vue internally instead of from CDN; in `main.ts`:
 ```typescript
 import {createApp} from 'vue/dist/vue.esm-bundler'
 ```
-Yet another Vue distribution variant.
-This one is custom made for bundlers, like Vite.
+Yet another Vue distribution variant...
+This one is custom-made for bundlers, like Vite.
 It is ESM-based, and only fetching Vue features needed for this particular build.
 
 Also, remove all `<link rel="modulepreload" ...>` from `index.html`
-Update version in `package.json` and `App.ts` to 0.2.3 (still kind of a cumbersome and error-prone routine...).
+Update version in `package.json` and `App.ts` to 0.2.3 (still a cumbersome and error-prone routine...).
 
 Execute the deployment routine, described above.
 <p>
@@ -1528,7 +1572,7 @@ Update `App.vue` "script" part with:
     ...
 ```
 
-Update version in `package.json` (only) to 0.3.1.
+Update "version" in `package.json` (only) to 0.3.1.
 
 Execute the deployment routine, described above.
 <p>
@@ -1547,7 +1591,6 @@ Execute the deployment routine, described above.
 In `vite.config.ts`, remove the entire `build` object (for now).
 Let us use Vite's default build routine.
 
-Update version in `package.json` to 0.3.2.
 Execute the deployment routine, described above.
 <p>
 <sub>
@@ -1626,7 +1669,7 @@ export default {
 } satisfies Config
 ```
 ...which tell Tailwind to scan our `App.vue` when creating our web app's styling.
-(Config we don't yet need are commented out.)
+(Configuration settings we don't yet need are commented out.)
 
 Create initial application stylesheet `main.css` file:
 ```shell
@@ -1685,8 +1728,6 @@ Our web app's styling is rebooted and reset!
 ...
 
 
-Update version in `package.json` to 0.4.1.
-
 Execute the deployment routine, described above.
 
 Have a look at the generated `.js` and `.css` files in the `/dist/assets/` folder.
@@ -1708,7 +1749,7 @@ Ok, let us add some (default) styles, in `main.css`:
 ...
 @layer base {
     html {
-        @apply text-gray-700
+        @apply text-gray-600
     }
 
     h1 {
@@ -1722,6 +1763,10 @@ Ok, let us add some (default) styles, in `main.css`:
     a {
         @apply underline
     }
+
+    li > a {
+        @apply no-underline
+    }
 }
 @layer components {}
 @layer utilities {}
@@ -1729,11 +1774,11 @@ Ok, let us add some (default) styles, in `main.css`:
 Here we are modifying Tailwind's "base" layer:
 1. Setting the font color to a dark gray
 2. Modifying `h1` and `h2` elements
-3. Modifying `a` element (underline marker only)
+3. Modifying `a` element (underline marker only, and no underline in lists)
 
 These will apply for all HTML elements in this Vue instance; our entire web app.
 
-Update version in `package.json` to 0.4.2.
+Execute the deployment routine, described above.
 
 <sub>[ <code>v0.4.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/594575964df5404d054ac44c02cf2c10f5cc6464) | [deployment](https://defaultwebapp-7bt5oi1e4-eirik-torskes-projects.vercel.app) ]</sub>
 
@@ -1741,14 +1786,25 @@ Update version in `package.json` to 0.4.2.
 ---
 
 
-As an example, let us use Tailwind's recommended font.
+As an example, let us use Tailwind's [recommended font](https://rsms.me/inter/).
 Using a custom font is nice because it allows us to make the components look the same on all browsers and operating systems.
 
 The easiest way is to first add it via the CDN, in `index.html`:
 ```html
+<link rel="preconnect" href="https://rsms.me">
 <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 ```
-Then add "Inter var" to your "sans" font family in your Tailwind config.
+
+The `preconnect` keyword for the `rel` attribute of the `<link>` element is a hint to browsers that the user is likely to need resources from the target resource's origin.
+Therefore the browser can likely improve the user experience by preemptively initiating a connection to that origin.
+Preconnecting speeds up future loads from a given origin by preemptively performing part or all of the handshake (DNS+TCP for HTTP, and DNS+TCP+TLS for HTTPS origins).
+`<link rel="preconnect">` will provide a benefit to any future cross-origin HTTP request, navigation or subresource.
+It has no benefit on same-origin requests because the connection is already open.
+If a page needs to make connections to many third-party domains, preconnecting them all can be counterproductive.
+The <link rel="preconnect"> hint is best used for only the most critical connections.
+For the others, just use `<link rel="dns-prefetch">` to save time on the first step—the DNS lookup.
+
+Add "Inter var" to your "sans" font family in your Tailwind configuration.
 Update `tailwind.config.ts` with:
 ```typescript
 import defaultTheme from 'tailwindcss/defaultTheme'
@@ -1768,7 +1824,13 @@ We are simply putting "Inter var" as the prioritized font,
 with the rest of Tailwind's default theme's `fontFamily.sans` configuration as secondary alternatives.
 It is added as a [destructured assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 
-Update version in `package.json` to 0.4.3.
+Execute the deployment routine, described above.
+
+We see that the network load of our web app increases significantly with the introduction of the external font.
+Albeit, the startup time of our web app is still not particularly affected.
+The `preconnect` hint helps out here.
+Also, browser-external fonts should be cached in the browser.
+More on that later on.
 
 <sub>[ <code>v0.4.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/4e79f1765cc603d733ea1c3109ced8845da1f6d8) | [deployment](https://defaultwebapp-hrd86lqz1-eirik-torskes-projects.vercel.app) ]</sub>
 
@@ -1810,14 +1872,15 @@ Add simple page layout to `App.vue`, using "semantic" HTML elements:
                 <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
             </span>
             <span>
-                <span class="code">Built: {{ buildTimestamp }}</span>
+                <span class="text-xs">Built: </span>
+                <span class="code text-gray-400">{{ buildTimestamp }}</span>
             </span>
         </footer>
     </article>
 </template>
 ```
 
-Update script block as well, in `App.vue`:
+Also, update script block, in `App.vue`:
 ```vue
 <script setup lang='ts'>
     import packageJson from '../../package.json'
@@ -1877,11 +1940,11 @@ Add them to `main.css`, as Tailwind "utilities" layer class extensions:
     }
 
     .unchecked {
-        @apply after:content-['✗'] after:content-center after:font-bold after:text-xl after:text-red-600 after:ml-2.5
+        @apply after:content-['✗'] after:content-center after:font-bold after:text-xl after:text-red-600 after:ml-2
     }
 
     .checked {
-        @apply after:content-['✓'] after:content-center after:font-bold after:text-xl after:text-green-600 after:ml-2.5
+        @apply after:content-['✓'] after:content-center after:font-bold after:text-xl after:text-green-600 after:ml-2
     }
 
     .code {
@@ -1909,7 +1972,7 @@ Also, some handy "debug" style classes are added.
 They are activated.
 Deactivate/comment them out at will.
 
-Update version in `package.json` to 0.4.4.
+Execute the deployment routine, described above.
 
 <sub>[ <code>v0.4.4</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/027c5ae3989fcb174c10fa2ae92516d71f192ba0) | (missing deployment) ]</sub>
 
@@ -1921,7 +1984,7 @@ In general, don't be afraid to add some decent margins.
 Here we can play around with Tailwind's excellent support for responsive design, see https://tailwindcss.com/docs/responsive-design/.
 
 **NB!**
-Use **padding instead of margins for elements that are adjacent to the viewport's edges**.
+*Use padding instead of margins for elements that are adjacent to the viewport's edges*.
 According to the [box model](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model/) margins operates outside the HTML element.
 Because of this it may push the element outside the visible screen and cause scrolling bars to appear.
 
@@ -1962,13 +2025,275 @@ Because of this it may push the element outside the visible screen and cause scr
                 <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
             </span>
             <span>
-                <span class="code">Built: {{ buildTimestamp }}</span>
+                <span class="text-xs">Built: </span>
+                <span class="code text-gray-400">{{ buildTimestamp }}</span>
             </span>
         </footer>
     </article>
 </template>
 ```
 
-Update version in `package.json` to 0.4.5.
+Execute the deployment routine, described above.
 
 <sub>[ <code>v0.4.5</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/46aa7d3dba11970a1dd29ef800cc5fbb2c7caf87) | [deployment](https://defaultwebapp-3hi5g5q53-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+### Graphics
+Let's bring some shapes and colors into our page, e.g. by adding some logos.
+For (minor) visual content, vector graphics (e.g. SVG files) and vector graphics-based fonts are preferred over binaries.
+
+
+#### By file
+Let's start at the top.
+Download the SVG logo of git from https://git-scm.com/downloads/logos.
+Add it to the `src/assets` folder.
+
+Now, add it to the "Git" list item:
+```vue
+...
+<li class="checked flex items-center h-8">
+    <span class="code">[v0.0]</span>
+    <span class="content-center ms-2">
+        <a href="https://git-scm.com">
+            <img src="/src/assets/git-logo-2color.svg" alt="Git" height="44px" width="44px"/>
+        </a>
+    </span>
+</li>
+...
+```
+Regarding the `public` folder vs. the `src/assets` folder...
+Files containing static content such as images, sounds, fonts, icons, etc.
+may either be put in the `public` folder or the `src/assets` folder.
+The `public` folder is a special folder that contains static files that Vite does **not** process.
+The files in the `public` folder are copied directly to the build folder without any modification.
+Also, they are publicly available via a URL.
+Files in the `src/assets` folder will be processed by Vite, e.g., minification/compression –
+and embedded in the bundled version of the web app.
+
+Binary files usually go into the `public` folder.
+However, they may be placed in `src/assets` folder, so image manipulation can be used in the Vite build –
+e.g., by [this](https://github.com/ElMassimo/vite-plugin-image-presets) Vite plugin.
+
+
+#### By font
+There are numbers of font sets available.
+A well-known font set is [Font Awesome](https://fontawesome.com).
+There we find e.g., the GitHub logo:
+https://fontawesome.com/v6/icons/github?f=brands&s=solid
+
+Install:
+```shell
+pnpm install @fortawesome/fontawesome-svg-core --save-dev
+pnpm install @fortawesome/free-brands-svg-icons --save-dev
+pnpm install @fortawesome/vue-fontawesome --save-dev
+```
+
+Update
+`main.ts`:
+```js
+import {createApp} from 'vue'
+import App from '../vue/App.vue'
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import '../styles/main.css'
+
+createApp(App)
+    .component('FontAwesomeIcon', FontAwesomeIcon)
+    .mount('#app')
+```
+
+and `App.vue`:
+```vue
+...
+import {faGithub} from "@fortawesome/free-brands-svg-icons";
+...
+<li class="checked flex items-center h-8">
+    <span class="code text-gray-400">[v0.0]</span>
+    <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">
+        <FontAwesomeIcon v-bind:icon="faGithub"
+                         class="text-xl translate-y-0.5 ms-2"
+        />
+        <span class="ms-1.5">GitHub</span>
+    </a>
+</li>
+...
+<footer class="flex justify-between">
+    <span class="flex items-center">
+        <span class="code">v{{ version }}</span>
+            <span>
+                <a href="//github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
+                    <FontAwesomeIcon v-bind:icon="faGithub"
+                                     class="mx-4 text-xl text-gray-400"
+                    />
+                </a>
+            </span>
+    </span>
+    <span>
+        <span class="code">Built: {{ buildTimestamp }}</span>
+    </span>
+</footer>
+...
+```
+See: https://docs.fontawesome.com/web/use-with/vue
+
+
+#### By embedding
+Go to https://vercel.com/geist/icons, and copy e.g., the Vercel icon as an SVG.
+Paste it directly in `App.vue`, alter the dimension, and maybe the position a little bit:
+```vue
+...
+<li class="checked flex items-center h-8">
+    <span class="code text-gray-400">[v0.0]</span>
+    <a href="https://vercel.com" class="flex items-center" target="_blank">
+        <svg class="ms-2"
+             data-testid="geist-icon"
+             stroke-linejoin="round"
+             viewBox="0 0 16 16"
+             height="18px"
+             width="18px"
+             style="color: currentcolor;"
+        >
+            <path fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8 1L16 15H0L8 1Z"
+                  fill="currentColor"
+            />
+        </svg>
+        <span class="ms-1">Vercel</span>
+    </a>
+</li>
+...
+```
+
+
+#### By Vue component
+SVG files may easily be turned into a Vue component, of type Single File Component (SFC).
+Create an SFC file:
+```shell
+New-Item ./src/vue/components/GitIcon.vue
+```
+Then copy the entire SVG file content into a `<template>` block.
+Also, values in the SVG file can be parameterized, like:
+```vue
+<script setup lang='ts'>
+const props = defineProps(['height', 'width'])
+...
+</script>
+
+<template>
+    ...
+    <svg xmlns="http://www.w3.org/2000/svg" v-bind:height="height" v-bind:width="width" viewBox="0 0 219 92">
+    ...
+</template>
+```
+Now the component can be included with, e.g.:
+```xml
+<GitIcon height="2rem"
+         width="2.5rem"
+         class="ms-2"
+/>
+```
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.4.6</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/731a0c862a44541c10e7cacd89e8633d77b2d724) | [deployment](https://defaultwebapp-j8lbsjmhg-eirik-torskes-projects.vercel.app/) ]</sub>
+
+...
+
+
+Add the rest of the logo icon using one of the strategies above.
+Source the SVG logos or image logos from the various component providers:
+- https://vercel.com/geist/icons/
+- https://github.com/vitest-dev/vitest/blob/main/docs/public/logo.svg
+- https://tailwindcss.com/brand/
+- https://www.typescriptlang.org/branding/
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.4.7</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/27f0e45b4b930f8b1ba83d77be761ca100b677d3) | [deployment](https://defaultwebapp-j8lbsjmhg-eirik-torskes-projects.vercel.app) ]</sub>
+
+<sub>[ <code>v0.4.8</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/126af16dceb2eddf6f656e9b592e80bf85e7c75d) | [deployment](https://defaultwebapp-44u5gjzgm-eirik-torskes-projects.vercel.app) ]</sub>
+
+<sub>[ <code>v0.4.9</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/b6d834acb7b8604f71834519570fa427de84c5ff) | [deployment](https://defaultwebapp-1stowfnur-eirik-torskes-projects.vercel.app) ]</sub>
+
+...
+
+
+#### Backgrounds
+Another way of bringing some more "life" into our web app is by using background gradient colors,
+e.g, via [Tailwind](https://tailwindcss.com/docs/gradient-color-stops).
+Some neat "gradient generators" are available, like:
+- https://www.creative-tim.com/twcomponents/gradient-generator
+- https://www.tailwindgradient.com/
+- https://tailscan.com/gradients
+- https://gradienty.codes/
+Have a look.
+
+Another very "visual" trick is background images,
+which Tailwind has [good support](https://tailwindcss.com/docs/background-image) for.
+Together with backdrop effects like
+[blur](https://tailwindcss.com/docs/backdrop-blur), and
+[opacity](https://tailwindcss.com/docs/backdrop-opacity),
+very nice backgrounds can be crafted.
+
+As we will play around with background colors *dynamically*, in a short while–we won't use this functionality.
+
+...
+
+
+We will only add a simple gradient to our header,
+a silly from-<span style="color:red;">red</span>-to-<span style="color:green;">green</span> ("not" to "ok") effect.
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.4.10</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/d36738ddf13f2e7cc64d40b2cd3d89786adc38e5) | [deployment](https://defaultwebapp-1stowfnur-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+---
+
+
+### Favicon
+Let us have a look at the internal well-being of our web app...
+Click <kbd>F12</kbd> in the browser running our Vite development server.
+Now, as a test, do a hard browser tab refresh: <kbd>CTRL</kbd>+<kbd>F5</kbd>
+There are (annoying) `404 Not Found` response errors, complaining about missing favicon in the browser console.
+
+The days of just having a simple tiny `favicon.ico` file are long gone.
+Several image formats and types but also configuration files (e.g.: `browserconfig.xml` and `manifest.json`) are now necessary to have a nice favicon on all the available devices out there.
+You can generate your favicon files using the generator at https://realfavicongenerator.net.
+It provides all the necessary files, also code snippets for updating our `<head>` element.
+For my favicon, I just picked one from https://favicon.io/emoji-favicons/, namely https://favicon.io/emoji-favicons/pear/.
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.5.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/9428e40de020cceed5b3600369d97643d6d67452) | [deployment](https://defaultwebapp-fpwn1yo64-eirik-torskes-projects.vercel.app/) ]</sub>
+
+
+### Robots.txt
+`robots.txt` is the filename used for implementing the Robots Exclusion Protocol –
+a standard, used by websites, to indicate to visiting web crawlers and other web robots which portions of the website they are allowed to visit.
+
+The "robots.txt" file can be used in conjunction with [sitemaps](https://en.wikipedia.org/wiki/Sitemaps),
+another robot inclusion standard for websites.
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.5.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/628e53bc01a980d96ea6aa2a8e55604150af3e74) | [deployment](https://defaultwebapp-m5bokp3mw-eirik-torskes-projects.vercel.app) ]</sub>
+
+
+### Humans.txt
+`humans.txt` (https://humanstxt.org) is an attempt to "balance" the `robots.txt` with a more human-oriented "info-file".
+*robots.txt is for machines, humans.txt is for humans*, as the world wide web is intended for.
+It is a place for expressing gratitude to authors of all tools that are helpful when creating your software projects.
+
+It has gained little traction, it seems, but we'll include it anyway.
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.5.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/420cb311bf3067c449dad0c12910c8867ec4d1cf) | [deployment](https://defaultwebapp-lqsxf0qaw-eirik-torskes-projects.vercel.app) ]</sub>
+
+...
+
+
+Other initiatives in this webapp "info-file" ball park are:
+- https://en.wikipedia.org/wiki/Security.txt
+- https://en.wikipedia.org/wiki/Ads.txt
