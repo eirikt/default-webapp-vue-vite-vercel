@@ -103,8 +103,8 @@ const buildTimestamp: string = __APP_BUILD_TIME__
                         </a>
                     </li>
 
-                    <li class="unchecked flex items-center h-8">
-                        <span class="code text-gray-300 me-2">[v0.?]</span>
+                    <li class="checked flex items-center h-8">
+                        <span class="code text-gray-400 me-2">[v0.6]</span>
                         <a href="https://vitest.dev" class="flex items-center" target="_blank">
                             <img src="../assets/vitest-logo.svg" alt="Vitest" width="20px"/>
                             <span class="ms-1">Vitest</span>

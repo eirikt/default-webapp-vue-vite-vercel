@@ -1,10 +1,13 @@
 {
     "name": "default-webapp-2024",
-    "version": "0.6.0",
+    "version": "0.6.1",
     "title": "Default Webapp 2024",
     "type": "module",
     "scripts": {
-        "clean": "pnpm rimraf --verbose dist",
+        "clean": "pnpm rimraf --verbose coverage dist",
+        "test": "vitest run",
+        "test:coverage": "vitest run --coverage",
+        "test:report": "vitest --ui --coverage",
         "dev": "pnpm vite dev",
         "build": "pnpm build:staging",
         "build:staging": "pnpm clean && pnpm vite build --mode staging",
@@ -20,12 +23,16 @@
         "@fortawesome/free-brands-svg-icons": "^6.7.1",
         "@fortawesome/vue-fontawesome": "^3.0.8",
         "@vitejs/plugin-vue": "^5.2.0",
+        "@vitest/coverage-v8": "^2.1.8",
+        "@vitest/ui": "2.1.8",
         "autoprefixer": "^10.4.20",
         "postcss": "^8.4.49",
         "rimraf": "^6.0.1",
         "tailwindcss": "^3.4.15",
+        "temporal-polyfill": "^0.2.5",
         "vercel": "^37.14.0",
         "vite": "^5.4.11",
+        "vitest": "^2.1.8",
         "vue": "^3.5.13"
     }
 }
