@@ -6,8 +6,9 @@ import VueLogo from "./components/VueLogo.vue";
 import ViteLogo from "./components/ViteLogo.vue";
 
 const title = packageJson.title
-const version = packageJson.version
-const buildTimestamp = new Date()
+const version: string = packageJson.version
+const mode: string = __APP_MODE__
+const buildTimestamp: string = __APP_BUILD_TIME__
 </script>
 
 <template>
@@ -143,16 +144,13 @@ const buildTimestamp = new Date()
                 <span>
                     <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
                         <FontAwesomeIcon v-bind:icon="faGithub"
-                                         class="mx-4 text-xl text-gray-400"
+                                         class="mx-3 text-xl text-gray-400"
                         />
                     </a>
                 </span>
             </span>
-
-            <span>
-                <span class="text-xs">Built: </span>
-                <span class="code text-gray-400">{{ buildTimestamp }}</span>
-            </span>
+            <span v-if="mode" class="capitalized warning">{{ mode }}</span>
+            <span class="code text-gray-400">built: {{ buildTimestamp }}</span>
         </footer>
     </article>
 </template>

@@ -1,6 +1,6 @@
 {
     "name": "default-webapp-2024",
-    "version": "0.5.3",
+    "version": "0.6.0",
     "title": "Default Webapp 2024",
     "type": "module",
     "scripts": {
