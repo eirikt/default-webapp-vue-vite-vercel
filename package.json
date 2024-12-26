@@ -1,10 +1,18 @@
 {
     "name": "default-webapp-2024",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "title": "Default Webapp 2024",
     "type": "module",
     "scripts": {
         "clean": "pnpm rimraf --verbose coverage dist",
+        "dependencies:check:1": "pnpm outdated --depth=0",
+        "dependencies:check:2": "pnpm npm-check-updates",
+        "dependencies:check:3": "pnpm audit",
+        "dependencies:check": "pnpm \"/^dependencies:check:.*/\"",
+        "dependencies:upgrade:1": "pnpm upgrade",
+        "dependencies:upgrade:2": "pnpm npm-check-updates --upgrade",
+        "dependencies:upgrade:3": "pnpm audit --fix",
+        "dependencies:upgrade": "pnpm \"/^dependencies:upgrade:.*/\"",
         "test": "vitest run",
         "test:coverage": "vitest run --coverage",
         "test:report": "vitest --ui --coverage",
@@ -19,20 +27,35 @@
         "deploy:production": "pnpm build:production && pnpm vercel --prod"
     },
     "devDependencies": {
-        "@fortawesome/fontawesome-svg-core": "^6.7.1",
-        "@fortawesome/free-brands-svg-icons": "^6.7.1",
+        "@fortawesome/fontawesome-svg-core": "^6.7.2",
+        "@fortawesome/free-brands-svg-icons": "^6.7.2",
         "@fortawesome/vue-fontawesome": "^3.0.8",
-        "@vitejs/plugin-vue": "^5.2.0",
+        "@types/node": "^22.10.2",
+        "@vitejs/plugin-vue": "^5.2.1",
         "@vitest/coverage-v8": "^2.1.8",
         "@vitest/ui": "2.1.8",
         "autoprefixer": "^10.4.20",
+        "npm-check-updates": "^17.1.12",
         "postcss": "^8.4.49",
         "rimraf": "^6.0.1",
-        "tailwindcss": "^3.4.15",
+        "tailwindcss": "^3.4.17",
         "temporal-polyfill": "^0.2.5",
-        "vercel": "^37.14.0",
-        "vite": "^5.4.11",
+        "typescript": "^5.7.2",
+        "vercel": "^39.2.2",
+        "vite": "^6.0.5",
         "vitest": "^2.1.8",
         "vue": "^3.5.13"
+    },
+    "peerDependencies": {
+        "@types/node": "^22.10.2",
+        "typescript": "^5.7.2"
+    },
+    "pnpm": {
+        "overrides": {
+            "debug@>=4.0.0 <4.3.1": ">=4.3.1",
+            "tar@<6.2.1": ">=6.2.1",
+            "path-to-regexp@>=4.0.0 <6.3.0": ">=6.3.0",
+            "semver@>=7.0.0 <7.5.2": ">=7.5.2"
+        }
     }
 }
