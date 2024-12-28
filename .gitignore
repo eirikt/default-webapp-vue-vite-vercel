@@ -4,6 +4,8 @@
 # Ignore generated/derived/downloaded stuff
 /dist
 /node_modules
+**/*.d.ts
+!/src/scripts/env.d.ts
 
 # Ignore IDE/tools stuff
 /.idea
@@ -12,5 +14,5 @@
 # Ignore other development stuff
 /.vercel
 *DRAFT*
+*LOG*
 Hyper-V*
-LOG.md

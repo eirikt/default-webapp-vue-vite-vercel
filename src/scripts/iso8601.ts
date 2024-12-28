@@ -1,7 +1,11 @@
-import {Temporal} from 'temporal-polyfill'
+import type {Temporal} from 'temporal-polyfill'
+
+const
+    temporalElementLength = 2,
+    numberIdentity = '0'
 
 // TODO: Docs: See: https://blog.bitsrc.io/documenting-your-typescript-projects-there-are-options-da7c8c4ec554
-export function prettyprint(instant: Temporal.Instant): string {
+export function prettyprint(instant: Readonly<Temporal.Instant> | undefined): string {
     if (!instant) {
         return ''
     }
@@ -9,16 +13,14 @@ export function prettyprint(instant: Temporal.Instant): string {
 }
 
 // TODO: Docs: See: https://blog.bitsrc.io/documenting-your-typescript-projects-there-are-options-da7c8c4ec554
-export function prettyprintZonedDateTime(zonedDateTime: Temporal.ZonedDateTime): string {
+export function prettyprintZonedDateTime(zonedDateTime: Readonly<Temporal.ZonedDateTime> | undefined): string {
     if (!zonedDateTime) {
         return ''
     }
-    return zonedDateTime.year
-        + '-' + zonedDateTime.month.toString().padStart(2, '0')
-        + '-' + zonedDateTime.day.toString().padStart(2, '0')
-        + ' '
-        + zonedDateTime.hour.toString().padStart(2, '0')
-        + ':' + zonedDateTime.minute.toString().padStart(2, '0')
-        //+ ':' + zonedDateTime.second.toString().padStart(2, '0')
-        + ' (' + zonedDateTime.getTimeZone().toString() + ')'
+    return `${zonedDateTime.year
+    }-${zonedDateTime.month.toString().padStart(temporalElementLength, numberIdentity)
+    }-${zonedDateTime.day.toString().padStart(temporalElementLength, numberIdentity)
+    } ${zonedDateTime.hour.toString().padStart(temporalElementLength, numberIdentity)
+    }:${zonedDateTime.minute.toString().padStart(temporalElementLength, numberIdentity)
+    } (${zonedDateTime.getTimeZone().id})`
 }

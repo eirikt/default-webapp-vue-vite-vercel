@@ -1,14 +1,13 @@
 <script setup lang='ts'>
 import packageJson from '../../package.json'
-import {faGithub} from "@fortawesome/free-brands-svg-icons";
-import GitLogo from "./components/GitLogo.vue";
-import VueLogo from "./components/VueLogo.vue";
-import ViteLogo from "./components/ViteLogo.vue";
+import {faGithub} from '@fortawesome/free-brands-svg-icons'
+import GitLogo from './components/GitLogo.vue'
+import VueLogo from './components/VueLogo.vue'
+import ViteLogo from './components/ViteLogo.vue'
 
-const title = packageJson.title
-const version: string = packageJson.version
-const mode: string = __APP_MODE__
-const buildTimestamp: string = __APP_BUILD_TIME__
+const {title, version} = packageJson
+    , mode: string = APP_MODE
+    , buildTimestamp: string = APP_BUILD_TIME
 </script>
 
 <template>
@@ -111,6 +110,14 @@ const buildTimestamp: string = __APP_BUILD_TIME__
                         </a>
                     </li>
 
+                    <li class="checked flex items-center h-8">
+                        <span class="code text-gray-400 me-2">[v0.6]</span>
+                        <a href="https://eslint.org" class="flex items-center" target="_blank">
+                            <img src="../assets/eslint-logo.svg" alt="TSC/ESLint" width="24px"/>
+                            <span class="ms-1">TSC/ESLint</span>
+                        </a>
+                    </li>
+
                     <li class="unchecked flex items-center h-8">
                         <span class="code text-gray-300 me-2">[v0.?]</span>
                         <a href="https://pinia.vuejs.org" class="flex items-center" target="_blank">
@@ -123,14 +130,6 @@ const buildTimestamp: string = __APP_BUILD_TIME__
                         <span class="code text-gray-300 me-2">[v0.?]</span>
                         <img src="/http.png" alt="HTTP APIs" width="50"/>
                         <span>APIs</span>
-                    </li>
-
-                    <li class="unchecked flex items-center h-8">
-                        <span class="code text-gray-300 me-2">[v0.?]</span>
-                        <a href="https://eslint.org" class="flex items-center" target="_blank">
-                            <img src="../assets/eslint-logo.svg" alt="TSC/ESLint" width="24px"/>
-                            <span class="ms-1">TSC/ESLint</span>
-                        </a>
                     </li>
                 </ul>
             </div>
@@ -150,7 +149,7 @@ const buildTimestamp: string = __APP_BUILD_TIME__
                 </span>
             </span>
             <span v-if="mode" class="capitalized warning">{{ mode }}</span>
-            <span class="code text-gray-400">built: {{ buildTimestamp }}</span>
+            <span v-if="buildTimestamp" class="code text-gray-400">built: {{ buildTimestamp }}</span>
         </footer>
     </article>
 </template>

@@ -3,7 +3,6 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
     content: ['./src/vue/App.vue'],
-    //plugins: [],
     theme: {
         extend: {
             fontFamily: {

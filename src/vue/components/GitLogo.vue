@@ -1,8 +1,13 @@
 <script setup lang='ts'>
-const props = defineProps(['height', 'width'])
+interface Dimensions {
+    height: string,
+    width: string
+}
+const props = defineProps<Dimensions>()
 
-let selectedHeight: string = '92pt'
-let selectedWidth: string = '292'
+let selectedHeight = '92pt',
+    selectedWidth = '292'
+
 if (props.height) {
     selectedHeight = props.height
 }
@@ -12,7 +17,11 @@ if (props.width) {
 </script>
 
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg" v-bind:height="selectedHeight" v-bind:width="selectedWidth" viewBox="0 0 219 92">
+    <svg xmlns="http://www.w3.org/2000/svg"
+         v-bind:height="selectedHeight"
+         v-bind:width="selectedWidth"
+         viewBox="0 0 219 92"
+    >
         <defs>
             <clipPath id="a">
                 <path d="M159 .79h25V69h-25Zm0 0"/>
