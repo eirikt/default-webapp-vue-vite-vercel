@@ -1,22 +1,49 @@
 <script setup lang='ts'>
+/* eslint-disable no-duplicate-imports */
 import packageJson from '../../package.json'
 import {faGithub} from '@fortawesome/free-brands-svg-icons'
 import GitLogo from './components/GitLogo.vue'
 import VueLogo from './components/VueLogo.vue'
 import ViteLogo from './components/ViteLogo.vue'
+import type {Ref} from 'vue'
+import {ref} from 'vue'
 
-const {title, version} = packageJson
+/* eslint-disable no-undef */
+// Declare a "Ref" to hold the element reference.
+// The name must match template 'ref' value.
+const article: Ref<HTMLElement | null> = ref<HTMLElement | null>(null)
+    , {title, version} = packageJson
     , mode: string = APP_MODE
     , buildTimestamp: string = APP_BUILD_TIME
+/* eslint-enable no-undef */
 
-function changeBackgroundColor(newBackgroundColorName: string): void {
-    const [articleElement]: HTMLCollectionOf<HTMLElement> = document.getElementsByTagName('article')
-    articleElement.style.backgroundColor = newBackgroundColorName
+/* eslint-disable one-var */
+function changeBackgroundColor(newBackgroundTailwindColorClassName: string): void {
+    const articleValue: HTMLElement | null = article.value
+    if (!articleValue) {
+        console.error('"article" ref value does not exist')
+        return
+    }
+    const classList: DOMTokenList = articleValue.classList
+    const classListArray: string[] = Array.from(classList)
+    const backgroundClassNames: string[] = classListArray.filter(
+        (className: string) => className.startsWith("bg-")
+    )
+    /* eslint-disable @typescript-eslint/no-magic-numbers */
+    if (backgroundClassNames.length > 1) {
+        console.error('More than one Tailwind background class found: ', backgroundClassNames)
+        return
+    }
+    /* eslint-enable @typescript-eslint/no-magic-numbers */
+    const [currentBackgroundTailwindColorClassName]: string[] = backgroundClassNames
+    articleValue.classList.remove(currentBackgroundTailwindColorClassName)
+    articleValue.classList.add(newBackgroundTailwindColorClassName)
 }
+/* eslint-enable one-var */
 </script>
 
 <template>
-    <article class="flex flex-col justify-between h-dvh p-6">
+    <article ref="article" class="flex flex-col justify-between h-dvh p-6">
         <header>
             <h1 class="
                     bg-clip-text text-transparent
@@ -140,7 +167,7 @@ function changeBackgroundColor(newBackgroundColorName: string): void {
             </div>
 
             <div class="todo">
-                <button v-on:click="changeBackgroundColor('yellow')">(YELLOW BACKGROUND)</button>
+                <button v-on:click="changeBackgroundColor('bg-amber-200')">(AMBER BACKGROUND)</button>
             </div>
         </section>
 
