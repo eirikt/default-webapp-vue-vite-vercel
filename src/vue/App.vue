@@ -167,7 +167,10 @@ function changeBackgroundColor(newBackgroundTailwindColorClassName: string): voi
             </div>
 
             <div class="todo">
-                <button v-on:click="changeBackgroundColor('bg-amber-200')">(AMBER BACKGROUND)</button>
+                <div class="code text-gray-400">(v0.7)</div>
+                <button class="bg-amber-200 rounded-full px-5 py-5 m-1 shadow hover:bg-opacity-85"
+                        v-on:click="changeBackgroundColor('bg-amber-200')"
+                />
             </div>
         </section>
 
