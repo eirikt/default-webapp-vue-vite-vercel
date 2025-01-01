@@ -8,6 +8,11 @@ import ViteLogo from './components/ViteLogo.vue'
 const {title, version} = packageJson
     , mode: string = APP_MODE
     , buildTimestamp: string = APP_BUILD_TIME
+
+function changeBackgroundColor(newBackgroundColorName: string): void {
+    const [articleElement]: HTMLCollectionOf<HTMLElement> = document.getElementsByTagName('article')
+    articleElement.style.backgroundColor = newBackgroundColorName
+}
 </script>
 
 <template>
@@ -135,7 +140,7 @@ const {title, version} = packageJson
             </div>
 
             <div class="todo">
-                &lt;<b>TODO:</b><br/>background<br/>color<br/>picker&gt;
+                <button v-on:click="changeBackgroundColor('yellow')">(YELLOW BACKGROUND)</button>
             </div>
         </section>
 
