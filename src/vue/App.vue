@@ -25,7 +25,7 @@ const {title, version} = packageJson
 
         <hr class="my-2"/>
 
-        <section class="basis-full my-4">
+        <section class="basis-full flex justify-between my-4">
             <div>
                 <h2>Technology stack status</h2>
 
@@ -132,6 +132,10 @@ const {title, version} = packageJson
                         <span>APIs</span>
                     </li>
                 </ul>
+            </div>
+
+            <div class="todo">
+                &lt;<b>TODO:</b><br/>background<br/>color<br/>picker&gt;
             </div>
         </section>
 
