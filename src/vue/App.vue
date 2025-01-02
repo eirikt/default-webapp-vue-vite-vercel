@@ -8,16 +8,37 @@ import ViteLogo from './components/ViteLogo.vue'
 import type {Ref} from 'vue'
 import {ref} from 'vue'
 
-/* eslint-disable no-undef */
+const {title, version} = packageJson
+
 // Declare a "Ref" to hold the element reference.
 // The name must match template 'ref' value.
 const article: Ref<HTMLElement | null> = ref<HTMLElement | null>(null)
-    , {title, version} = packageJson
-    , mode: string = APP_MODE
+
+/* eslint-disable no-undef */
+const mode: string = APP_MODE
     , buildTimestamp: string = APP_BUILD_TIME
 /* eslint-enable no-undef */
 
-/* eslint-disable one-var */
+const tailwindBackgroundColorClassNames = ref([
+    'bg-white',
+    'bg-red-300',
+    'bg-amber-200',
+    'bg-gray-300',
+    'bg-blue-300',
+    'bg-violet-300',
+    'bg-green-200'
+])
+/* eslint-disable no-console */
+for (const color of tailwindBackgroundColorClassNames.value) {
+    console.log(color)
+}
+
+function log(color: string): void {
+    console.log(color)
+}
+tailwindBackgroundColorClassNames.value.forEach(log)
+/* eslint-enable no-console */
+
 function changeBackgroundColor(newBackgroundTailwindColorClassName: string): void {
     const articleValue: HTMLElement | null = article.value
     if (!articleValue) {
@@ -39,7 +60,6 @@ function changeBackgroundColor(newBackgroundTailwindColorClassName: string): voi
     articleValue.classList.remove(currentBackgroundTailwindColorClassName)
     articleValue.classList.add(newBackgroundTailwindColorClassName)
 }
-/* eslint-enable one-var */
 </script>
 
 <template>
@@ -166,11 +186,15 @@ function changeBackgroundColor(newBackgroundTailwindColorClassName: string): voi
                 </ul>
             </div>
 
-            <div class="todo">
+            <div>
                 <div class="code text-gray-400">(v0.7)</div>
-                <button class="bg-amber-200 rounded-full px-5 py-5 m-1 shadow hover:bg-opacity-85"
-                        v-on:click="changeBackgroundColor('bg-amber-200')"
-                />
+                <div v-for="color in tailwindBackgroundColorClassNames" :key="color">
+                    <button
+                        class="bg-amber-200 rounded-full px-5 py-5 m-1 shadow hover:bg-opacity-85"
+                        v-bind:class=color
+                        v-on:click="changeBackgroundColor(color)"
+                    />
+                </div>
             </div>
         </section>
 

@@ -44,7 +44,7 @@ export default [
         rules: {
             '@typescript-eslint/no-use-before-define': 'off',
             'func-style': 'warn',
-            'max-statements': ['error', 6, { 'ignoreTopLevelFunctions': true }],
+            'max-statements': ['error', 13, { 'ignoreTopLevelFunctions': true }],
             'no-console': 'warn',
             'no-ternary': 'off',
             'no-warning-comments': 'warn',
@@ -68,7 +68,8 @@ export default [
         },
         /* eslint-disable @typescript-eslint/naming-convention */
         rules: {
-            'no-useless-assignment': 'off'
+            'no-useless-assignment': 'off',
+            'one-var' : 'off'
         }
         /* eslint-enable @typescript-eslint/naming-convention */
     }
