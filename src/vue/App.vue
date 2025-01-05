@@ -17,49 +17,6 @@ const article: Ref<HTMLElement | null> = ref<HTMLElement | null>(null)
 /* eslint-disable no-undef */
 const mode: string = APP_MODE
     , buildTimestamp: string = APP_BUILD_TIME
-/* eslint-enable no-undef */
-
-const tailwindBackgroundColorClassNames = ref([
-    'bg-white',
-    'bg-red-300',
-    'bg-amber-200',
-    'bg-gray-300',
-    'bg-blue-300',
-    'bg-violet-300',
-    'bg-green-200'
-])
-/* eslint-disable no-console */
-for (const color of tailwindBackgroundColorClassNames.value) {
-    console.log(color)
-}
-
-function log(color: string): void {
-    console.log(color)
-}
-tailwindBackgroundColorClassNames.value.forEach(log)
-/* eslint-enable no-console */
-
-function changeBackgroundColor(newBackgroundTailwindColorClassName: string): void {
-    const articleValue: HTMLElement | null = article.value
-    if (!articleValue) {
-        console.error('"article" ref value does not exist')
-        return
-    }
-    const classList: DOMTokenList = articleValue.classList
-    const classListArray: string[] = Array.from(classList)
-    const backgroundClassNames: string[] = classListArray.filter(
-        (className: string) => className.startsWith("bg-")
-    )
-    /* eslint-disable @typescript-eslint/no-magic-numbers */
-    if (backgroundClassNames.length > 1) {
-        console.error('More than one Tailwind background class found: ', backgroundClassNames)
-        return
-    }
-    /* eslint-enable @typescript-eslint/no-magic-numbers */
-    const [currentBackgroundTailwindColorClassName]: string[] = backgroundClassNames
-    articleValue.classList.remove(currentBackgroundTailwindColorClassName)
-    articleValue.classList.add(newBackgroundTailwindColorClassName)
-}
 </script>
 
 <template>
@@ -188,13 +145,9 @@ function changeBackgroundColor(newBackgroundTailwindColorClassName: string): voi
 
             <div>
                 <div class="code text-gray-400">(v0.7)</div>
-                <div v-for="color in tailwindBackgroundColorClassNames" :key="color">
-                    <button
-                        class="bg-amber-200 rounded-full px-5 py-5 m-1 shadow hover:bg-opacity-85"
-                        v-bind:class=color
-                        v-on:click="changeBackgroundColor(color)"
-                    />
-                </div>
+                <BackgroundColorPicker
+                    v-bind:html-element=article
+                />
             </div>
         </section>
 

@@ -2,7 +2,7 @@ import type {Config} from 'tailwindcss'
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default {
-    content: ['./src/vue/App.vue'],
+    content: ['**/*.vue'],
     theme: {
         extend: {
             fontFamily: {
