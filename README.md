@@ -44,11 +44,19 @@ Then, also create a:
 
 4. URL-friendly name variant with no whitespace characters. Lowercase characters only (hyphens allowed).
 
+5. A full URL/domain name/address
+
 For this little web application it is:
 1. Default Webapp 2024
-2. `default-webapp-2024`
-3. `defaultWebapp2024`
-4. `defaultwebapp`
+1. `default-webapp-2024`
+1. `defaultWebapp2024`
+1. `defaultwebapp`
+1. `defaultwebapp.vercel.app`
+
+For a real web app, a personal domain name is (close to) mandatory.
+We won't do that as part of our setup, at least not yet.
+Anyway, the routines are described here:
+https://vercel.com/docs/projects/domains/
 
 
 ### Code editor
@@ -864,7 +872,7 @@ template: `
         <li>TSC/ESLint: -</li>
     </ul>
     <p>v{{this.version}}</p>
-  `
+`
 ```
 No, that won't work.
 The "runtime" version we still are using does not support compiling Vue templates.
@@ -915,22 +923,22 @@ Replace `index.html` with:
             }
         },
         template: `
-        <h1>{{this.title}}</h1>
-        <h3>Technology stack status:</h3>
-        <ul>
-            <li>Git: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
-            <li>GitHub: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
-            <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
-            <li>Vue: <span style="font-size: larger;font-weight: bolder;color: darkseagreen;">(✓)</span></li>
-            <li>Vite: <span style="font-size: larger;color: red;">✗</span></li>
-            <li>TypeScript: <span style="font-size: larger;color: red;">✗</span></li>
-            <li>Tailwind: <span style="font-size: larger;color: red;">✗</span></li>
-            <li>Vitest: <span style="font-size: larger;color: red;">✗</span></li>
-            <li>Pinia: <span style="font-size: larger;color: red;">✗</span></li>
-            <li>HTTP APIs: <span style="font-size: larger;color: red;">✗</span></li>
-            <li>TSC/ESLint: <span style="font-size: larger;color: red;">✗</span></li>
-        </ul>
-        <p style="padding-top: 8px;font-family: monospace;color: grey;">v{{this.version}}</p>
+            <h1>{{this.title}}</h1>
+            <h3>Technology stack status:</h3>
+            <ul>
+                <li>Git: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+                <li>GitHub: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+                <li>Vercel: <span style="font-size: larger;font-weight: bolder;color: green;">✓</span></li>
+                <li>Vue: <span style="font-size: larger;font-weight: bolder;color: darkseagreen;">(✓)</span></li>
+                <li>Vite: <span style="font-size: larger;color: red;">✗</span></li>
+                <li>TypeScript: <span style="font-size: larger;color: red;">✗</span></li>
+                <li>Tailwind: <span style="font-size: larger;color: red;">✗</span></li>
+                <li>Vitest: <span style="font-size: larger;color: red;">✗</span></li>
+                <li>Pinia: <span style="font-size: larger;color: red;">✗</span></li>
+                <li>HTTP APIs: <span style="font-size: larger;color: red;">✗</span></li>
+                <li>TSC/ESLint: <span style="font-size: larger;color: red;">✗</span></li>
+            </ul>
+            <p style="padding-top: 8px;font-family: monospace;color: grey;">v{{this.version}}</p>
         `
     }).mount('#app')
 </script>
@@ -1487,8 +1495,8 @@ This Vue component will contain the initial state,
 and the initial visual components, which will be added/bound to the DOM by Vue.
 
 Let us rewrite our `App.ts` Vue component to a [Vue Single-File Component (SFC)](https://vuejs.org/guide/scaling-up/sfc/).
-SFC is a special file format that allows us to encapsulate the template, logic, and styling of a Vue component in a single file.
-SFCs have a `.vue` suffix.
+SFC is a special file format that allows us to encapsulate the logic, template, and styling of a Vue component in a single file.
+SFC files have a `.vue` suffix.
 
 Let us promote our Vue component `App.ts` to our first (and main) Vue SFC.
 
@@ -1497,7 +1505,7 @@ Rename `App.ts`:
 git mv .\src\vue\App.ts .\src\vue\App.vue
 ```
 
-Replace our ESM typescripted content with:
+Replace our "ESM-typescripted" content with:
 ```vue
 <script setup lang='ts'>
     const title = 'Default Webapp 2024'
@@ -1797,11 +1805,12 @@ The easiest way is to first add it via the CDN, in `index.html`:
 
 The `preconnect` keyword for the `rel` attribute of the `<link>` element is a hint to browsers that the user is likely to need resources from the target resource's origin.
 Therefore the browser can likely improve the user experience by preemptively initiating a connection to that origin.
-Preconnecting speeds up future loads from a given origin by preemptively performing part or all of the handshake (DNS+TCP for HTTP, and DNS+TCP+TLS for HTTPS origins).
+"Preconnecting" speeds up future loads from a given origin by preemptively performing part or all of the handshake (DNS+TCP for HTTP, and DNS+TCP+TLS for HTTPS origins).
 `<link rel="preconnect">` will provide a benefit to any future cross-origin HTTP request, navigation or subresource.
 It has no benefit on same-origin requests because the connection is already open.
-If a page needs to make connections to many third-party domains, preconnecting them all can be counterproductive.
-The <link rel="preconnect"> hint is best used for only the most critical connections.
+
+If a page needs to make connections to many third-party domains, "preconnecting" them all can be counterproductive.
+The `<link rel="preconnect">` hint is best used for only the most critical connections.
 For the others, just use `<link rel="dns-prefetch">` to save time on the first step—the DNS lookup.
 
 Add "Inter var" to your "sans" font family in your Tailwind configuration.
@@ -1871,10 +1880,7 @@ Add simple page layout to `App.vue`, using "semantic" HTML elements:
                 <span class="text-gray-400"> | </span>
                 <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
             </span>
-            <span>
-                <span class="text-xs">Built: </span>
-                <span class="code text-gray-400">{{ buildTimestamp }}</span>
-            </span>
+            <span class="code text-gray-400">built: {{ buildTimestamp }}</span>
         </footer>
     </article>
 </template>
@@ -1933,7 +1939,6 @@ We were using some extra CSS classes above.
 Add them to `main.css`, as Tailwind "utilities" layer class extensions:
 ```css
 ...
-
 @layer utilities {
     .capitalized::first-letter {
         text-transform: capitalize;
@@ -2024,10 +2029,7 @@ Because of this it may push the element outside the visible screen and cause scr
                 <span class="text-gray-400 mx-2"> | </span>
                 <span class="text-sm text-gray-400"><a href="https://github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">Documentation</a></span>
             </span>
-            <span>
-                <span class="text-xs">Built: </span>
-                <span class="code text-gray-400">{{ buildTimestamp }}</span>
-            </span>
+            <span class="code text-gray-400">built: {{ buildTimestamp }}</span>
         </footer>
     </article>
 </template>
@@ -2103,78 +2105,84 @@ createApp(App)
 
 and `App.vue`:
 ```vue
+<script setup lang='ts'>
 ...
 import {faGithub} from "@fortawesome/free-brands-svg-icons";
 ...
-<li class="checked flex items-center h-8">
-    <span class="code text-gray-400">[v0.0]</span>
-    <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">
-        <FontAwesomeIcon v-bind:icon="faGithub"
-                         class="text-xl translate-y-0.5 ms-2"
-        />
-        <span class="ms-1.5">GitHub</span>
-    </a>
-</li>
-...
-<footer class="flex justify-between">
-    <span class="flex items-center">
-        <span class="code">v{{ version }}</span>
-            <span>
-                <a href="//github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
-                    <FontAwesomeIcon v-bind:icon="faGithub"
-                                     class="mx-4 text-xl text-gray-400"
-                    />
-                </a>
-            </span>
-    </span>
-    <span>
-        <span class="code">Built: {{ buildTimestamp }}</span>
-    </span>
-</footer>
-...
+</script>
+
+<template>
+    ...
+    <li class="checked flex items-center h-8">
+        <span class="code text-gray-400">[v0.0]</span>
+        <a href="https://github.com/eirikt/default-webapp-vue-vite-vercel" target="_blank">
+            <FontAwesomeIcon v-bind:icon="faGithub"
+                             class="text-xl translate-y-0.5 ms-2"
+            />
+            <span class="ms-1.5">GitHub</span>
+        </a>
+    </li>
+    ...
+    <footer class="flex justify-between">
+        <span class="flex items-center">
+            <span class="code">v{{ version }}</span>
+                <span>
+                    <a href="//github.com/eirikt/default-webapp-vue-vite-vercel/blob/main/README.md" target="_blank">
+                        <FontAwesomeIcon v-bind:icon="faGithub"
+                                         class="mx-3 text-xl text-gray-400"
+                        />
+                    </a>
+                </span>
+        </span>
+        <span class="code text-gray-400">built: {{ buildTimestamp }}</span>
+    </footer>
+</template>
 ```
 See: https://docs.fontawesome.com/web/use-with/vue
 
 
 #### By embedding
-Go to https://vercel.com/geist/icons, and copy e.g., the Vercel icon as an SVG.
+Go to https://vercel.com/geist/icons, and copy e.g., the Vercel logo as an SVG.
 Paste it directly in `App.vue`, alter the dimension, and maybe the position a little bit:
 ```vue
-...
-<li class="checked flex items-center h-8">
-    <span class="code text-gray-400">[v0.0]</span>
-    <a href="https://vercel.com" class="flex items-center" target="_blank">
-        <svg class="ms-2"
-             data-testid="geist-icon"
-             stroke-linejoin="round"
-             viewBox="0 0 16 16"
-             height="18px"
-             width="18px"
-             style="color: currentcolor;"
-        >
-            <path fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M8 1L16 15H0L8 1Z"
-                  fill="currentColor"
-            />
-        </svg>
-        <span class="ms-1">Vercel</span>
-    </a>
-</li>
-...
+<template>
+    ...
+    <li class="checked flex items-center h-8">
+        <span class="code text-gray-400">[v0.0]</span>
+        <a href="https://vercel.com" class="flex items-center" target="_blank">
+            <svg class="ms-2"
+                 data-testid="geist-icon"
+                 stroke-linejoin="round"
+                 viewBox="0 0 16 16"
+                 height="18px"
+                 width="18px"
+                 style="color: currentcolor;"
+            >
+                <path fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M8 1L16 15H0L8 1Z"
+                      fill="currentColor"
+                />
+            </svg>
+            <span class="ms-1">Vercel</span>
+        </a>
+    </li>
+    ...
+</template>
 ```
 
 
 #### By Vue component
-SVG files may easily be turned into a Vue component, of type Single File Component (SFC).
-Create an SFC file:
+SVG files may easily be turned into a Vue SFC.
+Create the SFC file for the Git logo:
 ```shell
-New-Item ./src/vue/components/GitIcon.vue
+New-Item ./src/vue/components/GitLogo.vue
 ```
 Then copy the entire SVG file content into a `<template>` block.
 Also, values in the SVG file can be parameterized, like:
 ```vue
 <script setup lang='ts'>
+...
 const props = defineProps(['height', 'width'])
 ...
 </script>
@@ -2187,11 +2195,12 @@ const props = defineProps(['height', 'width'])
 ```
 Now the component can be included with, e.g.:
 ```xml
-<GitIcon height="2rem"
+<GitLogo height="2rem"
          width="2.5rem"
          class="ms-2"
 />
 ```
+More on creating SFCs with properties and events below.
 
 Execute the deployment routine, described above.
 
@@ -2200,8 +2209,8 @@ Execute the deployment routine, described above.
 ...
 
 
-Add the rest of the logo icon using one of the strategies above.
-Source the SVG logos or image logos from the various component providers:
+Add the rest of the logo icons using one of the strategies above.
+Source the SVG- or image logos from the various component providers:
 - https://vercel.com/geist/icons/
 - https://github.com/vitest-dev/vitest/blob/main/docs/public/logo.svg
 - https://tailwindcss.com/brand/
@@ -2223,12 +2232,11 @@ Another way of bringing some more "life" into our web app is by using background
 e.g, via [Tailwind](https://tailwindcss.com/docs/gradient-color-stops).
 Some neat "gradient generators" are available, like:
 - https://www.creative-tim.com/twcomponents/gradient-generator
-- https://www.tailwindgradient.com/
+- https://www.tailwindgradient.com
 - https://tailscan.com/gradients
-- https://gradienty.codes/
-Have a look.
+- https://gradienty.codes
 
-Another very "visual" trick is background images,
+Also, a very "visual" trick is background *images*,
 which Tailwind has [good support](https://tailwindcss.com/docs/background-image) for.
 Together with backdrop effects like
 [blur](https://tailwindcss.com/docs/backdrop-blur), and
@@ -2241,7 +2249,7 @@ As we will play around with background colors *dynamically*, in a short while–
 
 
 We will only add a simple gradient to our header,
-a silly from-<span style="color:red;">red</span>-to-<span style="color:green;">green</span> ("not" to "ok") effect.
+a silly from-<span style="color:red;">red</span>-to-<span style="color:green;">green</span> ("false-to-true") effect.
 
 Execute the deployment routine, described above.
 
@@ -2252,16 +2260,21 @@ Execute the deployment routine, described above.
 
 
 ### Favicon
-Let us have a look at the internal well-being of our web app...
+While we are in the process of adding files to the `public` folder –
+let us have a quick look at the internal well-being of our web app...
 Click <kbd>F12</kbd> in the browser running our Vite development server.
-Now, as a test, do a hard browser tab refresh: <kbd>CTRL</kbd>+<kbd>F5</kbd>
-There are (annoying) `404 Not Found` response errors, complaining about missing favicon in the browser console.
+This will bring up the Browser Developer Tools window.
+Now, as a test, do a hard browser refresh: <kbd>CTRL</kbd>+<kbd>F5</kbd>
+There are (annoying) `404 Not Found` response errors in the browser console, complaining about missing favicon.
 
 The days of just having a simple tiny `favicon.ico` file are long gone.
-Several image formats and types but also configuration files (e.g.: `browserconfig.xml` and `manifest.json`) are now necessary to have a nice favicon on all the available devices out there.
+Several image formats and types but also configuration files (e.g.: `browserconfig.xml` and `manifest.json`) are now necessary to have a nice favicon for all the available devices and screend out there.
 You can generate your favicon files using the generator at https://realfavicongenerator.net.
 It provides all the necessary files, also code snippets for updating our `<head>` element.
 For my favicon, I just picked one from https://favicon.io/emoji-favicons/, namely https://favicon.io/emoji-favicons/pear/.
+
+There are several more issues flagged by the browser...
+but don't worry – we'll deal with those in due course, most of them, at least.
 
 Execute the deployment routine, described above.
 
@@ -2269,7 +2282,7 @@ Execute the deployment routine, described above.
 
 
 ### Robots.txt
-`robots.txt` is the filename used for implementing the Robots Exclusion Protocol –
+["robots.txt"](https://en.wikipedia.org/wiki/Robots.txt) is the filename used for implementing the Robots Exclusion Protocol –
 a standard, used by websites, to indicate to visiting web crawlers and other web robots which portions of the website they are allowed to visit.
 
 The "robots.txt" file can be used in conjunction with [sitemaps](https://en.wikipedia.org/wiki/Sitemaps),
@@ -2281,19 +2294,641 @@ Execute the deployment routine, described above.
 
 
 ### Humans.txt
-`humans.txt` (https://humanstxt.org) is an attempt to "balance" the `robots.txt` with a more human-oriented "info-file".
-*robots.txt is for machines, humans.txt is for humans*, as the world wide web is intended for.
+["humans.txt"](https://humanstxt.org) is an attempt to "balance" the `robots.txt` file with a more human-oriented "info-file".
+*"robots.txt" is for machines, "humans.txt" is for humans*, as the world wide web is intended for.
 It is a place for expressing gratitude to authors of all tools that are helpful when creating your software projects.
 
-It has gained little traction, it seems, but we'll include it anyway.
+It has gained little traction, it seems, but we'll include our own anyway.
 
 Execute the deployment routine, described above.
 
 <sub>[ <code>v0.5.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/420cb311bf3067c449dad0c12910c8867ec4d1cf) | [deployment](https://defaultwebapp-lqsxf0qaw-eirik-torskes-projects.vercel.app) ]</sub>
 
+
+### Security.txt
+Another initiative in this webapp "info-file area" is "security.txt".
+["security.txt"](https://en.wikipedia.org/wiki/Security.txt) is a standard for website security information that allows security researchers to report security vulnerabilities easily.
+
+The standard prescribes a `security.txt` text file in the [well known location](https://en.wikipedia.org/wiki/Well-known_URI),
+similar in syntax to "robots.txt" but intended to be machine- and human-readable,
+for those wishing to contact a website's owner about security issues.
+
+Have a look at [Google's](https://www.google.com/.well-known/security.txt) and [GitHub's](https://github.com/.well-known/security.txt) "security.txt" files.
+
+Consider adding this file as well – depending on the nature of your web app.
+
+
+### Ads.txt
+Another initiative in this webapp "info-file area" is "ads.txt".
+["ads.txt"](https://en.wikipedia.org/wiki/Ads.txt) is a text file that companies can host on their web servers,
+listing the other companies authorized to sell their products or services.
+This is designed to allow online buyers to check the validity of the sellers from whom they buy,
+for the purposes of internet fraud prevention.
+
+
+---
+
+
+Our web app looks better now, but we have a bug.
+The build timestamp is not a build timestamp at all; it just shows the current time, and that is not very interesting.
+Just check it by pushing <kbd>F5</kbd> a couple of times.
+
+The timestamp cannot be defined within the `App.vue` component,
+which has its logic executed and content rendered for every state change.
+No, it must be defined within the build step, and somehow be included in the built artifacts.
+
 ...
 
 
-Other initiatives in this webapp "info-file" ball park are:
-- https://en.wikipedia.org/wiki/Security.txt
-- https://en.wikipedia.org/wiki/Ads.txt
+In `App.vue`, replace:
+```vue
+<script setup lang='ts'>
+...
+const buildTimestamp = new Date()
+...
+</script>
+```
+with:
+```vue
+<script setup lang='ts'>
+...
+const mode: string = 'APP_MODE'
+const buildTimestamp: string = 'APP_BUILD_TIME'
+...
+</script>
+```
+Now, we have a clear view of what to do...
+
+Also, insert a new footer element for the application mode –
+between the version and the build timestamp:
+```vue
+<template>
+    ...
+    <span v-if="mode" class="capitalized warning">{{ mode }}</span>
+    ...
+</template>
+```
+
+In `vite.config.ts`, use the full function signatures for the required `defineConfig` function:
+```typescript
+import type {ConfigEnv, UserConfig} from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default function defineConfig(configEnv: ConfigEnv): UserConfig {
+    return {
+        ...
+    } satisfies UserConfig
+}
+```
+Have a look at the types and function signatures.
+(<kbd>CTRL</kbd>+<kbd>B</kbd> in IntelliJ IDEA.)
+
+It is the `UserConfig.define` property which we should manipulate:
+```typescript
+/**
+ * Define global variable replacements.
+ * Entries will be defined on `window` during dev and replaced during build.
+ */
+define?: Record<string, any>;
+```
+
+Environmental Variables can be obtained from `process.env` as usual.
+Note that Vite doesn't load `.env` files by default as the files to load can only be determined after evaluating the Vite config,
+for example, the `root` and `envDir` options affect the loading behavior.
+However, you can use the exported `loadEnv` helper to load the specific `.env` file if needed.
+
+Add:
+```typescript
+import {loadEnv} from 'vite'
+...
+export default function defineConfig(configEnv: ConfigEnv): UserConfig {
+    const env: Record<string, string> = loadEnv(configEnv.mode, process.cwd(), '')
+    ...
+}
+```
+
+Declare global variables `APP_MODE` and `APP_BUILD_TIME` by:
+```typescript
+const define: Record<string, string> = {
+    'APP_MODE': (configEnv.mode == 'production')
+        ? JSON.stringify('')
+        : JSON.stringify(configEnv.mode + ' (builder: ' + env.COMPUTERNAME + ')'),
+
+    'APP_BUILD_TIME': JSON.stringify(new Date())
+}
+```
+Then include the `define` property in the return value,
+which is handed to Vite which add its properties to the `window` object.
+
+Now, update `App.vue` "script" part with:
+```vue
+...
+<script setup lang='ts'>
+    ...
+    const mode: string = APP_MODE
+    const buildTimestamp: string = APP_BUILD_TIME
+    ...
+</script>
+```
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.6.0</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/45176a9a1f3568d6eac85527d2be49d129e78020) | [deployment](https://defaultwebapp-jd6hl27fb-eirik-torskes-projects.vercel.app/) ]</sub>
+
+...
+
+
+We have fixed the built timestamp bug,
+but the timestamp looks a little bit ...technical and "committee-like".
+Let us format the build timestamp to a more readable representation.
+
+
+### Testing with Vitest
+Dynamic analysis, formal specifications, testing ...it's all about the same;
+increase the conciseness, predictability, and overall quality of the software.
+
+[Vitest](http://vitest.dev) seems to be the idiomatic choice when it comes to testing with Vite:
+```shell
+pnpm install vitest --save-dev
+pnpm install @vitest/coverage-v8 --save-dev
+```
+
+Extend the scripts with test-related ones:
+```json
+"scripts": {
+  ...
+  "test": "vitest run",
+  "test:coverage": "vitest run --coverage",
+  "test:report": "vitest --ui --coverage",
+  ...
+},
+```
+Execute the test script right away:
+```shell
+pnpm test
+```
+No test yet available – that is correct.
+
+
+...
+
+
+We will use date formatting as a (trivial, albeit ubiquitous) example/issue.
+The build timestamp looks a bit too ...technical, with it's 'T' and 'Z' and ...
+Also, while at it;
+the `Date` object has been a long-standing pain point in ECMAScript.
+It has a number of challenges:
+- lack of immutability
+- lack of support for time zones
+- lack of support for use cases that require dates only or times only
+- ...and many other challenges.
+
+Let us use the new proposal for dates in ECMAScript, [Temporal](https://tc39.es/proposal-temporal/):
+```shell
+pnpm install temporal-polyfill --save-dev
+```
+
+Create formal specification/test file:
+```shell
+New-Item .\src\scripts\iso8601.spec.ts
+```
+
+Add a Vitest test/specification:
+```typescript
+test('Should pretty-print time stamp', () => {
+    const buildTime: Temporal.Instant = Temporal.Instant.from('2024-09-20T19:28:01.000999Z')
+    expect(prettyprint(buildTime)).toBe('2024-09-20 19:28 (UTC)')
+})
+```
+Use the IDE capabilities for adding import statements, and also starting on the implementation.
+If it isn't up for the task, add this in `iso8601.spec.ts`:
+```typescript
+import {expect, test} from 'vitest'
+import {Temporal} from 'temporal-polyfill'
+import {prettyprint} from './iso8601'
+```
+
+Test these by:
+```shell
+pnpm test
+```
+...and follow the directions:
+```shell
+New-Item .\src\scripts\iso8601.ts
+```
+
+Add implementation, e.g.,:
+```typescript
+import {Temporal} from 'temporal-polyfill'
+
+export function prettyprint(instant: Temporal.Instant): string {
+    if (!instant) {
+        return ''
+    }
+    return prettyprintZonedDateTime(instant.toZonedDateTimeISO('UTC'))
+}
+
+export function prettyprintZonedDateTime(zonedDateTime: Temporal.ZonedDateTime): string {
+    if (!zonedDateTime) {
+        return ''
+    }
+    return zonedDateTime.year
+        + '-' + zonedDateTime.month.toString().padStart(2, '0')
+        + '-' + zonedDateTime.day.toString().padStart(2, '0')
+        + ' '
+        + zonedDateTime.hour.toString().padStart(2, '0')
+        + ':' + zonedDateTime.minute.toString().padStart(2, '0')
+        + ' (' + zonedDateTime.getTimeZone().toString() + ')'
+}
+```
+
+Also, execute test coverage:
+```shell
+pnpm test:coverage
+```
+
+Have a look at the test coverage GUI tool:
+```shell
+pnpm test:report
+```
+Install needed dependencies.
+
+We can clearly see that we still have work to do regarding test coverage...
+
+For more info about test coverage in Vite, see:
+https://vitest.dev/guide/coverage
+
+...
+
+
+When the specifications are met/the tests go green,
+we can safely add this little improvement to the `vite.config.ts` file:
+```typescript
+import {Temporal} from 'temporal-polyfill'
+import {prettyprint} from './src/scripts/iso8601'
+...
+APP_BUILD_TIME: JSON.stringify(prettyprint(Temporal.Now.instant()))
+```
+Now, mark Vitest tool as "integrated" in `App.vue`.
+ Also, add the `coverage` folder to the `clean` script:
+```json
+"clean": "pnpm rimraf --verbose coverage dist",
+```
+
+Upgrade Vitest to "checked" in `App.vue`, and execute the deployment routine, described above.
+
+<sub>[ <code>v0.6.1</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/6f686055f5e00531fe61d9f530384fad4e79d1e5) | [deployment](https://defaultwebapp-azp561omu-eirik-torskes-projects.vercel.app/) ]</sub>
+
+
+---
+
+
+Formal specifications/testing is also known as [*dynamic* source code analysis](https://en.wikipedia.org/wiki/Dynamic_program_analysis).
+Also, we have [*static* source code analysis](https://en.wikipedia.org/wiki/Static_program_analysis) –
+which scans the source code for issues and weaknesses.
+
+
+### Upgrade scripts for code dependencies
+One type of static source code analysis tools is *managing the source code dependencies*.
+We will use several source code dependencies tools, one of them must be installed:
+```shell
+pnpm install npm-check-updates --save-dev
+```
+The other ones are included in npm/pnpm.
+
+Add the following in the "script" block in `package.json`:
+```json
+"dependencies:check:1": "pnpm outdated --depth=0",
+"dependencies:check:2": "pnpm npm-check-updates",
+"dependencies:check:3": "pnpm audit",
+"dependencies:check": "pnpm \"/^dependencies:check:.*/\"",
+"dependencies:upgrade:1": "pnpm upgrade",
+"dependencies:upgrade:2": "pnpm npm-check-updates --upgrade",
+"dependencies:upgrade:3": "pnpm audit --fix",
+"dependencies:upgrade": "pnpm \"/^dependencies:upgrade:.*/\"",
+```
+Execute all of the `dependencies:check:*` scripts.
+Compare the reports.
+
+Execute all of the `dependencies:upgrade:*` scripts, until none of the yield any issues.
+
+If there are issues with [peer dependencies](https://medium.com/@ruben.alapont/advanced-npm-working-with-peer-dependencies-b7c43aa852d8) found,
+install those as well, e.g.:
+```shell
+pnpm install @types/node --save-peer
+pnpm install typescript --save-peer
+```
+
+Complete the routine with a final `pnpm dependencies:check`, which now should be "nice and clean".
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.6.2</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/400592f678e33a5f4b3d49fca989332228f2b124) | no visual changes ]</sub>
+
+...
+
+
+The other type of static source code analysis is *code quality*.
+Such tools have been sort of a sidekick,
+and have, in my view, seldom been given any important place in software build pipelines.
+With the advent of artificial intelligence, this may be changing, as the tools are improving their overall quality.
+
+We will use a couple of such tools.
+The first one is the TypeScript compiler itself, with a Vue extension.
+
+
+### Static code analysis with TypeScript compiler
+A type system like TypeScript can detect many common errors via static analysis at build time.
+This reduces the chance of runtime errors in production,
+and also allows us to more confidently refactor code in large-scale applications.
+
+Vue is written in TypeScript itself and provides first-class TypeScript support.
+All official Vue packages come with bundled [type declaration files](https://en.wikipedia.org/wiki/TypeScript#Declaration_files)
+(files having suffix `d.ts`) that should work out-of-the-box (module `@vue/tsconfig`).
+
+For Vue SFCs, use the `vue-tsc` [CLI](https://en.wikipedia.org/wiki/Command-line_interface) utility for generating type declarations, and type checking.
+`vue-tsc` is a wrapper around `tsc`, TypeScript's own command line interface.
+It works largely the same as `tsc` except that it supports Vue SFC files in addition to regular TypeScript files.
+
+Install:
+```shell
+pnpm install @vue/tsconfig --save-dev
+pnpm install vue-tsc --save-dev
+```
+
+Create `tsconfig.json` file:
+```shell
+New-Item .\tsconfig.json
+```
+Add:
+```json
+{
+    "extends": [
+        "@vue/tsconfig/tsconfig.dom.json"
+    ],
+    "compilerOptions": {
+        "noEmit": false
+    }
+}
+```
+We are mainly just extending Vue's recommended TypeScript configuration:
+https://github.com/vuejs/tsconfig/blob/main/tsconfig.dom.json,
+but, reactivating the "emit" property as we will use `vue-tsc` for generating type declarations.
+
+(More about the TypeScript compiler tool [here](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
+and [here](https://www.typescriptlang.org/tsconfig/).
+More about using Vue with TypeScript, [here](https://vuejs.org/guide/typescript/overview.html).)
+
+Run:
+```shell
+pnpm vue-tsc --noEmit
+```
+There are some issues...
+
+In `App.vue` the Vue-aware TypeScript compiler complains about the `APP_MODE` and `APP_BUILD_TIME` values.
+That is quite understandable as they are expected to exist as global variables, but Vue does not know about them.
+A simple trick is to add them in a little manually hand-crafted TypeScript type declaration file.
+As `APP_MODE` and `APP_BUILD_TIME` are regarded as "environment variables", we can name it `env.d.ts`.
+Execute:
+```shell
+Set-Content -Path .\src\scripts\env.d.ts -Value "declare const APP_MODE: string, APP_BUILD_TIME: string"
+```
+
+Also, we have an issue in `iso8601.ts`: "error TS2722: Cannot invoke an object which is possibly 'undefined'".
+That can be solved by replacing `zonedDateTime.getTimeZone().toString()` with `zonedDateTime.getTimeZone().id`.
+
+Run the compiler again:
+```shell
+pnpm vue-tsc --noEmit
+```
+All problems should now have been resolved.
+
+Execute the deployment routine, described above.
+
+<sub>[ <code>v0.6.3</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/400592f678e33a5f4b3d49fca989332228f2b124) | no visual changes ]</sub>
+
+
+### Static code analysis with ESLint
+[ESLint](https://eslint.org) is the idiomatic choice for statical analysis for web projects.
+Doing static source code analysis with the motivation of finding possible problems is called [linting](https://en.wikipedia.org/wiki/Lint_(software)).
+
+Install ESLint with support for TypeScript and Vue:
+```shell
+pnpm install eslint --save-dev
+pnpm install @eslint/js --save-dev
+pnpm install @eslint/compat --save-dev
+pnpm install typescript-eslint --save-dev
+pnpm install eslint-plugin-vue --save-dev
+```
+
+Create `tsconfig.json` file:
+```shell
+New-Item .\eslint.config.js
+```
+It is possible with a TypeScript configuration file, but we'll leave that for now –
+avoiding any [abstraction leakages](https://en.wikipedia.org/wiki/Leaky_abstraction)...
+
+The `eslint.config.js` file may contain one or more ESLint [configuration objects](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-objects).
+Let us be bold, and add *all* linting rules (as configuration objects) for *all* ECMAScript, TypeScript, and Vue files:
+```javascript
+import eslintJs from '@eslint/js';
+import eslintTs from 'typescript-eslint';
+import eslintVue from 'eslint-plugin-vue';
+
+export default [
+
+    // All JavaScript linting rules
+    eslintJs.configs.all,
+
+    // All TypeScript linting rules
+    ...eslintTs.configs.all,
+    {
+        languageOptions: {
+            parserOptions: {
+                projectService: true
+            }
+        }
+    },
+
+    // Vue "essential" linting rules
+    ...eslintVue.configs['flat/essential'],
+    {
+        languageOptions: {
+            parserOptions: {
+                parser: eslintTs.parser
+            }
+        }
+    }
+];
+```
+When more than one configuration object matches a given filename,
+the configuration objects are merged with later objects overriding previous ones when there is a conflict.
+
+Try it out:
+```shell
+pnpm eslint
+```
+...a lot of issues are reported – some 40 of them...
+
+Albeit, we'll leave it for now and move on.
+We'll even "burn the bridges", and include the linting in the build, as a prerequisite for building our webapp.
+
+In `package.json`, add the following scripts:
+```json
+"lint:vue-tsc": "pnpm vue-tsc --noEmit",
+"lint:eslint": "pnpm eslint",
+"lint": "pnpm \"/^lint:.*/\"",
+```
+
+Then update the build scripts:
+```json
+"build:staging": "pnpm clean && pnpm lint && pnpm vite build --mode staging",
+"build:production": "pnpm clean && pnpm lint && pnpm vite build",
+```
+
+<sub>[ <code>v0.6.4</code>: [commit]() | no visual changes, AND the build is broken ]</sub>
+
+
+#### Mending the reported static code analysis issues
+The build is broken.
+We have work to do.
+
+Firstly, let us try to resolve some of them by:
+```shell
+pnpm eslint --fix
+```
+Have a look at the suggested changes.
+Were any of the suggested fixes useful? Keep those, revert the rest.
+
+Some issues that we will fix:
+```
+eslint.config.js was not found by the project service. Consider either including it in the tsconfig.json or including it in allowDefaultProject
+postcss.config.js was not found by the project service. Consider either including it in the tsconfig.json or including it in allowDefaultProject
+```
+In the TypeScript ESLint configuration object, add:
+```javascript
+languageOptions: {
+    parserOptions: {
+        projectService: {
+            allowDefaultProject: [
+                'eslint.config.js',
+                'postcss.config.js'
+            ]
+        }
+    }
+}
+```
+
+Also:
+```
+App.vue was not found by the project service because the extension for the file (`.vue`) is non-standard. You should add `parserOptions.extraFileExtensions` to your config
+```
+In the Vue ESLint configuration object, add:
+```javascript
+languageOptions: {
+    parserOptions: {
+        parser: eslintTs.parser,
+            extraFileExtensions: ['.vue']
+    }
+}
+```
+
+And, not the least:
+```
+main.ts
+Unsafe argument of type error typed assigned to a parameter of type `Component<any, any, any, ComputedOptions, MethodOptions, {}, any>`  @typescript-eslint/no-unsafe-argument
+```
+This is the "big one".
+ESLint wants type declarations for our Vue components!
+(A bit strange the TypeScript compiler was ok with this, but it is probably one of the things the Vue wrapper ignores.)
+
+The simple way of handling this is just to "bail out" and declare all Vue SFC files as one type, not to worry about.
+If you want to silence warnings about a particular module without writing a declaration file,
+you can also quickly declare the module as an `Any` type,
+by putting an empty declaration for it in a `.d.ts` file in your project, e.g.:
+```typescript
+declare module '*.vue' {}
+```
+Just execute:
+```shell
+Set-Content -Path .\src\scripts\vue.d.ts -Value "declare module '*.vue' {}"
+```
+...and all Vue SFC files will be ignored from type checking.
+But we will of course not do that – there can be quite a lot of TypeScript logic within SFC files.
+Remove the `vue.d.ts` file:
+```shell
+Remove-Item .\src\scripts\vue.d.ts
+```
+
+...
+
+
+We must use the Vue-enabled TypeScript compiler `vue-tsc` to generate the `*.d.ts` files for us.
+(Without tools like `vue-tsc` we must have manually crafted our own declaration files for all our Vue SFC files.)
+Update the build scripts, yet again:
+```json
+"tsc:emit": "pnpm vue-tsc --declaration --emitDeclarationOnly",
+```
+
+Then update the `lint` script in `package.json`:
+```json
+"lint": "pnpm tsc:emit && pnpm \"/^lint:.*/\"",
+```
+
+This fixes the problem, but we now have a lot more TypeScript files getting linted...
+We may just ignore those files, both from version control, in `.gitignore`:
+```
+...
+**/*.d.ts
+!/src/scripts/env.d.ts
+...
+```
+...and also as files to be linted.
+This we can do by importing the ignored files from the `.gitignore` to the ESLint config, do:
+```typescript
+import {includeIgnoreFile} from '@eslint/compat';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+
+const gitignorePath = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)),
+    '.gitignore'
+);
+```
+Now add the "ignore" declaration as an ESLint configuration object:
+
+```typescript
+    // Ignore the same file paths as '.gitignore'
+    includeIgnoreFile(gitignorePath),
+```
+
+...
+
+
+Ok, the rest of the issues reported by ESLint seem to be of the more ordinary kind.
+These issues we will deal with in one of four ways, with a *decreasing level of compliance/adoption*:
+1. Fix it!
+2. Override the rule in the source file itself as a special exemption for the **specific code block or statement**
+   Overriding the rules by inlining an exemption may be seen as (temporary) deferring of rule compliance...
+3. Override the rule in the source file itself as a special exemption for the specific file (as a whole)
+4. Override the rule in `eslint.config.js`, either by turning it **`off`**, or decreasing the severity level from **`error`** to **`warn`**.
+
+Before starting addressing the ESLint-reported issues,
+update some build scripts:
+```json
+"clean:folder": "pnpm rimraf --verbose coverage dist src-dts",
+"clean:glob": "pnpm rimraf --verbose --glob ./tailwind.config.d.ts ./vite.config.d.ts ./src/vue/**/*.d.ts ./src/scripts/iso8601*.d.ts ./src/scripts/main.d.ts",
+"clean": "pnpm \"/^clean:.*/\"",
+
+"tsc:emit": "pnpm clean && pnpm install && pnpm vue-tsc --declaration --emitDeclarationOnly",
+"build:staging": "pnpm tsc:emit && pnpm lint && pnpm vite build --mode staging",
+"build:production": "pnpm tsc:emit && pnpm lint && pnpm vite build",
+```
+
+...
+
+
+Finally, when all ESLint ESLint-reported issues are sorted out –
+update ESLint status in `App.vue`, and execute the deployment routine, described above.
+
+<sub>[ <code>v0.6.5</code>: [commit](https://github.com/eirikt/default-webapp-vue-vite-vercel/commit/02a671a68f3a64b6ead6280c1750f3c7f192e4d2) | [deployment](https://defaultwebapp-i7pkpv7y0-eirik-torskes-projects.vercel.app) ]</sub>
